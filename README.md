@@ -16,7 +16,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 ## Back-end
 - [ ] Back-end Java (Spring, API Rest e Microservices);
 - [ ] TDD - Test Driven Development (JUnit e Mockito);
-- [ ] DDD - Domain Driven Desing;
+- [ ] DDD - Domain Driven Design;
 - [ ] Clean Architecture;
 - [ ] Clean Code;
 - [ ] Solid;
