@@ -1,17 +1,17 @@
-# Introdução
+# INTRODUÇÃO
 
 Nome: Portfolio
 
 O projeto consiste na criação de uma aplicação web para centralizar e gerenciar portfolio profissional. 
 
-# Checklist 
+# CHECKLIST
 
-## GERAL
+## Geral
 - [x] Repositório no GitHub com a estrutura do Gitflow;
 - [ ] README detalhado;
 - [ ] UML - Unified Modeling Language (Use Case);
 
-## BACK-END
+## Back-end
 - [ ] Back-end Java (Spring, API Rest e Microservices);
 - [ ] TDD - Test Driven Development (JUnit e Mockito);
 - [ ] DDD - Domain Driven Desing;
@@ -21,7 +21,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Design Pattern;
 - [ ] Refactor;
 
-## FRONT-END
+## Front-end
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
 - [ ] Telas com layout responsivo;
 - [ ] Páginas com o conceito de módulos e componentes;
@@ -31,7 +31,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Usar diretivas;
 - [ ] Formatar a apresentação de dados com Pipes;
 
-## DATABASE
+## Database
 - [ ] Banco de dados de produção: PostgreSQL;
 - [ ] Banco de dados de teste: MariaDB;
 - [ ] DER - Diagrama Entidade Relacionamento;
