@@ -10,7 +10,6 @@ GERAL
 - [x] Repositório no GitHub com a estrutura do Gitflow;
 - [ ] README detalhado;
 - [ ] UML - Unified Modeling Language (Use Case);
-- [ ] 
 
 BACK-END
 - [ ] Back-end Java (Spring, API Rest e Microservices);
@@ -21,7 +20,6 @@ BACK-END
 - [ ] Solid;
 - [ ] Design Pattern;
 - [ ] Refactor;
-- [ ] 
 
 FRONT-END
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
@@ -32,13 +30,12 @@ FRONT-END
 - [ ] Uso da API JSON Server;
 - [ ] Usar diretivas;
 - [ ] Formatar a apresentação de dados com Pipes;
-- [ ] 
 
 DATABASE
 - [ ] Banco de dados de produção: PostgreSQL;
 - [ ] Banco de dados de teste: MariaDB;
 - [ ] DER - Diagrama Entidade Relacionamento;
-- [ ] 
+
 
 
 
