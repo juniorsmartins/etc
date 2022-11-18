@@ -6,9 +6,11 @@
 
 O projeto consiste na criação de uma aplicação web para centralizar e gerenciar portfolio profissional. 
 
+
 # CHECKLIST
 
 ## Geral
+- [x] Metodologia Ágil (Scrum Board no Jira);
 - [x] Repositório no GitHub com a estrutura do Gitflow;
 - [ ] README detalhado;
 - [ ] UML - Unified Modeling Language (Use Case);
