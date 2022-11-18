@@ -30,8 +30,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Navegação entre páginas por meio de rotas;
 - [ ] Requisições à API com tratamento da resposta com Promises ou Observables;
 - [ ] Uso da API JSON Server;
-- [ ] Usar diretivas;
-- [ ] Formatar a apresentação de dados com Pipes;
+- [ ] Uso de diretivas;
+- [ ] Formatar apresentação de dados com Pipes;
 
 ## Database
 - [ ] Banco de dados de produção: PostgreSQL;
