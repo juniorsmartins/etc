@@ -1,6 +1,8 @@
 # INTRODUÇÃO
 
 Nome: Portfolio
+Data de Início: 18/11/2022
+Previsão de Término: 31/12/2023
 
 O projeto consiste na criação de uma aplicação web para centralizar e gerenciar portfolio profissional. 
 
