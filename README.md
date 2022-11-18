@@ -16,7 +16,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] UML - Unified Modeling Language (Use Case);
 
 ## Back-end
-- [ ] Back-end Java (Spring, API Rest e Microservices);
+- [x] Back-end Java (Spring, API Rest e Microservices);
 - [ ] TDD - Test Driven Development (JUnit e Mockito);
 - [ ] DDD - Domain Driven Design;
 - [ ] Clean Architecture;
@@ -24,6 +24,14 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Solid;
 - [ ] Design Pattern;
 - [ ] Refactor;
+- [ ] Bean Validation;
+- [ ] Spring Data JPA;
+- [ ] Flyway Migration;
+- [ ] Swagger;
+- [ ] Java Mail Sender;
+- [ ] Lombok; 
+- [ ] DevTools;
+- [ ] Mensageria (RabbitMQ ou Kafka);
 
 ## Front-end
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
