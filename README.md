@@ -11,7 +11,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 ## Geral
 - [x] Metodologia Ágil (Scrum Board no Jira);
-- [x] Repositório no GitHub com a estrutura do Gitflow;
+- [x] Repositório Monorepo com estrutura Gitflow;
 - [ ] README detalhado;
 - [ ] UML - Unified Modeling Language (Use Case);
 
