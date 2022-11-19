@@ -6,6 +6,8 @@ import io.portfolio.micro_cliente.client.domain.filter.ClientFilter;
 import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +34,8 @@ public final class ClientController extends PolicyControllers<ClientDTORequest, 
     }
 
     @Override
-    public ResponseEntity<Page<ClientDTOResponse>> buscarTodos(ClientFilter filter, Pageable paginacao) {
+    public ResponseEntity<Page<ClientDTOResponse>> buscarTodos(ClientFilter filter,
+               @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable paginacao) {
         return null;
     }
 
