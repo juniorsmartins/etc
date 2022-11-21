@@ -2,8 +2,14 @@ package io.portfolio.micro_cliente.client.application.rest.controllers;
 
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequest;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponse;
+import io.portfolio.micro_cliente.client.domain.dtos.PolicyDTO;
+import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
+import io.portfolio.micro_cliente.client.domain.entities.PolicyEntity;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilter;
+import io.portfolio.micro_cliente.client.domain.filter.PolicyFilter;
+import io.portfolio.micro_cliente.client.domain.services.PolicyService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -17,6 +23,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(value = "${app.api.base}/assuntos", produces = {"application/json"})
 public final class ClientController extends PolicyControllers<ClientDTORequest, ClientFilter, ClientDTOResponse, Long> {
+
+    @Autowired
+    private PolicyService<ClientDTORequest, ClientFilter, ClientDTOResponse, ClientEntity, Long> service;
 
     @Override
     public ResponseEntity<ClientDTOResponse> cadastrar(@RequestBody @Valid ClientDTORequest dto) {
