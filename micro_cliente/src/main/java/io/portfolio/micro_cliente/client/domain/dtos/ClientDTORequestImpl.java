@@ -17,7 +17,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public final class ClientDTORequest implements Serializable, PolicyDTO<Long> {
+public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long> {
 
     private Long id;
 

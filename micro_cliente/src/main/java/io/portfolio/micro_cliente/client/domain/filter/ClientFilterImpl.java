@@ -5,7 +5,7 @@ import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 
 import java.time.LocalDate;
 
-public record ClientFilter
+public record ClientFilterImpl
     (
         Long id,
         String firstName,
