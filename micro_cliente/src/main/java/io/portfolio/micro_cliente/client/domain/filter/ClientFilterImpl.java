@@ -1,11 +1,13 @@
 package io.portfolio.micro_cliente.client.domain.filter;
 
+import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
+import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 
 import java.time.LocalDate;
 
-public record ClientFilter
+public record ClientFilterImpl
     (
         Long id,
         String firstName,
@@ -14,8 +16,8 @@ public record ClientFilter
         SexEnum sex,
         GenreEnum genre,
         LocalDate birthDate,
-        String maritalStatus,
-        String education
+        MaritalStatusEnum maritalStatus,
+        EducationEnum education
     ) implements PolicyFilter<Long>
 { }
 

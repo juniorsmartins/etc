@@ -1,14 +1,18 @@
 package io.portfolio.micro_cliente.client.domain.dtos;
 
+import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
+import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -17,7 +21,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public final class ClientDTORequest implements Serializable, PolicyDTO<Long> {
+public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long> {
 
     private Long id;
 
@@ -35,11 +39,11 @@ public final class ClientDTORequest implements Serializable, PolicyDTO<Long> {
     private String cpf;
 
     @NotBlank
-    @Length(max = 1)
+    @Enumerated(EnumType.STRING)
     private SexEnum sex;
 
     @NotBlank
-    @Length(max = 30)
+    @Enumerated(EnumType.STRING)
     private GenreEnum genre;
 
     @NotNull
@@ -47,10 +51,10 @@ public final class ClientDTORequest implements Serializable, PolicyDTO<Long> {
     private LocalDate birthDate;
 
     @NotBlank
-    @Length(max = 30)
-    private String maritalStatus;
+    @Enumerated(EnumType.STRING)
+    private MaritalStatusEnum maritalStatus;
 
     @NotBlank
-    @Length(max = 200)
-    private String education;
+    @Enumerated(EnumType.STRING)
+    private EducationEnum education;
 }

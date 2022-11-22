@@ -1,0 +1,12 @@
+package io.portfolio.micro_cliente.client.domain.enums;
+
+public enum EducationEnum {
+    FUNDAMENTAL_INCOMPLETO,
+    FUNDAMENTAL_COMPLETO,
+    MEDIO_COMPLETO,
+    TECNICO_COMPLETO,
+    SUPERIOR_COMPLETO,
+    ESPECIALIZACAO_COMPLETA,
+    MESTRADO_COMPLETO,
+    DOUTORADO_COMPLETO
+}
