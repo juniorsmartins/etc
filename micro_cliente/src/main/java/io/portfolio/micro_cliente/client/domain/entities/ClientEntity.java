@@ -18,7 +18,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @EqualsAndHashCode(of = "id")
-public non-sealed class ClientEntity implements Serializable, PolicyEntity<Long> {
+public final class ClientEntity implements Serializable, PolicyEntity<Long> {
 
     private static final Long serialVersionUID = 1L;
 
