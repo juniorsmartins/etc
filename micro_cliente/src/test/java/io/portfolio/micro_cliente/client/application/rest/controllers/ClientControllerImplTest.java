@@ -7,6 +7,7 @@ import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
+import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepository;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -51,7 +52,7 @@ class ClientControllerImplTest {
 
     @AfterEach
     void tearDown() {
-        this.repository.deleteByCPF(dtoRequest);
+        this.repository.deleteByCPF(dtoRequest.getCpf());
     }
 
     @Test
