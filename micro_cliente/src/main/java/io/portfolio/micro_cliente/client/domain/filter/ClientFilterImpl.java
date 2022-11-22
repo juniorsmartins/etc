@@ -1,6 +1,8 @@
 package io.portfolio.micro_cliente.client.domain.filter;
 
+import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
+import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 
 import java.time.LocalDate;
@@ -14,8 +16,8 @@ public record ClientFilterImpl
         SexEnum sex,
         GenreEnum genre,
         LocalDate birthDate,
-        String maritalStatus,
-        String education
+        MaritalStatusEnum maritalStatus,
+        EducationEnum education
     ) implements PolicyFilter<Long>
 { }
 

@@ -1,60 +1,56 @@
-package io.portfolio.micro_cliente.client.domain.dtos;
+package io.portfolio.micro_cliente.client.domain.entities;
 
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
-import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "clients")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
-public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long> {
+@Getter
+@EqualsAndHashCode(of = "id")
+public non-sealed class ClientEntity implements Serializable, PolicyEntity<Long> {
 
+    private static final Long serialVersionUID = 1L;
+
+    @Id
+    @Column(name = "id")
     private Long id;
 
-    @NotBlank
-    @Length(max = 40)
+    @Column(name = "first_name", length = 40, nullable = false)
     private String firstName;
 
-    @NotBlank
-    @Length(max = 40)
+    @Column(name = "last_name", length = 40, nullable = false)
     private String lastName;
 
-    @NotBlank
-    @Length(max = 15)
-    @CPF
+    @Column(name = "cpf", length = 15, nullable = false, unique = true)
     private String cpf;
 
-    @NotBlank
+    @Column(name = "sex", nullable = false)
     @Enumerated(EnumType.STRING)
     private SexEnum sex;
 
-    @NotBlank
+    @Column(name = "genre", nullable = false)
     @Enumerated(EnumType.STRING)
     private GenreEnum genre;
 
-    @NotNull
-    @Past
+    @Column(name = "birth_date", nullable = false)
     private LocalDate birthDate;
 
-    @NotBlank
+    @Column(name = "marital_status", nullable = false)
     @Enumerated(EnumType.STRING)
     private MaritalStatusEnum maritalStatus;
 
-    @NotBlank
+    @Column(name = "education", nullable = false)
     @Enumerated(EnumType.STRING)
     private EducationEnum education;
 }
