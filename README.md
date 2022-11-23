@@ -9,15 +9,15 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 # CHECKLIST
 
-## Geral
+> Geral
 - [x] Metodologia Ágil (Scrum Board no Jira);
 - [x] Repositório Monorepo com estrutura Gitflow;
 - [ ] README detalhado;
 - [ ] UML - Unified Modeling Language (Use Case);
 
-## Back-end
+> Back-end
 - [x] Back-end Java (Spring, API Rest e Microservices);
-- [ ] TDD - Test Driven Development (JUnit e Mockito);
+- [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 - [ ] DDD - Domain Driven Design;
 - [ ] Clean Architecture;
 - [ ] Clean Code;
@@ -32,8 +32,10 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Lombok; 
 - [ ] DevTools;
 - [ ] Mensageria (RabbitMQ ou Kafka);
+- [ ] Logback;
+- [ ] 
 
-## Front-end
+> Front-end
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
 - [ ] Telas com layout responsivo;
 - [ ] Páginas com o conceito de módulos e componentes;
@@ -43,7 +45,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Uso de diretivas;
 - [ ] Formatar apresentação de dados com Pipes;
 
-## Database
+> Database
 - [ ] Banco de dados de produção: PostgreSQL;
 - [ ] Banco de dados de teste: MariaDB;
 - [ ] DER - Diagrama Entidade Relacionamento;
