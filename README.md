@@ -11,14 +11,16 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 > __Geral__
 
+- [ ] README detalhado;
 - [x] Metodologia Ágil (Scrum Board no Jira);
 - [x] Repositório Monorepo com estrutura Gitflow;
-- [ ] README detalhado;
 - [ ] UML - Unified Modeling Language (Use Case);
 
 > __Back-end__
 
-- [x] Back-end Java (Spring, API Rest e Microservices);
+- [x] Back-end Java/Spring;
+- [ ] Microservices (mínimo três);
+- [ ] API Restful;
 - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 - [ ] DDD - Domain Driven Design;
 - [ ] Clean Architecture;
@@ -26,16 +28,19 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Solid;
 - [ ] Design Pattern;
 - [ ] Refactor;
-- [ ] Bean Validation;
-- [ ] Spring Data JPA;
-- [ ] Flyway Migration;
+- [x] Flyway Migration;
+- [x] Spring Data JPA;
+- [ ] Spring Security;
+- [ ] Spring Hateoas;
+- [ ] Spring Batch;
+- [x] Bean Validation;
+- [ ] Cache;
 - [ ] Swagger;
-- [ ] Java Mail Sender;
-- [ ] Lombok; 
-- [ ] DevTools;
-- [ ] Mensageria (RabbitMQ ou Kafka);
 - [ ] Logback;
-- [ ] 
+- [ ] Java Mail Sender;
+- [x] Lombok; 
+- [x] DevTools;
+- [ ] Mensageria (RabbitMQ ou Kafka);
 
 > __Front-end__
 
@@ -50,9 +55,9 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 > __Database__
 
-- [ ] Banco de dados de produção: PostgreSQL;
-- [ ] Banco de dados de teste: MariaDB;
-- [ ] DER - Diagrama Entidade Relacionamento;
+- [x] Banco de dados de teste: PostgreSQL;
+- [ ] Banco de dados de produção: MariaDB;
+- [x] DER - Diagrama Entidade Relacionamento;
 
 
 
