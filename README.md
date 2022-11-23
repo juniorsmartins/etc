@@ -9,7 +9,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 # CHECKLIST
 
-> Geral
+> __Geral__
 - [x] Metodologia Ágil (Scrum Board no Jira);
 - [x] Repositório Monorepo com estrutura Gitflow;
 - [ ] README detalhado;
