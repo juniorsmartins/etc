@@ -2,11 +2,11 @@ package io.portfolio.micro_cliente.client.domain.services;
 
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponseImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.PolicyDTO;
 import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
-import io.portfolio.micro_cliente.client.domain.filter.PolicyFilter;
 import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepository;
+import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
+import io.portfolio.micro_cliente.shared.exceptions.StandardMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +32,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
                 .map(ClientEntity::new)
                 .map(client -> {
                     if(!this.repository.findByCpf(client.getCpf()).isEmpty())
-                        throw new NullPointerException();
+                        throw new ResourceNotFoundCustomException(StandardMessage.RESOURCE_NOT_FOUND_EXCEPTION);
 
                     return this.repository.saveAndFlush(client);
                 })
