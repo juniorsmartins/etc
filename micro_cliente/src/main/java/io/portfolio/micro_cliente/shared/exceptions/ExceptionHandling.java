@@ -40,8 +40,16 @@ public final class ExceptionHandling {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<StandardExceptionHandledReturn> methodStandardExceptionHandledReturn(ResourceNotFoundCustomException resource) {
         return ResponseEntity
-                .badRequest()
+                .status(HttpStatus.NOT_FOUND)
                 .body(new StandardExceptionHandledReturn(HttpStatus.NOT_FOUND.toString(), resource.getMessage()));
+    }
+
+    @ExceptionHandler(BusinessRuleViolationCustomException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    public ResponseEntity<StandardExceptionHandledReturn> methodBusinessRuleViolationCustomException(BusinessRuleViolationCustomException businessViolation) {
+        return ResponseEntity
+                .status(HttpStatus.CONFLICT)
+                .body(new StandardExceptionHandledReturn(HttpStatus.CONFLICT.toString(), businessViolation.getMessage()));
     }
 
 }
