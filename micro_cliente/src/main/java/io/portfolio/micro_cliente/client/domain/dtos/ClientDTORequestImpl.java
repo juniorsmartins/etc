@@ -1,5 +1,10 @@
 package io.portfolio.micro_cliente.client.domain.dtos;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -8,8 +13,6 @@ import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -33,28 +36,27 @@ public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long>
     @Length(max = 40)
     private String lastName;
 
+    @CPF
     @NotBlank
     @Length(max = 15)
-    @CPF
     private String cpf;
 
-    @NotBlank
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private SexEnum sex;
 
-    @NotBlank
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private GenreEnum genre;
 
     @NotNull
     @Past
+    @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate birthDate;
 
-    @NotBlank
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private MaritalStatusEnum maritalStatus;
 
-    @NotBlank
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private EducationEnum education;
 }

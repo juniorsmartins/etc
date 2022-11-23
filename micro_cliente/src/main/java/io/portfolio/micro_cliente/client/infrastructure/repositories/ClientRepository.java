@@ -4,8 +4,11 @@ import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 @Repository
 public interface ClientRepository extends JpaRepository<ClientEntity, Long> {
 
-    void deleteByCPF(String cpf);
+    Optional<ClientEntity> findByCpf(String cpf);
+    void deleteByCpf(String cpf);
 }

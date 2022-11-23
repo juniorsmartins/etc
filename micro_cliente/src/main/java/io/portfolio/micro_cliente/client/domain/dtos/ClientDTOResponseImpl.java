@@ -1,14 +1,13 @@
 package io.portfolio.micro_cliente.client.domain.dtos;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import lombok.*;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -24,13 +23,21 @@ public final class ClientDTOResponseImpl implements Serializable, PolicyDTO<Long
     private String firstName;
     private String lastName;
     private String cpf;
-    @Enumerated(EnumType.STRING)
     private SexEnum sex;
-    @Enumerated(EnumType.STRING)
     private GenreEnum genre;
     private LocalDate birthDate;
-    @Enumerated(EnumType.STRING)
     private MaritalStatusEnum maritalStatus;
-    @Enumerated(EnumType.STRING)
     private EducationEnum education;
+
+    public ClientDTOResponseImpl(ClientEntity clientEntity) {
+        this.id = clientEntity.getId();
+        this.firstName = clientEntity.getFirstName();
+        this.lastName = clientEntity.getLastName();
+        this.cpf = clientEntity.getCpf();
+        this.sex = clientEntity.getSex();
+        this.genre = clientEntity.getGenre();
+        this.birthDate = clientEntity.getBirthDate();
+        this.maritalStatus = clientEntity.getMaritalStatus();
+        this.education = clientEntity.getEducation();
+    }
 }

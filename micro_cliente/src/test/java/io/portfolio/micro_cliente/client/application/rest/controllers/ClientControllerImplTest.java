@@ -21,12 +21,13 @@ class ClientControllerImplTest {
 
     private final String FIRST_NAME = "Robert";
     private final String LAST_NAME = "Martin";
-    private final String CPF = "455.127.340-67";
-    private final SexEnum SEX = SexEnum.MASCULINO;
-    private final GenreEnum GENRE = GenreEnum.NENHUM;
+    private final String CPF_I = "857.046.090-23";
+    private final String CPF_II = "455.127.340-67";
+    private final SexEnum SEX = SexEnum.MASCULINE;
+    private final GenreEnum GENRE = GenreEnum.NOOPTION;
     private final LocalDate BIRTH_DATE = LocalDate.now();
-    private final MaritalStatusEnum MARITAL_STATUS = MaritalStatusEnum.CASADO;
-    private final EducationEnum EDUCATION = EducationEnum.DOUTORADO_COMPLETO;
+    private final MaritalStatusEnum MARITAL_STATUS = MaritalStatusEnum.MARRIED;
+    private final EducationEnum EDUCATION = EducationEnum.FULL_DOCTORATE;
 
     private ClientDTORequestImpl dtoRequest;
 
@@ -41,18 +42,13 @@ class ClientControllerImplTest {
         dtoRequest = ClientDTORequestImpl.builder()
                 .firstName(FIRST_NAME)
                 .lastName(LAST_NAME)
-                .cpf(CPF)
+                .cpf(CPF_I)
                 .sex(SEX)
                 .genre(GENRE)
                 .birthDate(BIRTH_DATE)
                 .maritalStatus(MARITAL_STATUS)
                 .education(EDUCATION)
                 .build();
-    }
-
-    @AfterEach
-    void tearDown() {
-        this.repository.deleteByCPF(dtoRequest.getCpf());
     }
 
     @Test
@@ -67,7 +63,7 @@ class ClientControllerImplTest {
         Assertions.assertNotNull(response.getBody().getId());
         Assertions.assertEquals(FIRST_NAME, response.getBody().getFirstName());
         Assertions.assertEquals(LAST_NAME, response.getBody().getLastName());
-        Assertions.assertEquals(CPF, response.getBody().getCpf());
+        Assertions.assertEquals(CPF_I, response.getBody().getCpf());
         Assertions.assertEquals(SEX, response.getBody().getSex());
         Assertions.assertEquals(GENRE, response.getBody().getGenre());
         Assertions.assertEquals(BIRTH_DATE, response.getBody().getBirthDate());
@@ -75,4 +71,7 @@ class ClientControllerImplTest {
         Assertions.assertEquals(EDUCATION, response.getBody().getEducation());
     }
 
+    void tearDown() {
+        this.repository.deleteByCpf(dtoRequest.getCpf());
+    }
 }
