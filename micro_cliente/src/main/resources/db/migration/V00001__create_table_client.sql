@@ -4,10 +4,10 @@ CREATE TABLE IF NOT EXISTS clients
     first_name VARCHAR(40) NOT NULL CHECK(first_name <> ''),
     last_name VARCHAR(40) NOT NULL CHECK(last_name <> ''),
     cpf VARCHAR(15) NOT NULL UNIQUE,
-    sex SEX_ENUM NOT NULL CHECK(sex IN('MASCULINO', 'FEMININO')),
-    genre GENRE_ENUM NOT NULL,
+    sex VARCHAR(15) NOT NULL,
+    genre VARCHAR(15) NOT NULL,
     birth_date DATE NOT NULL,
-    marital_status MARITAL_STATUS_ENUM NOT NULL,
-    education EDUCATION_ENUM NOT NULL
+    marital_status VARCHAR(15) NOT NULL,
+    education VARCHAR(30) NOT NULL
 );
 
