@@ -10,12 +10,14 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 # CHECKLIST
 
 > __Geral__
+
 - [x] Metodologia Ágil (Scrum Board no Jira);
 - [x] Repositório Monorepo com estrutura Gitflow;
 - [ ] README detalhado;
 - [ ] UML - Unified Modeling Language (Use Case);
 
-> Back-end
+> __Back-end__
+
 - [x] Back-end Java (Spring, API Rest e Microservices);
 - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 - [ ] DDD - Domain Driven Design;
@@ -35,7 +37,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Logback;
 - [ ] 
 
-> Front-end
+> __Front-end__
+
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
 - [ ] Telas com layout responsivo;
 - [ ] Páginas com o conceito de módulos e componentes;
@@ -45,7 +48,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Uso de diretivas;
 - [ ] Formatar apresentação de dados com Pipes;
 
-> Database
+> __Database__
+
 - [ ] Banco de dados de produção: PostgreSQL;
 - [ ] Banco de dados de teste: MariaDB;
 - [ ] DER - Diagrama Entidade Relacionamento;
