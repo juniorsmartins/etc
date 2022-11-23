@@ -11,6 +11,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping(value = "${app.api.base}/assuntos", produces = {"application/json"})
+@RequestMapping(value = "${app.api.base}/clients", produces = {"application/json"})
 public final class ClientControllerImpl extends PolicyControllers<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, Long> {
 
     @Autowired
@@ -27,7 +29,7 @@ public final class ClientControllerImpl extends PolicyControllers<ClientDTOReque
 
     @Override
     public ResponseEntity<ClientDTOResponseImpl> create(@RequestBody @Valid ClientDTORequestImpl dto) {
-        return null;
+        return service.create(dto);
     }
 
     @Override
