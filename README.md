@@ -41,6 +41,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [x] Lombok; 
 - [x] DevTools;
 - [ ] Mensageria (RabbitMQ ou Kafka);
+- [ ] Threads;
 
 > __Front-end__
 
