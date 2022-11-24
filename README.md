@@ -61,7 +61,17 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Banco de dados de produção: MariaDB;
 - [x] DER - Diagrama Entidade Relacionamento;
 
+# DATABASE
 
+> __Microservice Client__
+
+__Modelo Conceitual__
+
+![ConceptualModel_client](https://user-images.githubusercontent.com/64662590/203781955-871fa259-84f0-4370-8dd4-361805c6253e.png)
+
+__Modelo Lógico__
+
+![LogicModel_client](https://user-images.githubusercontent.com/64662590/203782063-2bad26f4-2512-4eb5-a366-f5b77e4cceb3.png)
 
 
 
