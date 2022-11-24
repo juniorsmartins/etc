@@ -9,31 +9,43 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 # CHECKLIST
 
-## Geral
+> __Geral__
+
+- [ ] README detalhado;
 - [x] Metodologia Ágil (Scrum Board no Jira);
 - [x] Repositório Monorepo com estrutura Gitflow;
-- [ ] README detalhado;
 - [ ] UML - Unified Modeling Language (Use Case);
 
-## Back-end
-- [x] Back-end Java (Spring, API Rest e Microservices);
-- [ ] TDD - Test Driven Development (JUnit e Mockito);
+> __Back-end__
+
+- [x] Back-end Java/Spring;
+- [ ] Microservices (mínimo três);
+- [ ] API Restful;
+- [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 - [ ] DDD - Domain Driven Design;
 - [ ] Clean Architecture;
 - [ ] Clean Code;
 - [ ] Solid;
 - [ ] Design Pattern;
 - [ ] Refactor;
-- [ ] Bean Validation;
-- [ ] Spring Data JPA;
-- [ ] Flyway Migration;
+- [x] Flyway Migration;
+- [x] Spring Data JPA;
+- [ ] Spring Security;
+- [ ] Spring Hateoas;
+- [ ] Spring Batch;
+- [x] Bean Validation;
+- [ ] Cache;
 - [ ] Swagger;
+- [ ] Logback;
 - [ ] Java Mail Sender;
-- [ ] Lombok; 
-- [ ] DevTools;
+- [x] Lombok; 
+- [x] DevTools;
 - [ ] Mensageria (RabbitMQ ou Kafka);
+- [ ] Threads;
+- [ ] Cors;
 
-## Front-end
+> __Front-end__
+
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
 - [ ] Telas com layout responsivo;
 - [ ] Páginas com o conceito de módulos e componentes;
@@ -43,12 +55,23 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Uso de diretivas;
 - [ ] Formatar apresentação de dados com Pipes;
 
-## Database
-- [ ] Banco de dados de produção: PostgreSQL;
-- [ ] Banco de dados de teste: MariaDB;
-- [ ] DER - Diagrama Entidade Relacionamento;
+> __Database__
 
+- [x] Banco de dados de teste: PostgreSQL;
+- [ ] Banco de dados de produção: MariaDB;
+- [x] DER - Diagrama Entidade Relacionamento;
 
+# DATABASE
+
+> __Microservice Client__
+
+__Modelo Conceitual__
+
+![ConceptualModel_client](https://user-images.githubusercontent.com/64662590/203781955-871fa259-84f0-4370-8dd4-361805c6253e.png)
+
+__Modelo Lógico__
+
+![LogicModel_client](https://user-images.githubusercontent.com/64662590/203782063-2bad26f4-2512-4eb5-a366-f5b77e4cceb3.png)
 
 
 
