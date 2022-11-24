@@ -42,6 +42,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [x] DevTools;
 - [ ] Mensageria (RabbitMQ ou Kafka);
 - [ ] Threads;
+- [ ] Cors;
 
 > __Front-end__
 
