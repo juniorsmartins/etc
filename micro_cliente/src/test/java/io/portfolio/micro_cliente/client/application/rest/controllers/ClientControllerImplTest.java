@@ -8,28 +8,46 @@ import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepository;
-import org.junit.jupiter.api.*;
+import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
+import io.portfolio.micro_cliente.shared.exceptions.StandardExceptionHandledReturn;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.TestPropertySource;
 
 import java.time.LocalDate;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.catchThrowable;
+
 @SpringBootTest
+@TestPropertySource(properties = {"spring.profiles.active=tests"})
 class ClientControllerImplTest {
 
     private final String FIRST_NAME = "Robert";
+    private final String FIRST_NAME_II = "Loiane";
     private final String LAST_NAME = "Martin";
+    private final String LAST_NAME_II = "Groner";
     private final String CPF_I = "857.046.090-23";
     private final String CPF_II = "455.127.340-67";
     private final SexEnum SEX = SexEnum.MASCULINE;
+    private final SexEnum SEX_II = SexEnum.FEMININE;
     private final GenreEnum GENRE = GenreEnum.NOOPTION;
+    private final GenreEnum GENRE_II = GenreEnum.BISEXUALS;
     private final LocalDate BIRTH_DATE = LocalDate.now();
     private final MaritalStatusEnum MARITAL_STATUS = MaritalStatusEnum.MARRIED;
+    private final MaritalStatusEnum MARITAL_STATUS_II = MaritalStatusEnum.SINGLE;
     private final EducationEnum EDUCATION = EducationEnum.FULL_DOCTORATE;
+    private final EducationEnum EDUCATION_II = EducationEnum.COMPLETE_MASTERS_DEGREE;
 
     private ClientDTORequestImpl dtoRequest;
+    private ClientDTORequestImpl dtoRequest2;
+    private ClientDTORequestImpl dtoRequest3;
 
     @Autowired
     private PolicyControllers<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, Long> controller;
@@ -48,6 +66,28 @@ class ClientControllerImplTest {
                 .birthDate(BIRTH_DATE)
                 .maritalStatus(MARITAL_STATUS)
                 .education(EDUCATION)
+                .build();
+
+        dtoRequest2 = ClientDTORequestImpl.builder()
+                .firstName(FIRST_NAME)
+                .lastName(LAST_NAME)
+                .cpf(CPF_II)
+                .sex(SEX)
+                .genre(GENRE)
+                .birthDate(BIRTH_DATE)
+                .maritalStatus(MARITAL_STATUS)
+                .education(EDUCATION)
+                .build();
+
+        dtoRequest3 = ClientDTORequestImpl.builder()
+                .firstName(FIRST_NAME_II)
+                .lastName(LAST_NAME_II)
+                .cpf(CPF_II)
+                .sex(SEX_II)
+                .genre(GENRE_II)
+                .birthDate(BIRTH_DATE)
+                .maritalStatus(MARITAL_STATUS_II)
+                .education(EDUCATION_II)
                 .build();
     }
 
@@ -71,7 +111,21 @@ class ClientControllerImplTest {
         Assertions.assertEquals(EDUCATION, response.getBody().getEducation());
     }
 
-    void tearDown() {
-        this.repository.deleteByCpf(dtoRequest.getCpf());
+    @Test
+    void create_returnResponseEntityOfStandardExceptionHandlerReturnAndHttp409() {
+        this.controller.create(dtoRequest2);
+
+        Throwable response = catchThrowable(() -> {
+            this.controller.create(dtoRequest3);
+        });
+
+        assertThat(response).isInstanceOf(BusinessRuleViolationCustomException.class);
     }
+
+//    @AfterAll
+//    void tearDown() {
+//        this.repository.deleteByCpf(dtoRequest.getCpf());
+//        this.repository.deleteByCpf(dtoRequest2.getCpf());
+//        this.repository.deleteByCpf(dtoRequest3.getCpf());
+//    }
 }

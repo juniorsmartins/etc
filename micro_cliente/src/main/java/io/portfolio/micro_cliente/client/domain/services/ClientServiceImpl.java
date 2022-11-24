@@ -5,7 +5,7 @@ import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponseImpl;
 import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepository;
-import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
+import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.StandardMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,15 +25,13 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
     @Autowired
     private ClientRepository repository;
 
-    @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.SERIALIZABLE)
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ResponseEntity<ClientDTOResponseImpl> create(ClientDTORequestImpl dto) {
         return Optional.of(dto)
                 .map(ClientEntity::new)
                 .map(client -> {
-                    if(!this.repository.findByCpf(client.getCpf()).isEmpty())
-                        throw new ResourceNotFoundCustomException(StandardMessage.RESOURCE_NOT_FOUND_EXCEPTION);
-
+                    validateUniqueCPFRule(client.getCpf());
                     return this.repository.saveAndFlush(client);
                 })
                 .map(ClientDTOResponseImpl::new)
@@ -42,6 +40,11 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
                         .body(dtoResponse))
                 .orElseThrow();
     }
+
+        private void validateUniqueCPFRule(String cpf) {
+            if(!this.repository.findByCpf(cpf).isEmpty())
+                throw new BusinessRuleViolationCustomException(StandardMessage.RESOURCE_NOT_FOUND_EXCEPTION);
+        }
 
     @Override
     public ResponseEntity<ClientDTOResponseImpl> update(ClientDTORequestImpl dto) {
