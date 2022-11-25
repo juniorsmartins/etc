@@ -73,5 +73,9 @@ __Modelo Lógico__
 
 ![LogicModel_client](https://user-images.githubusercontent.com/64662590/203782063-2bad26f4-2512-4eb5-a366-f5b77e4cceb3.png)
 
+# BIBLIOGRAFIA (base de conhecimento)
 
+- Pós-graduação Lato Sensu em Tecnologia Java (Universidade Tecnológica Federal do Paraná - UTFPR);
+- Curso Especialista Spring Rest - ESR (Algaworks);
+- Cursos livres (Alura);
 
