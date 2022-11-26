@@ -9,8 +9,6 @@ import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
-import io.portfolio.micro_cliente.shared.exceptions.StandardExceptionHandledReturn;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
