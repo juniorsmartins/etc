@@ -43,6 +43,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Mensageria (RabbitMQ ou Kafka);
 - [ ] Threads;
 - [ ] Cors;
+- [ ] Repository with EntityManager;
 
 > __Front-end__
 
@@ -58,6 +59,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > __Database__
 
 - [x] Banco de dados de teste: PostgreSQL;
+- [ ] Banco de dados de desenvolvimento: MySQL;
 - [ ] Banco de dados de produção: MariaDB;
 - [x] DER - Diagrama Entidade Relacionamento;
 
