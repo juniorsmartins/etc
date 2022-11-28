@@ -4,7 +4,7 @@ import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponseImpl;
 import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
-import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepository;
+import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepositoryJpa;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,7 @@ import java.util.Optional;
 public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, ClientEntity, Long> {
 
     @Autowired
-    private ClientRepository repository;
+    private ClientRepositoryJpa repository;
 
     @Autowired
     private MessagesProperties messagesProperties;
@@ -60,7 +60,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
     }
 
     @Override
-    public ResponseEntity<Page<ClientDTOResponseImpl>> searchAll(ClientFilterImpl filter, Pageable paginacao) {
+    public ResponseEntity<Page<ClientDTOResponseImpl>> searchAll(ClientFilterImpl filter, Pageable pagination) {
         return null;
     }
 

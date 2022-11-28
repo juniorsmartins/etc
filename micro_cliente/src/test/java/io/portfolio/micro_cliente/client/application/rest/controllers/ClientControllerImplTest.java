@@ -7,7 +7,7 @@ import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
-import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepository;
+import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepositoryJpa;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -51,7 +51,7 @@ class ClientControllerImplTest {
     private PolicyControllers<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, Long> controller;
 
     @Autowired
-    private ClientRepository repository;
+    private ClientRepositoryJpa repository;
 
     @BeforeEach
     void setUp() {
