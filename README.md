@@ -43,7 +43,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Mensageria (RabbitMQ ou Kafka);
 - [ ] Threads;
 - [ ] Cors;
-- [ ] Repository with EntityManager;
+- [ ] Repository with EntityManager (Repository Pattern);
 
 > __Front-end__
 
