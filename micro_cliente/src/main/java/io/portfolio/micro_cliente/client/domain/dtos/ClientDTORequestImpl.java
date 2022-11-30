@@ -14,7 +14,6 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import java.io.Serializable;
@@ -48,7 +47,7 @@ public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long>
     @NotNull
     private GenreEnum genre;
 
-    @NotBlank
+    @NotNull
     @Past
     @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
     @JsonDeserialize(using = LocalDateDeserializer.class)

@@ -8,9 +8,9 @@ import lombok.Data;
 public final class StandardExceptionHandledReturn {
 
     private String status;
+    private String annotations;
     private String fieldName;
     private String message;
-    private String annotations;
 
     public StandardExceptionHandledReturn(String status, String message) {
         this.status = status;
