@@ -12,4 +12,5 @@ import org.springframework.stereotype.Component;
 public class MessagesProperties {
     private String resourceNotFound;
     private String businessRuleViolated;
+    private String resourceDeletedSuccessfully;
 }

@@ -23,17 +23,17 @@ public class ClientRepositoryImpl implements PolicyRepository<ClientEntity, Clie
 
     @Override
     public Optional<ClientEntity> search(ClientEntity entity) {
-        return Optional.empty();
+        return null;
     }
 
     @Override
     public Optional<ClientEntity> searchById(Long id) {
-        return Optional.empty();
+        return this.repositoryJpa.findById(id);
     }
 
     @Override
     public Optional<ClientEntity> searchByCpf(String cpf) {
-        return repositoryJpa.findByCpf(cpf);
+        return this.repositoryJpa.findByCpf(cpf);
     }
 
     @Override
@@ -43,7 +43,7 @@ public class ClientRepositoryImpl implements PolicyRepository<ClientEntity, Clie
 
     @Override
     public void deleteById(Long id) {
-
+        this.repositoryJpa.deleteById(id);
     }
 
     @Override

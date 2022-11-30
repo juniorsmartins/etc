@@ -48,6 +48,6 @@ public final class ClientControllerImpl extends PolicyControllers<ClientDTOReque
 
     @Override
     public ResponseEntity<?> deleteById(@PathVariable(value = "id") Long id) {
-        return null;
+        return this.service.deleteById(id);
     }
 }

@@ -9,6 +9,7 @@ import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepositoryJpa;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
+import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -52,6 +53,9 @@ class ClientControllerImplTest {
 
     @Autowired
     private ClientRepositoryJpa repository;
+
+    @Autowired
+    private MessagesProperties messages;
 
     @BeforeEach
     void setUp() {
@@ -107,23 +111,35 @@ class ClientControllerImplTest {
         Assertions.assertEquals(BIRTH_DATE, response.getBody().getBirthDate());
         Assertions.assertEquals(MARITAL_STATUS, response.getBody().getMaritalStatus());
         Assertions.assertEquals(EDUCATION, response.getBody().getEducation());
+
+        this.controller.deleteById(response.getBody().getId());
     }
 
     @Test
     void create_returnResponseEntityOfStandardExceptionHandlerReturnAndHttp409() {
-        this.controller.create(dtoRequest2);
+        var dtoResponse = this.controller.create(dtoRequest2);
 
         Throwable response = catchThrowable(() -> {
             this.controller.create(dtoRequest3);
         });
 
         assertThat(response).isInstanceOf(BusinessRuleViolationCustomException.class);
+        this.controller.deleteById(dtoResponse.getBody().getId());
     }
 
-//    @AfterAll
-//    void tearDown() {
-//        this.repository.deleteByCpf(dtoRequest.getCpf());
-//        this.repository.deleteByCpf(dtoRequest2.getCpf());
-//        this.repository.deleteByCpf(dtoRequest3.getCpf());
-//    }
+    @Test
+    void deleteById_returnResponseEntityOfStringAndHttp200() {
+        var dtoResponse = this.controller.create(dtoRequest3);
+
+        var response = this.controller.deleteById(dtoResponse.getBody().getId());
+
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(ResponseEntity.class, response.getClass());
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assertions.assertNotNull(response.getBody());
+        Assertions.assertEquals(String.class, response.getBody().getClass());
+        Assertions.assertEquals(messages.getResourceDeletedSuccessfully(), response.getBody());
+    }
+
+
 }
