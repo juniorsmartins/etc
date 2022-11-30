@@ -1,37 +1,43 @@
 package io.portfolio.micro_cliente.client.infrastructure.repositories;
 
 import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
-import io.portfolio.micro_cliente.client.domain.entities.PolicyEntity;
-import io.portfolio.micro_cliente.client.domain.filter.PolicyFilter;
+import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-public class ClientRepositoryImpl implements PolicyRepository {
+@Repository
+public class ClientRepositoryImpl implements PolicyRepository<ClientEntity, ClientFilterImpl, Long> {
 
     @Autowired
     private ClientRepositoryJpa repositoryJpa;
 
     @Override
-    public Optional<PolicyEntity> create(PolicyEntity entity) {
+    public ClientEntity create(ClientEntity entity) {
+        return repositoryJpa.saveAndFlush(entity);
+    }
+
+    @Override
+    public Optional<ClientEntity> search(ClientEntity entity) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<PolicyEntity> searchById(Long id) {
+    public Optional<ClientEntity> searchById(Long id) {
         return Optional.empty();
     }
 
     @Override
-    public Optional<PolicyEntity> search(PolicyEntity entity) {
-        return Optional.empty();
+    public Optional<ClientEntity> searchByCpf(String cpf) {
+        return repositoryJpa.findByCpf(cpf);
     }
 
     @Override
-    public Page<PolicyEntity> searchAll(PolicyFilter filter, Pageable pagination) {
+    public Page<ClientEntity> searchAll(ClientFilterImpl filter, Pageable pagination) {
         return null;
     }
 
@@ -41,7 +47,7 @@ public class ClientRepositoryImpl implements PolicyRepository {
     }
 
     @Override
-    public void delete(PolicyEntity entity) {
+    public void delete(ClientEntity entity) {
 
     }
 }
