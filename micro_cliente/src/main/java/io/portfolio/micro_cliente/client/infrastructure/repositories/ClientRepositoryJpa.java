@@ -1,7 +1,6 @@
 package io.portfolio.micro_cliente.client.infrastructure.repositories;
 
 import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
-import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

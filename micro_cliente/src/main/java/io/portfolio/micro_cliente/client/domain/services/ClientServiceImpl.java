@@ -4,8 +4,9 @@ import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponseImpl;
 import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
-import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepositoryJpa;
+import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
+import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,10 +24,10 @@ import java.util.Optional;
 public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, ClientEntity, Long> {
 
     @Autowired
-    private ClientRepositoryJpa repository;
+    private PolicyRepository<ClientEntity, ClientFilterImpl, Long> repository;
 
     @Autowired
-    private MessagesProperties messagesProperties;
+    private MessagesProperties messages;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
@@ -35,7 +36,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
                 .map(ClientEntity::new)
                 .map(client -> {
                     validateUniqueCPFRule(client.getCpf());
-                    return this.repository.saveAndFlush(client);
+                    return this.repository.create(client);
                 })
                 .map(ClientDTOResponseImpl::new)
                 .map(dtoResponse -> ResponseEntity
@@ -45,8 +46,8 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
     }
 
         private void validateUniqueCPFRule(String cpf) {
-            if(!this.repository.findByCpf(cpf).isEmpty())
-                throw new BusinessRuleViolationCustomException(messagesProperties.getBusinessRuleViolated());
+            if(!this.repository.searchByCpf(cpf).isEmpty())
+                throw new BusinessRuleViolationCustomException(messages.getBusinessRuleViolated());
         }
 
     @Override
@@ -66,6 +67,13 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
 
     @Override
     public ResponseEntity<?> deleteById(Long id) {
-        return null;
+        return this.repository.searchById(id)
+                .map(client -> {
+                    this.repository.deleteById(client.getId());
+                    return ResponseEntity
+                            .ok()
+                            .body(messages.getResourceDeletedSuccessfully());
+                })
+                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 }
