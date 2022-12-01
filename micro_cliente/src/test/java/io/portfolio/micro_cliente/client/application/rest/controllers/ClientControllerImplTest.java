@@ -9,6 +9,7 @@ import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepositoryJpa;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
+import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -123,9 +124,11 @@ class ClientControllerImplTest {
             this.controller.create(dtoRequest3);
         });
 
-        assertThat(response).isInstanceOf(BusinessRuleViolationCustomException.class);
+        assertThat(response).isInstanceOf(BusinessRuleViolationCustomException.class)
+                .hasMessageContaining(messages.getBusinessRuleViolated());
         this.controller.deleteById(dtoResponse.getBody().getId());
     }
+
 
     @Test
     void deleteById_returnResponseEntityOfStringAndHttp200() {
@@ -141,5 +144,13 @@ class ClientControllerImplTest {
         Assertions.assertEquals(messages.getResourceDeletedSuccessfully(), response.getBody());
     }
 
+    @Test
+    void deleteById_returnResponseEntityOfStandardExceptionHandlerReturnAndHttp404() {
+        Throwable response = catchThrowable(() -> {
+            this.controller.deleteById(10000L);
+        });
 
+        assertThat(response).isInstanceOf(ResourceNotFoundCustomException.class)
+                .hasMessageContaining(messages.getResourceNotFound());
+    }
 }

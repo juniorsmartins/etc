@@ -19,7 +19,7 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @EqualsAndHashCode(of = "id")
-public final class ClientEntity implements Serializable, PolicyEntity<Long> {
+public final class ClientEntityImpl implements Serializable, PolicyEntity<Long> {
 
     private static final Long serialVersionUID = 1L;
 
@@ -56,7 +56,7 @@ public final class ClientEntity implements Serializable, PolicyEntity<Long> {
     @Enumerated(EnumType.STRING)
     private EducationEnum education;
 
-    public ClientEntity(ClientDTORequestImpl dto) {
+    public ClientEntityImpl(ClientDTORequestImpl dto) {
         this.firstName = dto.getFirstName();
         this.lastName = dto.getLastName();
         this.cpf = dto.getCpf();

@@ -43,6 +43,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Mensageria (RabbitMQ ou Kafka);
 - [ ] Threads;
 - [ ] Cors;
+- [ ] Repository with EntityManager (Repository Pattern);
 
 > __Front-end__
 
@@ -72,7 +73,11 @@ __Modelo Conceitual__
 
 __Modelo Lógico__
 
-![LogicModel_client](https://user-images.githubusercontent.com/64662590/203782063-2bad26f4-2512-4eb5-a366-f5b77e4cceb3.png)
+![LogicModel_client_2](https://user-images.githubusercontent.com/64662590/204903002-fc0982b7-c6bd-48bd-ba28-c38e5091161b.png)
 
+# BIBLIOGRAFIA (base de conhecimento)
 
+- Pós-graduação Lato Sensu em Tecnologia Java (Universidade Tecnológica Federal do Paraná - UTFPR);
+- Curso Especialista Spring Rest - ESR (Algaworks);
+- Cursos livres (Alura);
 
