@@ -130,11 +130,41 @@ class ClientControllerImplTest {
     }
 
 
+
+    @Test
+    void searchById_returnResponseEntityOfClientDTOResponseAndHttp200() {
+        var responseEntity = this.controller.create(dtoRequest3);
+
+        var response = this.controller.searchById(responseEntity.getBody().getId());
+
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(ResponseEntity.class, response.getClass());
+        Assertions.assertNotNull(response.getBody());
+        Assertions.assertEquals(ClientDTOResponseImpl.class, response.getBody().getClass());
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assertions.assertEquals(responseEntity.getBody().getId(), response.getBody().getId());
+        Assertions.assertEquals(responseEntity.getBody().getCpf(), response.getBody().getCpf());
+
+        this.controller.deleteById(responseEntity.getBody().getId());
+    }
+
+    @Test
+    void searchById_returnResponseEntityOfStandardExceptionHandlerReturnAndHttp404() {
+        Throwable response = catchThrowable(() -> {
+           this.controller.searchById(10000L);
+        });
+
+        assertThat(response).isInstanceOf(ResourceNotFoundCustomException.class)
+                .hasMessageContaining(messages.getResourceNotFound());
+    }
+
+
+
     @Test
     void deleteById_returnResponseEntityOfStringAndHttp200() {
-        var dtoResponse = this.controller.create(dtoRequest3);
+        var responseEntity = this.controller.create(dtoRequest3);
 
-        var response = this.controller.deleteById(dtoResponse.getBody().getId());
+        var response = this.controller.deleteById(responseEntity.getBody().getId());
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(ResponseEntity.class, response.getClass());
