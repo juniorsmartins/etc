@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.infrastructure.repositories;
 
-import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
+import io.portfolio.micro_cliente.client.domain.entities.ClientEntityImpl;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,33 +11,33 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class ClientRepositoryImpl implements PolicyRepository<ClientEntity, ClientFilterImpl, Long> {
+public class ClientRepositoryImpl implements PolicyRepository<ClientEntityImpl, ClientFilterImpl, Long> {
 
     @Autowired
     private ClientRepositoryJpa repositoryJpa;
 
     @Override
-    public ClientEntity create(ClientEntity entity) {
+    public ClientEntityImpl create(ClientEntityImpl entity) {
         return repositoryJpa.saveAndFlush(entity);
     }
 
     @Override
-    public Optional<ClientEntity> search(ClientEntity entity) {
+    public Optional<ClientEntityImpl> search(ClientEntityImpl entity) {
         return null;
     }
 
     @Override
-    public Optional<ClientEntity> searchById(Long id) {
+    public Optional<ClientEntityImpl> searchById(Long id) {
         return this.repositoryJpa.findById(id);
     }
 
     @Override
-    public Optional<ClientEntity> searchByCpf(String cpf) {
+    public Optional<ClientEntityImpl> searchByCpf(String cpf) {
         return this.repositoryJpa.findByCpf(cpf);
     }
 
     @Override
-    public Page<ClientEntity> searchAll(ClientFilterImpl filter, Pageable pagination) {
+    public Page<ClientEntityImpl> searchAll(ClientFilterImpl filter, Pageable pagination) {
         return null;
     }
 
@@ -47,7 +47,7 @@ public class ClientRepositoryImpl implements PolicyRepository<ClientEntity, Clie
     }
 
     @Override
-    public void delete(ClientEntity entity) {
+    public void delete(ClientEntityImpl entity) {
 
     }
 }

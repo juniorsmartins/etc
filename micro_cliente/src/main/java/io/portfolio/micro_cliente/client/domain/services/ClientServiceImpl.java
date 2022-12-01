@@ -2,7 +2,7 @@ package io.portfolio.micro_cliente.client.domain.services;
 
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponseImpl;
-import io.portfolio.micro_cliente.client.domain.entities.ClientEntity;
+import io.portfolio.micro_cliente.client.domain.entities.ClientEntityImpl;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
@@ -21,10 +21,10 @@ import java.net.URI;
 import java.util.Optional;
 
 @Service
-public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, ClientEntity, Long> {
+public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, ClientEntityImpl, Long> {
 
     @Autowired
-    private PolicyRepository<ClientEntity, ClientFilterImpl, Long> repository;
+    private PolicyRepository<ClientEntityImpl, ClientFilterImpl, Long> repository;
 
     @Autowired
     private MessagesProperties messages;
@@ -33,7 +33,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
     @Override
     public ResponseEntity<ClientDTOResponseImpl> create(ClientDTORequestImpl dto) {
         return Optional.of(dto)
-                .map(ClientEntity::new)
+                .map(ClientEntityImpl::new)
                 .map(client -> {
                     validateUniqueCPFRule(client.getCpf());
                     return this.repository.create(client);
