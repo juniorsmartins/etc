@@ -103,17 +103,17 @@ class ClientControllerImplTest {
         Assertions.assertNotNull(response.getBody());
         Assertions.assertEquals(ClientDTOResponseImpl.class, response.getBody().getClass());
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
-        Assertions.assertNotNull(response.getBody().getId());
-        Assertions.assertEquals(FIRST_NAME, response.getBody().getFirstName());
-        Assertions.assertEquals(LAST_NAME, response.getBody().getLastName());
-        Assertions.assertEquals(CPF_I, response.getBody().getCpf());
-        Assertions.assertEquals(SEX, response.getBody().getSex());
-        Assertions.assertEquals(GENRE, response.getBody().getGenre());
-        Assertions.assertEquals(BIRTH_DATE, response.getBody().getBirthDate());
-        Assertions.assertEquals(MARITAL_STATUS, response.getBody().getMaritalStatus());
-        Assertions.assertEquals(EDUCATION, response.getBody().getEducation());
+        Assertions.assertNotNull(response.getBody().id());
+        Assertions.assertEquals(FIRST_NAME, response.getBody().firstName());
+        Assertions.assertEquals(LAST_NAME, response.getBody().lastName());
+        Assertions.assertEquals(CPF_I, response.getBody().cpf());
+        Assertions.assertEquals(SEX, response.getBody().sex());
+        Assertions.assertEquals(GENRE, response.getBody().genre());
+        Assertions.assertEquals(BIRTH_DATE, response.getBody().birthDate());
+        Assertions.assertEquals(MARITAL_STATUS, response.getBody().maritalStatus());
+        Assertions.assertEquals(EDUCATION, response.getBody().education());
 
-        this.controller.deleteById(response.getBody().getId());
+        this.controller.deleteById(response.getBody().id());
     }
 
     @Test
@@ -126,15 +126,45 @@ class ClientControllerImplTest {
 
         assertThat(response).isInstanceOf(BusinessRuleViolationCustomException.class)
                 .hasMessageContaining(messages.getBusinessRuleViolated());
-        this.controller.deleteById(dtoResponse.getBody().getId());
+        this.controller.deleteById(dtoResponse.getBody().id());
     }
+
+
+
+    @Test
+    void searchById_returnResponseEntityOfClientDTOResponseAndHttp200() {
+        var responseEntity = this.controller.create(dtoRequest3);
+
+        var response = this.controller.searchById(responseEntity.getBody().id());
+
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(ResponseEntity.class, response.getClass());
+        Assertions.assertNotNull(response.getBody());
+        Assertions.assertEquals(ClientDTOResponseImpl.class, response.getBody().getClass());
+        Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
+        Assertions.assertEquals(responseEntity.getBody().id(), response.getBody().id());
+        Assertions.assertEquals(responseEntity.getBody().cpf(), response.getBody().cpf());
+
+        this.controller.deleteById(responseEntity.getBody().id());
+    }
+
+    @Test
+    void searchById_returnResponseEntityOfStandardExceptionHandlerReturnAndHttp404() {
+        Throwable response = catchThrowable(() -> {
+           this.controller.searchById(10000L);
+        });
+
+        assertThat(response).isInstanceOf(ResourceNotFoundCustomException.class)
+                .hasMessageContaining(messages.getResourceNotFound());
+    }
+
 
 
     @Test
     void deleteById_returnResponseEntityOfStringAndHttp200() {
-        var dtoResponse = this.controller.create(dtoRequest3);
+        var responseEntity = this.controller.create(dtoRequest3);
 
-        var response = this.controller.deleteById(dtoResponse.getBody().getId());
+        var response = this.controller.deleteById(responseEntity.getBody().id());
 
         Assertions.assertNotNull(response);
         Assertions.assertEquals(ResponseEntity.class, response.getClass());
