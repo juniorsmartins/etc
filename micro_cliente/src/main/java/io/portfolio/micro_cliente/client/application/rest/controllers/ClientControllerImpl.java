@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "${app.api.base}/clients", produces = {"application/json"})
@@ -37,7 +37,7 @@ public final class ClientControllerImpl extends PolicyControllers<ClientDTOReque
 
     @Override
     public ResponseEntity<ClientDTOResponseImpl> searchById(@PathVariable(value = "id") Long id) {
-        return null;
+        return this.service.searchById(id);
     }
 
     @Override

@@ -40,7 +40,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
                 })
                 .map(ClientDTOResponseImpl::new)
                 .map(dtoResponse -> ResponseEntity
-                        .created(URI.create("/" + dtoResponse.getId()))
+                        .created(URI.create("/" + dtoResponse.id()))
                         .body(dtoResponse))
                 .orElseThrow();
     }
@@ -57,7 +57,12 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
 
     @Override
     public ResponseEntity<ClientDTOResponseImpl> searchById(Long id) {
-        return null;
+        return this.repository.searchById(id)
+                .map(client -> ResponseEntity
+                        .ok()
+                        .body(new ClientDTOResponseImpl(client))
+                )
+                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
     @Override

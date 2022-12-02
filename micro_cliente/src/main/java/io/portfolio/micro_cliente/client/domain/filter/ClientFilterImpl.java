@@ -5,6 +5,7 @@ import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 public record ClientFilterImpl
@@ -18,6 +19,6 @@ public record ClientFilterImpl
         LocalDate birthDate,
         MaritalStatusEnum maritalStatus,
         EducationEnum education
-    ) implements PolicyFilter<Long>
+    ) implements Serializable, PolicyFilter<Long>
 { }
 
