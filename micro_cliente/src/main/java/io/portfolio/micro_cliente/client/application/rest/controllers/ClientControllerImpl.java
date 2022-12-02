@@ -37,7 +37,7 @@ public final class ClientControllerImpl extends PolicyControllers<ClientDTOReque
 
     @Override
     public ResponseEntity<ClientDTOResponseImpl> searchById(@PathVariable(value = "id") Long id) {
-        return null;
+        return this.service.searchById(id);
     }
 
     @Override
