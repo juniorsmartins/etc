@@ -33,7 +33,7 @@ public class ClientRepositoryImpl implements PolicyRepository<ClientEntityImpl, 
 
     @Override
     public Page<ClientEntityImpl> searchAll(Example filter, Pageable pagination) {
-        return null;
+        return this.repositoryJpa.findAll(filter, pagination);
     }
 
     @Override
