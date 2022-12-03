@@ -27,12 +27,12 @@ public final class ClientControllerImpl extends PolicyControllers<ClientDTOReque
 
     @Override
     public ResponseEntity<ClientDTOResponseImpl> create(@RequestBody @Valid ClientDTORequestImpl dto) {
-        return service.create(dto);
+        return this.service.create(dto);
     }
 
     @Override
     public ResponseEntity<ClientDTOResponseImpl> update(@RequestBody @Valid ClientDTORequestImpl dto) {
-        return null;
+        return this.service.update(dto);
     }
 
     @Override

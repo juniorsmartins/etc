@@ -13,4 +13,5 @@ public class MessagesProperties {
     private String resourceNotFound;
     private String businessRuleViolated;
     private String resourceDeletedSuccessfully;
+    private String singleCpfRuleViolation;
 }
