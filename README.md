@@ -28,22 +28,23 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Solid;
 - [ ] Design Pattern;
 - [ ] Refactor;
+- [ ] Usar Records para DTOs (Data Transfer Object);
+- [x] Lombok; 
+- [x] DevTools;
 - [x] Flyway Migration;
 - [x] Spring Data JPA;
+- [x] Bean Validation;
 - [ ] Spring Security;
 - [ ] Spring Hateoas;
 - [ ] Spring Batch;
-- [x] Bean Validation;
 - [ ] Cache;
 - [ ] Swagger;
 - [ ] Logback;
 - [ ] Java Mail Sender;
-- [x] Lombok; 
-- [x] DevTools;
 - [ ] Mensageria (RabbitMQ ou Kafka);
 - [ ] Threads;
 - [ ] Cors;
-- [ ] Repository with EntityManager (Repository Pattern);
+- [ ] Padrão Repository com EntityManager;
 
 > __Front-end__
 
