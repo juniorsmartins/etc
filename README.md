@@ -20,7 +20,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 - [x] Back-end Java/Spring;
 - [ ] Microservices (mínimo três);
-- [ ] API Restful;
+- [ ] API Restful (com Content Negotiation);
 - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 - [ ] DDD - Domain Driven Design;
 - [ ] Clean Architecture;
@@ -28,22 +28,24 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Solid;
 - [ ] Design Pattern;
 - [ ] Refactor;
+- [x] Lombok; 
+- [x] DevTools;
 - [x] Flyway Migration;
 - [x] Spring Data JPA;
+- [x] Bean Validation;
 - [ ] Spring Security;
 - [ ] Spring Hateoas;
 - [ ] Spring Batch;
-- [x] Bean Validation;
 - [ ] Cache;
 - [ ] Swagger;
 - [ ] Logback;
 - [ ] Java Mail Sender;
-- [x] Lombok; 
-- [x] DevTools;
 - [ ] Mensageria (RabbitMQ ou Kafka);
 - [ ] Threads;
 - [ ] Cors;
-- [ ] Repository with EntityManager (Repository Pattern);
+- [ ] Padrão Repository com EntityManager;
+- [ ] Usar Records para DTOs (Data Transfer Object);
+- [ ] GraalVM;
 
 > __Front-end__
 
