@@ -9,6 +9,8 @@ import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomE
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +26,7 @@ import java.util.Optional;
 public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, ClientEntityImpl, Long> {
 
     @Autowired
-    private PolicyRepository<ClientEntityImpl, ClientFilterImpl, Long> repository;
+    private PolicyRepository<ClientEntityImpl, Long> repository;
 
     @Autowired
     private MessagesProperties messages;
@@ -50,7 +52,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
         }
 
-
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ResponseEntity<ClientDTOResponseImpl> update(ClientDTORequestImpl dto) {
         validateUniqueCPFRuleByUpdate(dto);
@@ -80,8 +82,6 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
             }
         }
 
-
-
     @Override
     public ResponseEntity<ClientDTOResponseImpl> searchById(Long id) {
         return this.repository.searchById(id)
@@ -94,9 +94,35 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
 
     @Override
     public ResponseEntity<Page<ClientDTOResponseImpl>> searchAll(ClientFilterImpl filter, Pageable pagination) {
-        return null;
+        return ResponseEntity
+                .ok()
+                .body(this.repository.searchAll(configureFilter(filter), pagination)
+                        .map(ClientDTOResponseImpl::new));
     }
 
+        private Example<ClientEntityImpl> configureFilter(ClientFilterImpl filter) {
+            // ExampleMatcher - permite configurar condições para serem aplicadas nos filtros
+            ExampleMatcher exampleMatcher = ExampleMatcher
+                    .matchingAll()
+                    .withIgnoreCase() // Ignorar caixa alta ou baixa - quando String
+                    .withIgnoreNullValues() // Ignorar valores nulos
+                    .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // permite encontrar palavras parecidas - tipo Like do SQL
+
+            // Example - pega campos populados para criar filtros
+            return Example.of(ClientEntityImpl.builder()
+                        .id(filter.id())
+                        .firstName(filter.firstName())
+                        .lastName(filter.lastName())
+                        .cpf(filter.cpf())
+                        .sex(filter.sex())
+                        .genre(filter.genre())
+                        .birthDate(filter.birthDate())
+                        .maritalStatus(filter.maritalStatus())
+                        .education(filter.education())
+                        .build(), exampleMatcher);
+        }
+
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ResponseEntity<?> deleteById(Long id) {
         return this.repository.searchById(id)

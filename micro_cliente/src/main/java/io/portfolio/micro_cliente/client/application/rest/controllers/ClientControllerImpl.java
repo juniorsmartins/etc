@@ -42,8 +42,8 @@ public final class ClientControllerImpl extends PolicyControllers<ClientDTOReque
 
     @Override
     public ResponseEntity<Page<ClientDTOResponseImpl>> searchAll(ClientFilterImpl filter,
-             @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable paginacao) {
-        return null;
+             @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pagination) {
+        return this.service.searchAll(filter, pagination);
     }
 
     @Override
