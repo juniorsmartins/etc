@@ -22,11 +22,6 @@ public class ClientRepositoryImpl implements PolicyRepository<ClientEntityImpl, 
     }
 
     @Override
-    public Optional<ClientEntityImpl> search(ClientEntityImpl entity) {
-        return null;
-    }
-
-    @Override
     public Optional<ClientEntityImpl> searchById(Long id) {
         return this.repositoryJpa.findById(id);
     }
@@ -44,10 +39,5 @@ public class ClientRepositoryImpl implements PolicyRepository<ClientEntityImpl, 
     @Override
     public void deleteById(Long id) {
         this.repositoryJpa.deleteById(id);
-    }
-
-    @Override
-    public void delete(ClientEntityImpl entity) {
-
     }
 }

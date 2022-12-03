@@ -14,10 +14,10 @@ import java.time.LocalDate;
 @Entity
 @Table(name = "clients")
 @Builder
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
 @EqualsAndHashCode(of = "id")
 public final class ClientEntityImpl implements Serializable, PolicyEntity<Long> {
 

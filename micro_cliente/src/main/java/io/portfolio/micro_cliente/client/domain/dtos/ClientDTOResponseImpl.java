@@ -22,6 +22,7 @@ public record ClientDTOResponseImpl
         LocalDate birthDate,
         MaritalStatusEnum maritalStatus,
         EducationEnum education
+
     ) implements Serializable, PolicyDTO<Long>
 {
     public ClientDTOResponseImpl(ClientEntityImpl clientEntity) {

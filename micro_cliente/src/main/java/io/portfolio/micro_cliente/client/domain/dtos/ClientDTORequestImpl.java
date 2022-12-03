@@ -26,6 +26,8 @@ import java.time.LocalDate;
 @Setter
 public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long> {
 
+    private static final long serialVersionUID = 1L;
+
     private Long id;
 
     @NotBlank
