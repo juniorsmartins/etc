@@ -18,7 +18,7 @@ public sealed interface PolicyService<R extends PolicyDTO<ID>, F extends PolicyF
 
     ResponseEntity<S> searchById(ID id);
 
-    ResponseEntity<Page<S>> searchAll(F filter, Pageable paginacao);
+    ResponseEntity<Page<S>> searchAll(F filter, Pageable pagination);
 
     ResponseEntity<?> deleteById(ID id);
 }
