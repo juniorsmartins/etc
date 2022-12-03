@@ -12,10 +12,8 @@ import java.util.Optional;
 public interface PolicyRepository<P extends PolicyEntity<ID>, F extends PolicyFilter<ID>, ID> {
 
     P create(P entity);
-    Optional<P> search(P entity);
     Optional<P> searchById(ID id);
     Optional<P> searchByCpf(String cpf);
     Page<P> searchAll(F filter, Pageable pagination);
     void deleteById(ID id);
-    void delete(P entity);
 }

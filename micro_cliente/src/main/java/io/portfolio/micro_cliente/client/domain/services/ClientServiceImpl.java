@@ -47,16 +47,15 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
 
         private void validateUniqueCPFRule(String cpf) {
             if(!this.repository.searchByCpf(cpf).isEmpty())
-                throw new BusinessRuleViolationCustomException(messages.getBusinessRuleViolated());
+                throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
         }
 
 
     @Override
     public ResponseEntity<ClientDTOResponseImpl> update(ClientDTORequestImpl dto) {
+        validateUniqueCPFRuleByUpdate(dto);
+
         return this.repository.searchById(dto.getId())
-                .map(client -> {
-                    validateUniqueCPFRuleByUpdate(client, dto);
-                    return client;})
                 .map(client -> {
                     client.setFirstName(dto.getFirstName());
                     client.setLastName(dto.getLastName());
@@ -74,10 +73,9 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
                 .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
-        private void validateUniqueCPFRuleByUpdate(ClientEntityImpl client, ClientDTORequestImpl dto) {
+        private void validateUniqueCPFRuleByUpdate(ClientDTORequestImpl dto) {
             var clientByCPF = this.repository.searchByCpf(dto.getCpf());
-            if(clientByCPF.isPresent() && clientByCPF.get().getId() != client.getId()
-                    && clientByCPF.get().getCpf() == client.getCpf()) {
+            if(!clientByCPF.isEmpty() && clientByCPF.get().getId() != dto.getId()) {
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
             }
         }
