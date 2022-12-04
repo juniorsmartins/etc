@@ -18,7 +18,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 > __Back-end__
 
-- [x] Back-end Java/Spring;
+- [ ] Back-end Java ([ ] Polimorfismo; [ ] Herança; [ ] Encapsulamento);
+- [ ] Spring ([x] Data JPA; [ ] Security; [ ] Hateoas; [ ] Batch; [ ] Cloud; [ ] GraphQL; [ ] AMQP; [ ] Flo; [ ] Shell;);
 - [ ] Microservices (mínimo três);
 - [ ] API Restful (com Content Negotiation);
 - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
@@ -31,11 +32,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [x] Lombok; 
 - [x] DevTools;
 - [x] Flyway Migration;
-- [x] Spring Data JPA;
 - [x] Bean Validation;
-- [ ] Spring Security;
-- [ ] Spring Hateoas;
-- [ ] Spring Batch;
 - [ ] Cache;
 - [ ] Swagger;
 - [ ] Logback;
@@ -46,6 +43,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Padrão Repository com EntityManager;
 - [ ] Usar Records para DTOs (Data Transfer Object);
 - [ ] GraalVM;
+- [ ] Eventos;
 
 > __Front-end__
 
