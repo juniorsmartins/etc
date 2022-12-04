@@ -19,9 +19,9 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > __Back-end__
 
 - [ ] Back-end Java;
-1. [ ] Polimorfismo;
-2. [ ] Herança;
-3. [ ] Encapsulamento;
+      1. - [ ] Polimorfismo;
+      2. - [ ] Herança;
+      3. - [ ] Encapsulamento;
 - [ ] Spring;
       1. [x] Spring Data JPA;
       2. [ ] Spring Security;
