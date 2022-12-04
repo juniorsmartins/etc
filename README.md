@@ -19,16 +19,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > __Back-end__
 
 - [ ] Back-end Java ([ ] Polimorfismo; [ ] Herança; [ ] Encapsulamento);
-- [ ] Spring;
-      1. [x] Spring Data JPA;
-      2. [ ] Spring Security;
-      3. [ ] Spring Hateoas;
-      4. [ ] Spring Batch;
-      5. [ ] Spring Cloud;
-      6. [ ] Spring GraphQL;
-      7. [ ] Spring AMQP;
-      8. [ ] Spring Flo;
-      9. [ ] Spring Shell;
+- [ ] Spring (- [x] Spring Data JPA; - [ ] Spring Security; - [ ] Spring Hateoas; - [ ] Spring Batch; - [ ] Spring Cloud; - [ ] Spring GraphQL; - [ ] Spring AMQP; - [ ] Spring Flo - [ ] Spring Shell);
 - [ ] Microservices (mínimo três);
 - [ ] API Restful (com Content Negotiation);
 - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
