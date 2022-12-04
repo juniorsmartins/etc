@@ -18,8 +18,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 > __Back-end__
 
-- [ ] Back-end Java ([ ] Polimorfismo; [ ] Herança; [ ] Encapsulamento);
-- [ ] Spring ([x] Data JPA; [ ] Security; [ ] Hateoas; [ ] Batch; [ ] Cloud; [ ] GraphQL; [ ] AMQP; [ ] Flo; [ ] Shell;);
+- [ ] Back-end Java -> { [ ] Polimorfismo; [ ] Herança; [ ] Encapsulamento; }
+- [ ] Spring -> { [x] Data JPA; [ ] Security; [ ] Hateoas; [ ] Batch; [ ] Cloud; [ ] GraphQL; [ ] AMQP; [ ] Flo; [ ] Shell; }
 - [ ] Microservices (mínimo três);
 - [ ] API Restful (com Content Negotiation);
 - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
@@ -69,11 +69,11 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 __Modelo Conceitual__
 
-![ConceptualModel_client](https://user-images.githubusercontent.com/64662590/203781955-871fa259-84f0-4370-8dd4-361805c6253e.png)
+![ConceptualModel_client_3](https://user-images.githubusercontent.com/64662590/205505937-2146b923-ac6c-434f-949a-67d4238b4f53.png)
 
 __Modelo Lógico__
 
-![LogicModel_client_2](https://user-images.githubusercontent.com/64662590/204903002-fc0982b7-c6bd-48bd-ba28-c38e5091161b.png)
+![LogicModel_client_3](https://user-images.githubusercontent.com/64662590/205505947-44306058-9246-4f8e-8a71-8e43a75df67b.png)
 
 # BIBLIOGRAFIA (base de conhecimento)
 
