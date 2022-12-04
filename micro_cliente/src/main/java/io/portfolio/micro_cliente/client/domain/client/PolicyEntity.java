@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.entities;
 
-public sealed interface PolicyEntity<ID> permits ClientEntityImpl {
+public sealed interface PolicyEntity<ID> permits ClientPersonImpl, ClientCompanyImpl {
     ID getId();
     void setId(ID id);
 }

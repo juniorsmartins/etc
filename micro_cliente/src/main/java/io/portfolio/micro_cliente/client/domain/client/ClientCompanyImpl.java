@@ -5,65 +5,54 @@ import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
+import jakarta.persistence.*;
 import lombok.*;
 
-import jakarta.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 @Entity
-@Table(name = "clients")
+@Table(name = "client_companys")
 @Builder
-@Getter
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
-public final class ClientEntityImpl implements Serializable, PolicyEntity<Long> {
-
+@Getter
+@Setter
+public final class ClientCompanyImpl extends ClientDad implements Serializable, PolicyEntity<Long> {
     private static final Long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
-    @Column(name = "first_name", length = 40, nullable = false)
+    @Column(name = "first_name")
     private String firstName;
 
-    @Column(name = "last_name", length = 40, nullable = false)
+    @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "cpf", length = 15, nullable = false, unique = true)
+    @Column(name = "cpf", unique = true)
     private String cpf;
 
-    @Column(name = "sex", length = 15, nullable = false)
+    @Column(name = "sex")
     @Enumerated(EnumType.STRING)
     private SexEnum sex;
 
-    @Column(name = "genre", length = 15, nullable = false)
+    @Column(name = "genre")
     @Enumerated(EnumType.STRING)
     private GenreEnum genre;
 
-    @Column(name = "birth_date", nullable = false)
-    private LocalDate birthDate;
-
-    @Column(name = "marital_status", length = 15, nullable = false)
+    @Column(name = "marital_status")
     @Enumerated(EnumType.STRING)
     private MaritalStatusEnum maritalStatus;
 
-    @Column(name = "education", length = 30, nullable = false)
+    @Column(name = "education")
     @Enumerated(EnumType.STRING)
     private EducationEnum education;
 
-    public ClientEntityImpl(ClientDTORequestImpl dto) {
+    public ClientCompanyImpl(ClientDTORequestImpl dto) {
         this.firstName = dto.getFirstName();
         this.lastName = dto.getLastName();
         this.cpf = dto.getCpf();
         this.sex = dto.getSex();
         this.genre = dto.getGenre();
-        this.birthDate = dto.getBirthDate();
         this.maritalStatus = dto.getMaritalStatus();
         this.education = dto.getEducation();
+        super.birthDate = dto.getBirthDate();
     }
 }
