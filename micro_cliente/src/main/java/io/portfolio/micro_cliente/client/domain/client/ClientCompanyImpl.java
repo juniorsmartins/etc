@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.entities;
+package io.portfolio.micro_cliente.client.domain.client;
 
 import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
