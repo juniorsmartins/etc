@@ -3,7 +3,7 @@ package io.portfolio.micro_cliente.client.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.portfolio.micro_cliente.client.domain.entities.ClientEntityImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientCompanyImpl;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -35,7 +35,7 @@ public record ClientDTOResponseImpl
 
     ) implements Serializable, PolicyDTO<Long>
 {
-    public ClientDTOResponseImpl(ClientEntityImpl clientEntity) {
+    public ClientDTOResponseImpl(ClientCompanyImpl clientEntity) {
         this(clientEntity.getId(),
             clientEntity.getFirstName(),
             clientEntity.getLastName(),

@@ -50,13 +50,6 @@ public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long>
     private GenreEnum genre;
 
     @NotNull
-    @Past
-    @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate birthDate;
-
-    @NotNull
     private MaritalStatusEnum maritalStatus;
 
     @NotNull

@@ -1,58 +1,28 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
-import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
-import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
-import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
-import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.*;
 
 import java.io.Serializable;
 
 @Entity
-@Table(name = "client_companys")
+@Table(name = "client_persons")
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-public final class ClientCompanyImpl extends ClientDad implements Serializable, PolicyEntity<Long> {
-    private static final Long serialVersionUID = 1L;
+public final class ClientPersonImpl extends ClientDad implements Serializable, PolicyEntity<Long>  {
+    private static final long serialVersionUID = 1L;
 
-    @Column(name = "first_name")
-    private String firstName;
+    @Column(name = "business_name")
+    private String businessName;
 
-    @Column(name = "last_name")
-    private String lastName;
+    @Column(name = "fantasy_name")
+    private String fantasyName;
 
-    @Column(name = "cpf", unique = true)
-    private String cpf;
-
-    @Column(name = "sex")
-    @Enumerated(EnumType.STRING)
-    private SexEnum sex;
-
-    @Column(name = "genre")
-    @Enumerated(EnumType.STRING)
-    private GenreEnum genre;
-
-    @Column(name = "marital_status")
-    @Enumerated(EnumType.STRING)
-    private MaritalStatusEnum maritalStatus;
-
-    @Column(name = "education")
-    @Enumerated(EnumType.STRING)
-    private EducationEnum education;
-
-    public ClientCompanyImpl(ClientDTORequestImpl dto) {
-        this.firstName = dto.getFirstName();
-        this.lastName = dto.getLastName();
-        this.cpf = dto.getCpf();
-        this.sex = dto.getSex();
-        this.genre = dto.getGenre();
-        this.maritalStatus = dto.getMaritalStatus();
-        this.education = dto.getEducation();
-        super.birthDate = dto.getBirthDate();
-    }
+    @Column(name = "cnpj", unique = true)
+    private String cnpj;
 }
