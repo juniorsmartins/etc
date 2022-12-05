@@ -1,8 +1,8 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponseImpl;
-import io.portfolio.micro_cliente.client.domain.entities.ClientEntityImpl;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequestImpl;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponseImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonImpl;
 import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
 import io.portfolio.micro_cliente.client.domain.services.PolicyService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,29 +20,29 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping(value = "${app.api.base}/clients", produces = {"application/json"})
-public final class ClientControllerImpl extends PolicyControllers<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, Long> {
+public final class ClientControllerImpl extends PolicyControllers<ClientPersonDTORequestImpl, ClientFilterImpl, ClientPersonDTOResponseImpl, Long> {
 
     @Autowired
-    private PolicyService<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, ClientEntityImpl, Long> service;
+    private PolicyService<ClientPersonDTORequestImpl, ClientFilterImpl, ClientPersonDTOResponseImpl, ClientPersonImpl, Long> service;
 
     @Override
-    public ResponseEntity<ClientDTOResponseImpl> create(@RequestBody @Valid ClientDTORequestImpl dto) {
+    public ResponseEntity<ClientPersonDTOResponseImpl> create(@RequestBody @Valid ClientPersonDTORequestImpl dto) {
         return this.service.create(dto);
     }
 
     @Override
-    public ResponseEntity<ClientDTOResponseImpl> update(@RequestBody @Valid ClientDTORequestImpl dto) {
+    public ResponseEntity<ClientPersonDTOResponseImpl> update(@RequestBody @Valid ClientPersonDTORequestImpl dto) {
         return this.service.update(dto);
     }
 
     @Override
-    public ResponseEntity<ClientDTOResponseImpl> searchById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<ClientPersonDTOResponseImpl> searchById(@PathVariable(value = "id") Long id) {
         return this.service.searchById(id);
     }
 
     @Override
-    public ResponseEntity<Page<ClientDTOResponseImpl>> searchAll(ClientFilterImpl filter,
-             @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pagination) {
+    public ResponseEntity<Page<ClientPersonDTOResponseImpl>> searchAll(ClientFilterImpl filter,
+                                                                       @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pagination) {
         return this.service.searchAll(filter, pagination);
     }
 

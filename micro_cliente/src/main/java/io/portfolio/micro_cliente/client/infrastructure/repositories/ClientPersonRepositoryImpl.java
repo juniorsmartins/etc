@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.infrastructure.repositories;
 
-import io.portfolio.micro_cliente.client.domain.entities.ClientEntityImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonImpl;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
@@ -11,28 +11,28 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class ClientRepositoryImpl implements PolicyRepository<ClientEntityImpl, Long> {
+public class ClientPersonRepositoryImpl implements PolicyRepository<ClientPersonImpl, Long> {
 
     @Autowired
-    private ClientRepositoryJpa repositoryJpa;
+    private ClientPersonRepositoryJpa repositoryJpa;
 
     @Override
-    public ClientEntityImpl create(ClientEntityImpl entity) {
+    public ClientPersonImpl create(ClientPersonImpl entity) {
         return repositoryJpa.saveAndFlush(entity);
     }
 
     @Override
-    public Optional<ClientEntityImpl> searchById(Long id) {
+    public Optional<ClientPersonImpl> searchById(Long id) {
         return this.repositoryJpa.findById(id);
     }
 
     @Override
-    public Optional<ClientEntityImpl> searchByCpf(String cpf) {
+    public Optional<ClientPersonImpl> searchByDocument(String cpf) {
         return this.repositoryJpa.findByCpf(cpf);
     }
 
     @Override
-    public Page<ClientEntityImpl> searchAll(Example filter, Pageable pagination) {
+    public Page<ClientPersonImpl> searchAll(Example filter, Pageable pagination) {
         return this.repositoryJpa.findAll(filter, pagination);
     }
 

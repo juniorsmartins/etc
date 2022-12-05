@@ -11,7 +11,7 @@ import java.time.LocalDate;
 
 @Getter
 @Setter
-public sealed abstract class ClientDad permits ClientPersonImpl, ClientCompanyImpl {
+public sealed abstract class ClientDad permits ClientCompanyImpl, ClientPersonImpl {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
