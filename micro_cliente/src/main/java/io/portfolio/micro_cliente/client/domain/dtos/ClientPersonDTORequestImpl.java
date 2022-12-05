@@ -9,13 +9,13 @@ import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Past;
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -24,8 +24,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long> {
-
+public final class ClientPersonDTORequestImpl implements Serializable, PolicyDTO<Long> {
     private static final long serialVersionUID = 1L;
 
     private Long id;
@@ -42,6 +41,13 @@ public final class ClientDTORequestImpl implements Serializable, PolicyDTO<Long>
     @NotBlank
     @Length(max = 15)
     private String cpf;
+
+    @NotNull
+    @Past
+    @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonSerialize(using = LocalDateSerializer.class)
+    private LocalDate birthDate;
 
     @NotNull
     private SexEnum sex;
