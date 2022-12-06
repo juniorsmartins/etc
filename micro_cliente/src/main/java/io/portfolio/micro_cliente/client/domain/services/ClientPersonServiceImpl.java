@@ -1,8 +1,8 @@
 package io.portfolio.micro_cliente.client.domain.services;
 
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntityImpl;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequestImpl;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponseImpl;
-import io.portfolio.micro_cliente.client.domain.client.ClientPersonImpl;
 import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilterImpl;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
@@ -23,10 +23,11 @@ import java.net.URI;
 import java.util.Optional;
 
 @Service
-public non-sealed class ClientServiceImpl implements PolicyService<ClientPersonDTORequestImpl, ClientPersonFilterImpl, ClientPersonDTOResponseImpl, ClientPersonImpl, Long> {
+public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientPersonDTORequestImpl, ClientPersonFilterImpl,
+        ClientPersonDTOResponseImpl, ClientPersonEntityImpl, Long> {
 
     @Autowired
-    private PolicyRepository<ClientPersonImpl, Long> repository;
+    private PolicyRepository<ClientPersonEntityImpl, Long> repository;
 
     @Autowired
     private MessagesProperties messages;
@@ -35,7 +36,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientPersonD
     @Override
     public ResponseEntity<ClientPersonDTOResponseImpl> create(ClientPersonDTORequestImpl dto) {
         return Optional.of(dto)
-                .map(ClientPersonImpl::new)
+                .map(ClientPersonEntityImpl::new)
                 .map(client -> {
                     validateUniqueCPFRule(client.getCpf());
                     return this.repository.create(client);
@@ -48,7 +49,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientPersonD
     }
 
         private void validateUniqueCPFRule(String cpf) {
-            if(!this.repository.searchByCpf(cpf).isEmpty())
+            if(!this.repository.searchByDocument(cpf).isEmpty())
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
         }
 
@@ -76,7 +77,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientPersonD
     }
 
         private void validateUniqueCPFRuleByUpdate(ClientPersonDTORequestImpl dto) {
-            var clientByCPF = this.repository.searchByCpf(dto.getCpf());
+            var clientByCPF = this.repository.searchByDocument(dto.getCpf());
             if(!clientByCPF.isEmpty() && clientByCPF.get().getId() != dto.getId()) {
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
             }
@@ -100,7 +101,7 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientPersonD
                         .map(ClientPersonDTOResponseImpl::new));
     }
 
-        private Example<ClientPersonImpl> configureFilter(ClientPersonFilterImpl filter) {
+        private Example<ClientPersonEntityImpl> configureFilter(ClientPersonFilterImpl filter) {
             // ExampleMatcher - permite configurar condições para serem aplicadas nos filtros
             ExampleMatcher exampleMatcher = ExampleMatcher
                     .matchingAll()
@@ -109,14 +110,14 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientPersonD
                     .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // permite encontrar palavras parecidas - tipo Like do SQL
 
             // Example - pega campos populados para criar filtros
-            return Example.of(ClientPersonImpl.builder()
-                        .id(filter.id())
+            return Example.of(ClientPersonEntityImpl.builder()
+//                        .id(filter.id())
                         .firstName(filter.firstName())
                         .lastName(filter.lastName())
                         .cpf(filter.cpf())
                         .sex(filter.sex())
                         .genre(filter.genre())
-                        .birthDate(filter.birthDate())
+//                        .birthDate(filter.birthDate())
                         .maritalStatus(filter.maritalStatus())
                         .education(filter.education())
                         .build(), exampleMatcher);
