@@ -1,5 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
+import io.portfolio.micro_cliente.client.domain.client.address.AddressEntityImpl;
 import jakarta.persistence.*;
 import lombok.*;
 
