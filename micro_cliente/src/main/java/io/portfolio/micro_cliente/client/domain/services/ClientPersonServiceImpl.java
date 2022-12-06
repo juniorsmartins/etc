@@ -1,9 +1,9 @@
 package io.portfolio.micro_cliente.client.domain.services;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponseImpl;
-import io.portfolio.micro_cliente.client.domain.entities.ClientEntityImpl;
-import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntityImpl;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequestImpl;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponseImpl;
+import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilterImpl;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
@@ -23,24 +23,25 @@ import java.net.URI;
 import java.util.Optional;
 
 @Service
-public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, ClientEntityImpl, Long> {
+public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientPersonDTORequestImpl, ClientPersonFilterImpl,
+        ClientPersonDTOResponseImpl, ClientPersonEntityImpl, Long> {
 
     @Autowired
-    private PolicyRepository<ClientEntityImpl, Long> repository;
+    private PolicyRepository<ClientPersonEntityImpl, Long> repository;
 
     @Autowired
     private MessagesProperties messages;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ResponseEntity<ClientDTOResponseImpl> create(ClientDTORequestImpl dto) {
+    public ResponseEntity<ClientPersonDTOResponseImpl> create(ClientPersonDTORequestImpl dto) {
         return Optional.of(dto)
-                .map(ClientEntityImpl::new)
+                .map(ClientPersonEntityImpl::new)
                 .map(client -> {
                     validateUniqueCPFRule(client.getCpf());
                     return this.repository.create(client);
                 })
-                .map(ClientDTOResponseImpl::new)
+                .map(ClientPersonDTOResponseImpl::new)
                 .map(dtoResponse -> ResponseEntity
                         .created(URI.create("/" + dtoResponse.id()))
                         .body(dtoResponse))
@@ -48,59 +49,59 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
     }
 
         private void validateUniqueCPFRule(String cpf) {
-            if(!this.repository.searchByCpf(cpf).isEmpty())
+            if(!this.repository.searchByDocument(cpf).isEmpty())
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
         }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ResponseEntity<ClientDTOResponseImpl> update(ClientDTORequestImpl dto) {
+    public ResponseEntity<ClientPersonDTOResponseImpl> update(ClientPersonDTORequestImpl dto) {
         validateUniqueCPFRuleByUpdate(dto);
 
-        return this.repository.searchById(dto.getId())
+        return this.repository.searchById(dto.id())
                 .map(client -> {
-                    client.setFirstName(dto.getFirstName());
-                    client.setLastName(dto.getLastName());
-                    client.setCpf(dto.getCpf());
-                    client.setSex(dto.getSex());
-                    client.setGenre(dto.getGenre());
-                    client.setBirthDate(dto.getBirthDate());
-                    client.setMaritalStatus(dto.getMaritalStatus());
-                    client.setEducation(dto.getEducation());
+                    client.setFirstName(dto.firstName());
+                    client.setLastName(dto.lastName());
+                    client.setCpf(dto.cpf());
+                    client.setSex(dto.sex());
+                    client.setGenre(dto.genre());
+                    client.setBirthDate(dto.birthDate());
+                    client.setMaritalStatus(dto.maritalStatus());
+                    client.setEducation(dto.education());
                     return client;})
                 .map(client -> ResponseEntity
                         .ok()
-                        .body(new ClientDTOResponseImpl(client))
+                        .body(new ClientPersonDTOResponseImpl(client))
                 )
                 .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
-        private void validateUniqueCPFRuleByUpdate(ClientDTORequestImpl dto) {
-            var clientByCPF = this.repository.searchByCpf(dto.getCpf());
-            if(!clientByCPF.isEmpty() && clientByCPF.get().getId() != dto.getId()) {
+        private void validateUniqueCPFRuleByUpdate(ClientPersonDTORequestImpl dto) {
+            var clientByCPF = this.repository.searchByDocument(dto.cpf());
+            if(!clientByCPF.isEmpty() && clientByCPF.get().getId() != dto.id()) {
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
             }
         }
 
     @Override
-    public ResponseEntity<ClientDTOResponseImpl> searchById(Long id) {
+    public ResponseEntity<ClientPersonDTOResponseImpl> searchById(Long id) {
         return this.repository.searchById(id)
                 .map(client -> ResponseEntity
                         .ok()
-                        .body(new ClientDTOResponseImpl(client))
+                        .body(new ClientPersonDTOResponseImpl(client))
                 )
                 .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
     @Override
-    public ResponseEntity<Page<ClientDTOResponseImpl>> searchAll(ClientFilterImpl filter, Pageable pagination) {
+    public ResponseEntity<Page<ClientPersonDTOResponseImpl>> searchAll(ClientPersonFilterImpl filter, Pageable pagination) {
         return ResponseEntity
                 .ok()
                 .body(this.repository.searchAll(configureFilter(filter), pagination)
-                        .map(ClientDTOResponseImpl::new));
+                        .map(ClientPersonDTOResponseImpl::new));
     }
 
-        private Example<ClientEntityImpl> configureFilter(ClientFilterImpl filter) {
+        private Example<ClientPersonEntityImpl> configureFilter(ClientPersonFilterImpl filter) {
             // ExampleMatcher - permite configurar condições para serem aplicadas nos filtros
             ExampleMatcher exampleMatcher = ExampleMatcher
                     .matchingAll()
@@ -109,14 +110,14 @@ public non-sealed class ClientServiceImpl implements PolicyService<ClientDTORequ
                     .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // permite encontrar palavras parecidas - tipo Like do SQL
 
             // Example - pega campos populados para criar filtros
-            return Example.of(ClientEntityImpl.builder()
-                        .id(filter.id())
+            return Example.of(ClientPersonEntityImpl.builder()
+//                        .id(filter.id())
                         .firstName(filter.firstName())
                         .lastName(filter.lastName())
                         .cpf(filter.cpf())
                         .sex(filter.sex())
                         .genre(filter.genre())
-                        .birthDate(filter.birthDate())
+//                        .birthDate(filter.birthDate())
                         .maritalStatus(filter.maritalStatus())
                         .education(filter.education())
                         .build(), exampleMatcher);

@@ -3,7 +3,7 @@ package io.portfolio.micro_cliente.client.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.portfolio.micro_cliente.client.domain.entities.ClientEntityImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntityImpl;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public record ClientDTOResponseImpl
+public record ClientPersonDTOResponseImpl
     (
         @JsonProperty("Identifier")
         Long id,
@@ -24,25 +24,24 @@ public record ClientDTOResponseImpl
         @JsonProperty("Individual Registration") // Renomeia o nome do campo para a apresentação
         String cpf,
 
-        SexEnum sex,
-        GenreEnum genre,
-
-        @JsonIgnore // Oculta a apresentação desse atributo
+        @JsonIgnore
         LocalDate birthDate,
 
+        SexEnum sex,
+        GenreEnum genre,
         MaritalStatusEnum maritalStatus,
         EducationEnum education
 
     ) implements Serializable, PolicyDTO<Long>
 {
-    public ClientDTOResponseImpl(ClientEntityImpl clientEntity) {
+    public ClientPersonDTOResponseImpl(ClientPersonEntityImpl clientEntity) {
         this(clientEntity.getId(),
             clientEntity.getFirstName(),
             clientEntity.getLastName(),
             clientEntity.getCpf(),
+            clientEntity.getBirthDate(),
             clientEntity.getSex(),
             clientEntity.getGenre(),
-            clientEntity.getBirthDate(),
             clientEntity.getMaritalStatus(),
             clientEntity.getEducation());
     }

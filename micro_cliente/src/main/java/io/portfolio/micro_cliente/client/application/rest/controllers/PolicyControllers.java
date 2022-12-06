@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
-public sealed abstract class PolicyControllers<R extends PolicyDTO<ID>, F extends PolicyFilter<ID>, S extends PolicyDTO<ID>, ID> permits ClientControllerImpl {
+public sealed abstract class PolicyControllers<R extends PolicyDTO<ID>, F extends PolicyFilter<ID>,
+        S extends PolicyDTO<ID>, ID> permits ClientPersonControllerImpl, ClientCompanyControllerImpl {
 
     @PostMapping
     public abstract ResponseEntity<S> create(R dto);
@@ -22,8 +23,9 @@ public sealed abstract class PolicyControllers<R extends PolicyDTO<ID>, F extend
     public abstract ResponseEntity<S> searchById(ID id);
 
     @GetMapping
-    public abstract ResponseEntity<Page<S>> searchAll(F filter, Pageable paginacao);
+    public abstract ResponseEntity<Page<S>> searchAll(F filter, Pageable pagination);
 
     @DeleteMapping(path = "/{id}")
     public abstract ResponseEntity<?> deleteById(ID id);
 }
+
