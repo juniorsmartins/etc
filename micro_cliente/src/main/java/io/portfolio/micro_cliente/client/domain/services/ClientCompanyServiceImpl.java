@@ -9,8 +9,8 @@ import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomE
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -58,13 +58,37 @@ public non-sealed class ClientCompanyServiceImpl implements PolicyService<Client
 
     @Override
     public ResponseEntity<ClientCompanyDTOResponseImpl> searchById(Long id) {
-        return null;
+        return this.repository.searchById(id)
+                .map(client -> ResponseEntity
+                        .ok()
+                        .body(new ClientCompanyDTOResponseImpl(client))
+                )
+                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
     @Override
     public ResponseEntity<Page<ClientCompanyDTOResponseImpl>> searchAll(ClientCompanyFilterImpl filter, Pageable pagination) {
-        return null;
+        return ResponseEntity
+                .ok()
+                .body(this.repository.searchAll(configureFilter(filter), pagination)
+                        .map(ClientCompanyDTOResponseImpl::new));
     }
+
+        private Example<ClientCompanyEntityImpl> configureFilter(ClientCompanyFilterImpl filter) {
+            // ExampleMatcher - permite configurar condições para serem aplicadas nos filtros
+            ExampleMatcher exampleMatcher = ExampleMatcher
+                    .matchingAll()
+                    .withIgnoreCase() // Ignorar caixa alta ou baixa - quando String
+                    .withIgnoreNullValues() // Ignorar valores nulos
+                    .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // permite encontrar palavras parecidas - tipo Like do SQL
+
+            // Example - pega campos populados para criar filtros
+            return Example.of(ClientCompanyEntityImpl.builder()
+                        .businessName(filter.businessName())
+                        .fantasyName(filter.fantasyName())
+                        .cnpj(filter.cnpj())
+                        .build(), exampleMatcher);
+        }
 
     @Override
     public ResponseEntity<?> deleteById(Long id) {
