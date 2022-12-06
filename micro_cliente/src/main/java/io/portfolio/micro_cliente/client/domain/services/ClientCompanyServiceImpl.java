@@ -11,6 +11,8 @@ import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
@@ -58,7 +60,12 @@ public non-sealed class ClientCompanyServiceImpl implements PolicyService<Client
 
     @Override
     public ResponseEntity<ClientCompanyDTOResponseImpl> searchById(Long id) {
-        return null;
+        return this.repository.searchById(id)
+                .map(client -> ResponseEntity
+                        .ok()
+                        .body(new ClientCompanyDTOResponseImpl(client))
+                )
+                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
     @Override
