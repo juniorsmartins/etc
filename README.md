@@ -9,43 +9,76 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 # CHECKLIST
 
-> __Geral__
+### Back-end Java
 
-- [ ] README detalhado;
-- [x] Metodologia Ágil (Scrum Board no Jira);
-- [x] Repositório Monorepo com estrutura Gitflow;
-- [ ] UML - Unified Modeling Language (Use Case);
+1. Geral:
+> - [ ] README detalhado;
+> - [x] Metodologia Ágil (Scrum Board no Jira);
+> - [x] Repositório Monorepo com estrutura Gitflow;
+> - [ ] UML - Unified Modeling Language (Use Case);
 
-> __Back-end__
+2. POO - Programação Orientada a Objeto:
+> - [x] Polimorfismo; 
+> - [x] Herança; 
+> - [x] Encapsulamento; 
 
-- [ ] Back-end Java ([ ] Polimorfismo; [ ] Herança; [ ] Encapsulamento);
-- [ ] Spring ([x] Data JPA; [ ] Security; [ ] Hateoas; [ ] Batch; [ ] Cloud; [ ] GraphQL; [ ] AMQP; [ ] Flo; [ ] Shell;);
-- [ ] Microservices (mínimo três);
-- [ ] API Restful (com Content Negotiation);
-- [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
-- [ ] DDD - Domain Driven Design;
-- [ ] Clean Architecture;
-- [ ] Clean Code;
-- [ ] Solid;
-- [ ] Design Pattern;
-- [ ] Refactor;
-- [x] Lombok; 
-- [x] DevTools;
-- [x] Flyway Migration;
-- [x] Bean Validation;
-- [ ] Cache;
-- [ ] Swagger;
-- [ ] Logback;
-- [ ] Java Mail Sender;
-- [ ] Mensageria (RabbitMQ ou Kafka);
-- [ ] Threads;
-- [ ] Cors;
-- [ ] Padrão Repository com EntityManager;
-- [ ] Usar Records para DTOs (Data Transfer Object);
-- [ ] GraalVM;
-- [ ] Eventos;
+3. Patterns:
+> - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
+> - [ ] DDD - Domain Driven Design;
+> - [ ] Clean Architecture;
+> - [ ] Clean Code;
+> - [ ] Design Pattern;
+> - [ ] Refactor;
 
-> __Front-end__
+4. Spring:
+> - [x] Data JPA; 
+> - [ ] Security; 
+> - [ ] Hateoas; 
+> - [ ] Batch; 
+> - [ ] Cloud; 
+> - [ ] GraphQL; 
+> - [ ] AMQP; 
+> - [ ] Flo; 
+> - [ ] Shell; 
+
+5. API Restful:
+> - [ ] Nível 0;
+> - [ ] Nível 1;
+> - [ ] Nível 2;
+> - [ ] Nível 3;
+
+6. Microservices: 
+> - [x] micro_client; 
+> - [ ] micro_dashboard; 
+> - [ ] micro_etc;
+
+7. Java: 
+> - [ ] Tratamento de Exceções (Global e Local);
+> - [ ] Generics;
+> - [ ] Lambda;
+> - [ ] Threads;
+> - [ ] Funcional;
+> - [ ] Stream;
+> - [ ] Collections (List, Map e etc);
+> - [x] Enums;
+> - [ ] Cache;
+> - [ ] Swagger;
+> - [ ] Logback;
+> - [ ] Content Negotiation;
+> - [x] Lombok; 
+> - [x] DevTools;
+> - [x] Bean Validation;
+> - [ ] Flyway Migration;
+> - [ ] Java Mail Sender;
+> - [ ] Mensageria (RabbitMQ ou Kafka);
+> - [ ] Cors;
+> - [ ] Padrão Repository com EntityManager;
+> - [ ] Usar Records para DTOs (Data Transfer Object);
+> - [ ] GraalVM;
+> - [ ] Eventos;
+> - [ ] Jasper Reports;
+
+### Front-end
 
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
 - [ ] Telas com layout responsivo;
@@ -56,7 +89,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Uso de diretivas;
 - [ ] Formatar apresentação de dados com Pipes;
 
-> __Database__
+### Database
 
 - [x] Banco de dados de teste: PostgreSQL;
 - [ ] Banco de dados de desenvolvimento: MySQL;
@@ -69,15 +102,19 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 __Modelo Conceitual__
 
-![ConceptualModel_client](https://user-images.githubusercontent.com/64662590/203781955-871fa259-84f0-4370-8dd4-361805c6253e.png)
+![ConceptualModel_client_4](https://user-images.githubusercontent.com/64662590/205642135-fb61485d-d0e7-40b1-aa66-3502515fbe58.png)
 
 __Modelo Lógico__
 
-![LogicModel_client_2](https://user-images.githubusercontent.com/64662590/204903002-fc0982b7-c6bd-48bd-ba28-c38e5091161b.png)
+![LogicModel_client_4](https://user-images.githubusercontent.com/64662590/205642082-bcdefccb-837a-439c-b53d-91b34d3f29b2.png)
+
+__Modelo Físico__
+
+![PhysicalModel_client_4](https://user-images.githubusercontent.com/64662590/205642040-1a1d8a1d-a610-45fb-82a4-b11aa37b7dae.png)
 
 # BIBLIOGRAFIA (base de conhecimento)
 
 - Pós-graduação Lato Sensu em Tecnologia Java (Universidade Tecnológica Federal do Paraná - UTFPR);
 - Curso Especialista Spring Rest - ESR (Algaworks);
-- Cursos livres (Alura);
+- Cursos livres (Alura, DIO e etc);
 
