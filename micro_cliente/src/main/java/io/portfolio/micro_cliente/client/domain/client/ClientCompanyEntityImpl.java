@@ -5,8 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.*;
 
-import java.io.Serializable;
-
 @Entity
 @Table(name = "client_companys")
 @Builder
@@ -14,15 +12,14 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Getter
 @Setter
-public final class ClientCompanyImpl extends Client implements Serializable, PolicyEntity<Long>  {
-    private static final long serialVersionUID = 1L;
+public final class ClientCompanyEntityImpl extends Client implements PolicyEntity<Long>  {
 
-    @Column(name = "business_name")
+    @Column(name = "business_name", length = 100, nullable = false)
     private String businessName;
 
-    @Column(name = "fantasy_name")
+    @Column(name = "fantasy_name", length = 100, nullable = true)
     private String fantasyName;
 
-    @Column(name = "cnpj", unique = true)
+    @Column(name = "cnpj", length = 20, nullable = false, unique = true)
     private String cnpj;
 }

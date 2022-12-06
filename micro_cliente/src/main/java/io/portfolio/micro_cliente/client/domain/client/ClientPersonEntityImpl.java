@@ -8,8 +8,6 @@ import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.io.Serializable;
-
 @Entity
 @Table(name = "client_persons")
 @Builder
@@ -17,35 +15,34 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-public final class ClientPersonImpl extends Client implements Serializable, PolicyEntity<Long> {
-    private static final long serialVersionUID = 1L;
+public final class ClientPersonEntityImpl extends Client implements PolicyEntity<Long> {
 
-    @Column(name = "first_name")
+    @Column(name = "first_name", length = 30, nullable = false)
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name", length = 30, nullable = false)
     private String lastName;
 
-    @Column(name = "cpf", unique = true)
+    @Column(name = "cpf", length = 15, nullable = false, unique = true)
     private String cpf;
 
-    @Column(name = "sex")
+    @Column(name = "sex", length = 15, nullable = false)
     @Enumerated(EnumType.STRING)
     private SexEnum sex;
 
-    @Column(name = "genre")
+    @Column(name = "genre", length = 15, nullable = false)
     @Enumerated(EnumType.STRING)
     private GenreEnum genre;
 
-    @Column(name = "marital_status")
+    @Column(name = "marital_status", length = 15, nullable = false)
     @Enumerated(EnumType.STRING)
     private MaritalStatusEnum maritalStatus;
 
-    @Column(name = "education")
+    @Column(name = "education", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private EducationEnum education;
 
-    public ClientPersonImpl(ClientPersonDTORequestImpl dto) {
+    public ClientPersonEntityImpl(ClientPersonDTORequestImpl dto) {
         this.firstName = dto.getFirstName();
         this.lastName = dto.getLastName();
         this.cpf = dto.getCpf();
