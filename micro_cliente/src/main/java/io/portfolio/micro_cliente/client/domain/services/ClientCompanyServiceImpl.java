@@ -5,14 +5,17 @@ import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequestImpl
 import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTOResponseImpl;
 import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilterImpl;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
-import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientCompanyRepositoryImpl;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
+import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.net.URI;
 import java.util.Optional;
@@ -27,6 +30,7 @@ public non-sealed class ClientCompanyServiceImpl implements PolicyService<Client
     @Autowired
     private MessagesProperties messages;
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ResponseEntity<ClientCompanyDTOResponseImpl> create(ClientCompanyDTORequestImpl dto) {
         return Optional.of(dto)
@@ -53,7 +57,7 @@ public non-sealed class ClientCompanyServiceImpl implements PolicyService<Client
     }
 
     @Override
-    public ResponseEntity<ClientCompanyDTOResponseImpl> searchById(Long aLong) {
+    public ResponseEntity<ClientCompanyDTOResponseImpl> searchById(Long id) {
         return null;
     }
 
@@ -63,7 +67,14 @@ public non-sealed class ClientCompanyServiceImpl implements PolicyService<Client
     }
 
     @Override
-    public ResponseEntity<?> deleteById(Long aLong) {
-        return null;
+    public ResponseEntity<?> deleteById(Long id) {
+        return this.repository.searchById(id)
+                .map(client -> {
+                    this.repository.deleteById(client.getId());
+                    return ResponseEntity
+                            .ok()
+                            .body(messages.getResourceDeletedSuccessfully());
+                })
+                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 }
