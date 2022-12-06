@@ -8,13 +8,13 @@ import lombok.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "client_persons")
+@Table(name = "client_companys")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-public final class ClientPersonImpl extends ClientDad implements Serializable, PolicyEntity<Long>  {
+public final class ClientCompanyImpl extends Client implements Serializable, PolicyEntity<Long>  {
     private static final long serialVersionUID = 1L;
 
     @Column(name = "business_name")

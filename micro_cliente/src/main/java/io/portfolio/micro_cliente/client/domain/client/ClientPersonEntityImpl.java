@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequestImpl;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -11,14 +11,14 @@ import lombok.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "client_companys")
+@Table(name = "client_persons")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public final class ClientCompanyImpl extends ClientDad implements Serializable, PolicyEntity<Long> {
-    private static final Long serialVersionUID = 1L;
+public final class ClientPersonImpl extends Client implements Serializable, PolicyEntity<Long> {
+    private static final long serialVersionUID = 1L;
 
     @Column(name = "first_name")
     private String firstName;
@@ -45,7 +45,7 @@ public final class ClientCompanyImpl extends ClientDad implements Serializable, 
     @Enumerated(EnumType.STRING)
     private EducationEnum education;
 
-    public ClientCompanyImpl(ClientDTORequestImpl dto) {
+    public ClientPersonImpl(ClientPersonDTORequestImpl dto) {
         this.firstName = dto.getFirstName();
         this.lastName = dto.getLastName();
         this.cpf = dto.getCpf();
