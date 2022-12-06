@@ -111,13 +111,11 @@ public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientP
 
             // Example - pega campos populados para criar filtros
             return Example.of(ClientPersonEntityImpl.builder()
-//                        .id(filter.id())
                         .firstName(filter.firstName())
                         .lastName(filter.lastName())
                         .cpf(filter.cpf())
                         .sex(filter.sex())
                         .genre(filter.genre())
-//                        .birthDate(filter.birthDate())
                         .maritalStatus(filter.maritalStatus())
                         .education(filter.education())
                         .build(), exampleMatcher);
