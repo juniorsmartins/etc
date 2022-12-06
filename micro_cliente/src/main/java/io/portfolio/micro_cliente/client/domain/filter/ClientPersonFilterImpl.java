@@ -8,7 +8,7 @@ import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public record ClientFilterImpl
+public record ClientPersonFilterImpl
     (
         Long id,
         String firstName,

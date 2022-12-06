@@ -1,13 +1,13 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientDTORequestImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientDTOResponseImpl;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequestImpl;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponseImpl;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
-import io.portfolio.micro_cliente.client.domain.filter.ClientFilterImpl;
-import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientRepositoryJpa;
+import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilterImpl;
+import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientPersonRepositoryJpa;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
@@ -46,22 +46,22 @@ class ClientControllerImplTest {
     private final EducationEnum EDUCATION_I = EducationEnum.FULL_DOCTORATE;
     private final EducationEnum EDUCATION_II = EducationEnum.COMPLETE_MASTERS_DEGREE;
 
-    private ClientDTORequestImpl dtoRequest1;
-    private ClientDTORequestImpl dtoRequest2;
-    private ClientDTORequestImpl dtoRequest3;
+    private ClientPersonDTORequestImpl dtoRequest1;
+    private ClientPersonDTORequestImpl dtoRequest2;
+    private ClientPersonDTORequestImpl dtoRequest3;
 
     @Autowired
-    private PolicyControllers<ClientDTORequestImpl, ClientFilterImpl, ClientDTOResponseImpl, Long> controller;
+    private PolicyControllers<ClientPersonDTORequestImpl, ClientPersonFilterImpl, ClientPersonDTOResponseImpl, Long> controller;
 
     @Autowired
-    private ClientRepositoryJpa repository;
+    private ClientPersonRepositoryJpa repository;
 
     @Autowired
     private MessagesProperties messages;
 
     @BeforeEach
     void setUp() {
-        dtoRequest1 = ClientDTORequestImpl.builder()
+        dtoRequest1 = ClientPersonDTORequestImpl.builder()
                 .firstName(FIRST_NAME_I)
                 .lastName(LAST_NAME_I)
                 .cpf(CPF_I)
@@ -72,7 +72,7 @@ class ClientControllerImplTest {
                 .education(EDUCATION_I)
                 .build();
 
-        dtoRequest2 = ClientDTORequestImpl.builder()
+        dtoRequest2 = ClientPersonDTORequestImpl.builder()
                 .firstName(FIRST_NAME_II)
                 .lastName(LAST_NAME_II)
                 .cpf(CPF_II)
@@ -83,7 +83,7 @@ class ClientControllerImplTest {
                 .education(EDUCATION_II)
                 .build();
 
-        dtoRequest3 = ClientDTORequestImpl.builder()
+        dtoRequest3 = ClientPersonDTORequestImpl.builder()
                 .firstName(FIRST_NAME_I)
                 .lastName(LAST_NAME_I)
                 .cpf(CPF_I)
@@ -102,7 +102,7 @@ class ClientControllerImplTest {
         Assertions.assertNotNull(response);
         Assertions.assertEquals(ResponseEntity.class, response.getClass());
         Assertions.assertNotNull(response.getBody());
-        Assertions.assertEquals(ClientDTOResponseImpl.class, response.getBody().getClass());
+        Assertions.assertEquals(ClientPersonDTOResponseImpl.class, response.getBody().getClass());
         Assertions.assertEquals(HttpStatus.CREATED, response.getStatusCode());
         Assertions.assertNotNull(response.getBody().id());
         Assertions.assertEquals(FIRST_NAME_I, response.getBody().firstName());
@@ -139,7 +139,7 @@ class ClientControllerImplTest {
         Assertions.assertNotNull(response);
         Assertions.assertEquals(ResponseEntity.class, response.getClass());
         Assertions.assertNotNull(response.getBody());
-        Assertions.assertEquals(ClientDTOResponseImpl.class, response.getBody().getClass());
+        Assertions.assertEquals(ClientPersonDTOResponseImpl.class, response.getBody().getClass());
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assertions.assertEquals(dtoResponse.getBody().id(), response.getBody().id());
         Assertions.assertEquals(dtoResponse.getBody().cpf(), response.getBody().cpf());
@@ -194,7 +194,7 @@ class ClientControllerImplTest {
         Assertions.assertNotNull(response);
         Assertions.assertEquals(ResponseEntity.class, response.getClass());
         Assertions.assertNotNull(response.getBody());
-        Assertions.assertEquals(ClientDTOResponseImpl.class, response.getBody().getClass());
+        Assertions.assertEquals(ClientPersonDTOResponseImpl.class, response.getBody().getClass());
         Assertions.assertEquals(HttpStatus.OK, response.getStatusCode());
         Assertions.assertNotNull(response.getBody().id());
         Assertions.assertEquals(dtoResponse.getBody().id(), response.getBody().id());
