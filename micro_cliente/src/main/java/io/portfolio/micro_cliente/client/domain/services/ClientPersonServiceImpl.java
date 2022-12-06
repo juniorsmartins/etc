@@ -58,16 +58,16 @@ public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientP
     public ResponseEntity<ClientPersonDTOResponseImpl> update(ClientPersonDTORequestImpl dto) {
         validateUniqueCPFRuleByUpdate(dto);
 
-        return this.repository.searchById(dto.getId())
+        return this.repository.searchById(dto.id())
                 .map(client -> {
-                    client.setFirstName(dto.getFirstName());
-                    client.setLastName(dto.getLastName());
-                    client.setCpf(dto.getCpf());
-                    client.setSex(dto.getSex());
-                    client.setGenre(dto.getGenre());
-                    client.setBirthDate(dto.getBirthDate());
-                    client.setMaritalStatus(dto.getMaritalStatus());
-                    client.setEducation(dto.getEducation());
+                    client.setFirstName(dto.firstName());
+                    client.setLastName(dto.lastName());
+                    client.setCpf(dto.cpf());
+                    client.setSex(dto.sex());
+                    client.setGenre(dto.genre());
+                    client.setBirthDate(dto.birthDate());
+                    client.setMaritalStatus(dto.maritalStatus());
+                    client.setEducation(dto.education());
                     return client;})
                 .map(client -> ResponseEntity
                         .ok()
@@ -77,8 +77,8 @@ public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientP
     }
 
         private void validateUniqueCPFRuleByUpdate(ClientPersonDTORequestImpl dto) {
-            var clientByCPF = this.repository.searchByDocument(dto.getCpf());
-            if(!clientByCPF.isEmpty() && clientByCPF.get().getId() != dto.getId()) {
+            var clientByCPF = this.repository.searchByDocument(dto.cpf());
+            if(!clientByCPF.isEmpty() && clientByCPF.get().getId() != dto.id()) {
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
             }
         }

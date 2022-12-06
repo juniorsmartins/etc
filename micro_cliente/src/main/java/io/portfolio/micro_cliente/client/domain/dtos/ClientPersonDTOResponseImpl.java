@@ -24,7 +24,7 @@ public record ClientPersonDTOResponseImpl
         @JsonProperty("Individual Registration") // Renomeia o nome do campo para a apresentação
         String cpf,
 
-//        @JsonIgnore
+        @JsonIgnore
         LocalDate birthDate,
 
         SexEnum sex,

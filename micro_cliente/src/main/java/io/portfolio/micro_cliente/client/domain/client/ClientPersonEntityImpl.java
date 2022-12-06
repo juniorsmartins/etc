@@ -15,6 +15,7 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
+@PrimaryKeyJoinColumn(referencedColumnName="id")
 public final class ClientPersonEntityImpl extends Client implements PolicyEntity<Long> {
 
     @Column(name = "first_name", length = 30, nullable = false)
@@ -43,13 +44,13 @@ public final class ClientPersonEntityImpl extends Client implements PolicyEntity
     private EducationEnum education;
 
     public ClientPersonEntityImpl(ClientPersonDTORequestImpl dto) {
-        this.firstName = dto.getFirstName();
-        this.lastName = dto.getLastName();
-        this.cpf = dto.getCpf();
-        this.sex = dto.getSex();
-        this.genre = dto.getGenre();
-        this.maritalStatus = dto.getMaritalStatus();
-        this.education = dto.getEducation();
-        super.birthDate = dto.getBirthDate();
+        super(dto.id(), dto.birthDate());
+        this.firstName = dto.firstName();
+        this.lastName = dto.lastName();
+        this.cpf = dto.cpf();
+        this.sex = dto.sex();
+        this.genre = dto.genre();
+        this.maritalStatus = dto.maritalStatus();
+        this.education = dto.education();
     }
 }

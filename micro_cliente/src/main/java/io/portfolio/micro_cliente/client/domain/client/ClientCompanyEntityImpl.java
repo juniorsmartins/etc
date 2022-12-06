@@ -2,6 +2,7 @@ package io.portfolio.micro_cliente.client.domain.client;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.*;
 
@@ -12,6 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@PrimaryKeyJoinColumn(referencedColumnName="id")
 public final class ClientCompanyEntityImpl extends Client implements PolicyEntity<Long>  {
 
     @Column(name = "business_name", length = 100, nullable = false)

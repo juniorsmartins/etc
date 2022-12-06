@@ -12,18 +12,12 @@ import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
-import lombok.*;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
 public record ClientPersonDTORequestImpl
     (
         Long id,
@@ -49,19 +43,15 @@ public record ClientPersonDTORequestImpl
         LocalDate birthDate,
 
         @NotNull
-        @Length(max = 15)
         SexEnum sex,
 
         @NotNull
-        @Length(max = 15)
         GenreEnum genre,
 
         @NotNull
-        @Length(max = 15)
         MaritalStatusEnum maritalStatus,
 
         @NotNull
-        @Length(max = 30)
         EducationEnum education
     ) implements Serializable, PolicyDTO<Long>
 { }
