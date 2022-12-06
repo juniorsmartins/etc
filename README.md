@@ -18,13 +18,29 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 ### __Back-end__
 
-> POO - Programação Orientada a Objeto 
+1. POO - Programação Orientada a Objeto:
 > - [x] Polimorfismo; 
 > - [x] Herança; 
 > - [x] Encapsulamento; 
 
-- [ ] Spring -> { [x] Data JPA; [ ] Security; [ ] Hateoas; [ ] Batch; [ ] Cloud; [ ] GraphQL; [ ] AMQP; [ ] Flo; [ ] Shell; }
-- [ ] Microservices (mínimo quatro: [x] micro_client; [ ] micro_dashboard; [ ] micro_etc... );
+2. Spring:
+> - [x] Data JPA; 
+> - [ ] Security; 
+> - [ ] Hateoas; 
+> - [ ] Batch; 
+> - [ ] Cloud; 
+> - [ ] GraphQL; 
+> - [ ] AMQP; 
+> - [ ] Flo; 
+> - [ ] Shell; 
+
+3. Microservices: 
+> - [x] micro_client; 
+> - [ ] micro_dashboard; 
+> - [ ] micro_etc;
+> - [ ]
+
+
 - [ ] API Restful (com Content Negotiation);
 - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 - [ ] DDD - Domain Driven Design;
