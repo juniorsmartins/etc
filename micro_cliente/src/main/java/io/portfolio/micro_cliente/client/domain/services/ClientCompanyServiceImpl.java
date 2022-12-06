@@ -4,19 +4,48 @@ import io.portfolio.micro_cliente.client.domain.client.ClientCompanyEntityImpl;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequestImpl;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTOResponseImpl;
 import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilterImpl;
+import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
+import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientCompanyRepositoryImpl;
+import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
+import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.net.URI;
+import java.util.Optional;
+
 @Service
 public non-sealed class ClientCompanyServiceImpl implements PolicyService<ClientCompanyDTORequestImpl,
         ClientCompanyFilterImpl, ClientCompanyDTOResponseImpl, ClientCompanyEntityImpl, Long> {
 
+    @Autowired
+    private PolicyRepository<ClientCompanyEntityImpl, Long> repository;
+
+    @Autowired
+    private MessagesProperties messages;
+
     @Override
     public ResponseEntity<ClientCompanyDTOResponseImpl> create(ClientCompanyDTORequestImpl dto) {
-        return null;
+        return Optional.of(dto)
+                .map(ClientCompanyEntityImpl::new)
+                .map(client -> {
+                    validateUniqueCNPJRule(client.getCnpj());
+                    return this.repository.create(client);
+                })
+                .map(ClientCompanyDTOResponseImpl::new)
+                .map(dtoResponse -> ResponseEntity
+                        .created(URI.create("/" + dtoResponse.id()))
+                        .body(dtoResponse))
+                .orElseThrow();
     }
+
+        private void validateUniqueCNPJRule(String cnpj) {
+            if(!this.repository.searchByDocument(cnpj).isEmpty())
+                throw new BusinessRuleViolationCustomException(messages.getSingleCnpjRuleViolation());
+        }
 
     @Override
     public ResponseEntity<ClientCompanyDTOResponseImpl> update(ClientCompanyDTORequestImpl dto) {

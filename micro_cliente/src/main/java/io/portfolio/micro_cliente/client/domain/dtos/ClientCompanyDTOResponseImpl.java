@@ -14,7 +14,10 @@ public record ClientCompanyDTOResponseImpl
         @JsonProperty("Identifier")
         Long id,
 
+        @JsonProperty("Business Name")
         String businessName,
+
+        @JsonProperty("Fantasy Name")
         String fantasyName,
 
         @JsonProperty("National Register of Legal Entities")
