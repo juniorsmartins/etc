@@ -20,8 +20,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 > POO - Programação Orientada a Objeto 
 > - [x] Polimorfismo; 
-> [x] Herança; 
-> [x] Encapsulamento; 
+> - [x] Herança; 
+> - [x] Encapsulamento; 
 
 - [ ] Spring -> { [x] Data JPA; [ ] Security; [ ] Hateoas; [ ] Batch; [ ] Cloud; [ ] GraphQL; [ ] AMQP; [ ] Flo; [ ] Shell; }
 - [ ] Microservices (mínimo quatro: [x] micro_client; [ ] micro_dashboard; [ ] micro_etc... );
