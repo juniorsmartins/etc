@@ -9,21 +9,28 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 # CHECKLIST
 
-### __Geral__
+### Back-end Java
 
-- [ ] README detalhado;
-- [x] Metodologia Ágil (Scrum Board no Jira);
-- [x] Repositório Monorepo com estrutura Gitflow;
-- [ ] UML - Unified Modeling Language (Use Case);
+1. Geral:
+> - [ ] README detalhado;
+> - [x] Metodologia Ágil (Scrum Board no Jira);
+> - [x] Repositório Monorepo com estrutura Gitflow;
+> - [ ] UML - Unified Modeling Language (Use Case);
 
-### __Back-end__
-
-1. POO - Programação Orientada a Objeto:
+2. POO - Programação Orientada a Objeto:
 > - [x] Polimorfismo; 
 > - [x] Herança; 
 > - [x] Encapsulamento; 
 
-2. Spring:
+3. Patterns:
+> - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
+> - [ ] DDD - Domain Driven Design;
+> - [ ] Clean Architecture;
+> - [ ] Clean Code;
+> - [ ] Design Pattern;
+> - [ ] Refactor;
+
+4. Spring:
 > - [x] Data JPA; 
 > - [ ] Security; 
 > - [ ] Hateoas; 
@@ -34,38 +41,44 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Flo; 
 > - [ ] Shell; 
 
-3. Microservices: 
+5. API Restful:
+> - [ ] Nível 0;
+> - [ ] Nível 1;
+> - [ ] Nível 2;
+> - [ ] Nível 3;
+
+6. Microservices: 
 > - [x] micro_client; 
 > - [ ] micro_dashboard; 
 > - [ ] micro_etc;
-> - [ ]
 
+7. Java: 
+> - [ ] Tratamento de Exceções (Global e Local);
+> - [ ] Generics;
+> - [ ] Lambda;
+> - [ ] Threads;
+> - [ ] Funcional;
+> - [ ] Stream;
+> - [ ] Collections (List, Map e etc);
+> - [x] Enums;
+> - [ ] Cache;
+> - [ ] Swagger;
+> - [ ] Logback;
+> - [ ] Content Negotiation;
+> - [x] Lombok; 
+> - [x] DevTools;
+> - [x] Bean Validation;
+> - [ ] Flyway Migration;
+> - [ ] Java Mail Sender;
+> - [ ] Mensageria (RabbitMQ ou Kafka);
+> - [ ] Cors;
+> - [ ] Padrão Repository com EntityManager;
+> - [ ] Usar Records para DTOs (Data Transfer Object);
+> - [ ] GraalVM;
+> - [ ] Eventos;
+> - [ ] Jasper Reports;
 
-- [ ] API Restful (com Content Negotiation);
-- [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
-- [ ] DDD - Domain Driven Design;
-- [ ] Clean Architecture;
-- [ ] Clean Code;
-- [ ] Solid;
-- [ ] Design Pattern;
-- [ ] Refactor;
-- [x] Lombok; 
-- [x] DevTools;
-- [ ] Flyway Migration;
-- [x] Bean Validation;
-- [ ] Cache;
-- [ ] Swagger;
-- [ ] Logback;
-- [ ] Java Mail Sender;
-- [ ] Mensageria (RabbitMQ ou Kafka);
-- [ ] Threads;
-- [ ] Cors;
-- [ ] Padrão Repository com EntityManager;
-- [ ] Usar Records para DTOs (Data Transfer Object);
-- [ ] GraalVM;
-- [ ] Eventos;
-
-> __Front-end__
+### Front-end
 
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
 - [ ] Telas com layout responsivo;
@@ -76,7 +89,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Uso de diretivas;
 - [ ] Formatar apresentação de dados com Pipes;
 
-> __Database__
+### Database
 
 - [x] Banco de dados de teste: PostgreSQL;
 - [ ] Banco de dados de desenvolvimento: MySQL;
