@@ -18,9 +18,9 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 > __Back-end__
 
-- [ ] Back-end Java -> { [ ] Polimorfismo; [ ] Herança; [ ] Encapsulamento; }
+- [ ] Back-end Java -> { [ ] Polimorfismo; [x] Herança; [ ] Encapsulamento; }
 - [ ] Spring -> { [x] Data JPA; [ ] Security; [ ] Hateoas; [ ] Batch; [ ] Cloud; [ ] GraphQL; [ ] AMQP; [ ] Flo; [ ] Shell; }
-- [ ] Microservices (mínimo três);
+- [ ] Microservices (mínimo quatro: [x] micro_client; [ ] micro_dashboard; [ ] micro_etc... );
 - [ ] API Restful (com Content Negotiation);
 - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 - [ ] DDD - Domain Driven Design;
@@ -31,7 +31,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Refactor;
 - [x] Lombok; 
 - [x] DevTools;
-- [x] Flyway Migration;
+- [ ] Flyway Migration;
 - [x] Bean Validation;
 - [ ] Cache;
 - [ ] Swagger;
@@ -83,5 +83,5 @@ __Modelo Físico__
 
 - Pós-graduação Lato Sensu em Tecnologia Java (Universidade Tecnológica Federal do Paraná - UTFPR);
 - Curso Especialista Spring Rest - ESR (Algaworks);
-- Cursos livres (Alura);
+- Cursos livres (Alura, DIO e etc);
 
