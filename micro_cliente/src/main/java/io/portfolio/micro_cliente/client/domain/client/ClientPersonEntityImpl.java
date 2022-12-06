@@ -24,7 +24,7 @@ public final class ClientPersonEntityImpl extends Client implements PolicyEntity
     @Column(name = "last_name", length = 30, nullable = false)
     private String lastName;
 
-    @Column(name = "cpf", length = 15, nullable = false, unique = true)
+    @Column(name = "cpf", length = 15, nullable = false)
     private String cpf;
 
     @Column(name = "sex", length = 15, nullable = false)

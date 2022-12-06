@@ -51,10 +51,31 @@ public non-sealed class ClientCompanyServiceImpl implements PolicyService<Client
                 throw new BusinessRuleViolationCustomException(messages.getSingleCnpjRuleViolation());
         }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ResponseEntity<ClientCompanyDTOResponseImpl> update(ClientCompanyDTORequestImpl dto) {
-        return null;
+        validateUniqueCNPJRuleByUpdate(dto);
+
+        return this.repository.searchById(dto.id())
+                .map(client -> {
+                    client.setBusinessName(dto.businessName());
+                    client.setFantasyName(dto.fantasyName());
+                    client.setCnpj(dto.cnpj());
+                    client.setBirthDate(dto.birthDate());
+                    return client;})
+                .map(client -> ResponseEntity
+                        .ok()
+                        .body(new ClientCompanyDTOResponseImpl(client))
+                )
+                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
+
+        private void validateUniqueCNPJRuleByUpdate(ClientCompanyDTORequestImpl dto) {
+            var clientByCNPJ = this.repository.searchByDocument(dto.cnpj());
+            if(!clientByCNPJ.isEmpty() && clientByCNPJ.get().getId() != dto.id()) {
+                throw new BusinessRuleViolationCustomException(messages.getSingleCnpjRuleViolation());
+            }
+        }
 
     @Override
     public ResponseEntity<ClientCompanyDTOResponseImpl> searchById(Long id) {
@@ -90,6 +111,7 @@ public non-sealed class ClientCompanyServiceImpl implements PolicyService<Client
                         .build(), exampleMatcher);
         }
 
+    @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ResponseEntity<?> deleteById(Long id) {
         return this.repository.searchById(id)
