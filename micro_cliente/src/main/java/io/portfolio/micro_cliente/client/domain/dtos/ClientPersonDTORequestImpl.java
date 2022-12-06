@@ -24,40 +24,44 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @Getter
 @Setter
-public final class ClientPersonDTORequestImpl implements Serializable, PolicyDTO<Long> {
-    private static final long serialVersionUID = 1L;
+public record ClientPersonDTORequestImpl
+    (
+        Long id,
 
-    private Long id;
+        @NotBlank
+        @Length(max = 30)
+        String firstName,
 
-    @NotBlank
-    @Length(max = 40)
-    private String firstName;
+        @NotBlank
+        @Length(max = 30)
+        String lastName,
 
-    @NotBlank
-    @Length(max = 40)
-    private String lastName;
+        @NotBlank
+        @Length(max = 15)
+        @CPF
+        String cpf,
 
-    @CPF
-    @NotBlank
-    @Length(max = 15)
-    private String cpf;
+        @NotNull
+        @Past
+        @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
+        @JsonDeserialize(using = LocalDateDeserializer.class)
+        @JsonSerialize(using = LocalDateSerializer.class)
+        LocalDate birthDate,
 
-    @NotNull
-    @Past
-    @JsonFormat(pattern = "dd-MM-yyyy", shape = JsonFormat.Shape.STRING)
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonSerialize(using = LocalDateSerializer.class)
-    private LocalDate birthDate;
+        @NotNull
+        @Length(max = 15)
+        SexEnum sex,
 
-    @NotNull
-    private SexEnum sex;
+        @NotNull
+        @Length(max = 15)
+        GenreEnum genre,
 
-    @NotNull
-    private GenreEnum genre;
+        @NotNull
+        @Length(max = 15)
+        MaritalStatusEnum maritalStatus,
 
-    @NotNull
-    private MaritalStatusEnum maritalStatus;
-
-    @NotNull
-    private EducationEnum education;
-}
+        @NotNull
+        @Length(max = 30)
+        EducationEnum education
+    ) implements Serializable, PolicyDTO<Long>
+{ }

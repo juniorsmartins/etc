@@ -3,7 +3,7 @@ package io.portfolio.micro_cliente.client.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.portfolio.micro_cliente.client.domain.client.ClientPersonImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntityImpl;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -24,20 +24,18 @@ public record ClientPersonDTOResponseImpl
         @JsonProperty("Individual Registration") // Renomeia o nome do campo para a apresentação
         String cpf,
 
-        @JsonIgnore
+//        @JsonIgnore
         LocalDate birthDate,
 
         SexEnum sex,
         GenreEnum genre,
-
         MaritalStatusEnum maritalStatus,
         EducationEnum education
 
     ) implements Serializable, PolicyDTO<Long>
 {
-    public ClientPersonDTOResponseImpl(ClientPersonImpl clientEntity) {
-        this.ClientPersonDTOResponseImpl(
-            clientEntity.getId(),
+    public ClientPersonDTOResponseImpl(ClientPersonEntityImpl clientEntity) {
+        this(clientEntity.getId(),
             clientEntity.getFirstName(),
             clientEntity.getLastName(),
             clientEntity.getCpf(),
