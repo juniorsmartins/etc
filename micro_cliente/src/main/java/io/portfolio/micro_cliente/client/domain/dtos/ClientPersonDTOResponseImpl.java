@@ -18,7 +18,10 @@ public record ClientPersonDTOResponseImpl
         @JsonProperty("Identifier")
         Long id,
 
+        @JsonProperty("First Name")
         String firstName,
+
+        @JsonProperty("Last Name")
         String lastName,
 
         @JsonProperty("Individual Registration") // Renomeia o nome do campo para a apresentação
@@ -27,11 +30,17 @@ public record ClientPersonDTOResponseImpl
         @JsonIgnore
         LocalDate birthDate,
 
+        @JsonProperty("Sex")
         SexEnum sex,
-        GenreEnum genre,
-        MaritalStatusEnum maritalStatus,
-        EducationEnum education
 
+        @JsonProperty("Genre")
+        GenreEnum genre,
+
+        @JsonProperty("Marital Status")
+        MaritalStatusEnum maritalStatus,
+
+        @JsonProperty("Education")
+        EducationEnum education
     ) implements Serializable, PolicyDTO<Long>
 {
     public ClientPersonDTOResponseImpl(ClientPersonEntityImpl clientEntity) {
