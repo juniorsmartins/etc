@@ -1,5 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
+import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequestImpl;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -24,4 +25,11 @@ public final class ClientCompanyEntityImpl extends Client implements PolicyEntit
 
     @Column(name = "cnpj", length = 20, nullable = false, unique = true)
     private String cnpj;
+
+    public ClientCompanyEntityImpl(ClientCompanyDTORequestImpl dto) {
+        super(dto.id(), dto.birthDate());
+        this.setBusinessName(dto.businessName());
+        this.setFantasyName(dto.fantasyName());
+        this.setCnpj(dto.cnpj());
+    }
 }
