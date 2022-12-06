@@ -23,7 +23,7 @@ public final class ClientCompanyEntityImpl extends Client implements PolicyEntit
     @Column(name = "fantasy_name", length = 100, nullable = true)
     private String fantasyName;
 
-    @Column(name = "cnpj", length = 20, nullable = false, unique = true)
+    @Column(name = "cnpj", length = 20, nullable = false)
     private String cnpj;
 
     public ClientCompanyEntityImpl(ClientCompanyDTORequestImpl dto) {

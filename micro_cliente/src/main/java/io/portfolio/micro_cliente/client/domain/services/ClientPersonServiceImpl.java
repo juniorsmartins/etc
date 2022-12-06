@@ -68,7 +68,8 @@ public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientP
                     client.setBirthDate(dto.birthDate());
                     client.setMaritalStatus(dto.maritalStatus());
                     client.setEducation(dto.education());
-                    return client;})
+                    return client;
+                })
                 .map(client -> ResponseEntity
                         .ok()
                         .body(new ClientPersonDTOResponseImpl(client))
