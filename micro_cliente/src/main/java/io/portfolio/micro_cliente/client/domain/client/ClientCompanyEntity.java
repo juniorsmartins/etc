@@ -1,6 +1,7 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequestImpl;
+import io.portfolio.micro_cliente.client.domain.client.address.AddressEntity;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
@@ -15,7 +16,7 @@ import lombok.*;
 @Getter
 @Setter
 @PrimaryKeyJoinColumn(referencedColumnName="id")
-public final class ClientCompanyEntityImpl extends Client implements PolicyEntity<Long>  {
+public final class ClientCompanyEntity extends Client implements PolicyEntity<Long>  {
 
     @Column(name = "business_name", length = 100, nullable = false)
     private String businessName;
@@ -26,8 +27,8 @@ public final class ClientCompanyEntityImpl extends Client implements PolicyEntit
     @Column(name = "cnpj", length = 20, nullable = false)
     private String cnpj;
 
-    public ClientCompanyEntityImpl(ClientCompanyDTORequestImpl dto) {
-        super(dto.id(), dto.birthDate());
+    public ClientCompanyEntity(ClientCompanyDTORequest dto) {
+        super(dto.id(), dto.birthDate(), new AddressEntity(dto.address()));
         this.setBusinessName(dto.businessName());
         this.setFantasyName(dto.fantasyName());
         this.setCnpj(dto.cnpj());

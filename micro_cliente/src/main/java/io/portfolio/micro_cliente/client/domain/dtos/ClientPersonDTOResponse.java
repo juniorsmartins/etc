@@ -3,7 +3,7 @@ package io.portfolio.micro_cliente.client.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntityImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public record ClientPersonDTOResponseImpl
+public record ClientPersonDTOResponse
     (
         @JsonProperty("Identifier")
         Long id,
@@ -43,7 +43,7 @@ public record ClientPersonDTOResponseImpl
         EducationEnum education
     ) implements Serializable, PolicyDTO<Long>
 {
-    public ClientPersonDTOResponseImpl(ClientPersonEntityImpl clientEntity) {
+    public ClientPersonDTOResponse(ClientPersonEntity clientEntity) {
         this(clientEntity.getId(),
             clientEntity.getFirstName(),
             clientEntity.getLastName(),

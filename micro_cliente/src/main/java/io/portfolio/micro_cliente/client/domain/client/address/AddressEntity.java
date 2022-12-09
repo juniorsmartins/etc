@@ -1,6 +1,7 @@
 package io.portfolio.micro_cliente.client.domain.client.address;
 
 import io.portfolio.micro_cliente.client.domain.client.Client;
+import io.portfolio.micro_cliente.client.domain.dtos.address.AddressDTORequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-public final class AddressEntityImpl implements Serializable {
+public final class AddressEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -45,4 +46,15 @@ public final class AddressEntityImpl implements Serializable {
     @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JoinColumn(name = "id_client", referencedColumnName = "id")
     private Client client;
+
+    public AddressEntity(AddressDTORequest dto) {
+        this.cep = dto.cep();
+        this.state = dto.state();
+        this.city = dto.city();
+        this.district = dto.district();
+        this.publicPlace = dto.publicPlace();
+        this.houseNumber = dto.houseNumber();
+        this.complement = dto.complement();
+    }
 }
+

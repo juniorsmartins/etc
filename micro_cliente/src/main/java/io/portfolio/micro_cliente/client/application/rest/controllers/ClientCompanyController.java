@@ -1,9 +1,9 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
-import io.portfolio.micro_cliente.client.domain.client.ClientCompanyEntityImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequestImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTOResponseImpl;
-import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilterImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientCompanyEntity;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTOResponse;
+import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilter;
 import io.portfolio.micro_cliente.client.domain.services.PolicyService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,29 +19,29 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping(value = "${app.api.base}/clients/companys", produces = {"application/json"})
-public final class ClientCompanyControllerImpl extends PolicyControllers<ClientCompanyDTORequestImpl, ClientCompanyFilterImpl, ClientCompanyDTOResponseImpl, Long> {
+public final class ClientCompanyController extends PolicyControllers<ClientCompanyDTORequest, ClientCompanyFilter, ClientCompanyDTOResponse, Long> {
 
     @Autowired
-    private PolicyService<ClientCompanyDTORequestImpl, ClientCompanyFilterImpl, ClientCompanyDTOResponseImpl,
-            ClientCompanyEntityImpl, Long> service;
+    private PolicyService<ClientCompanyDTORequest, ClientCompanyFilter, ClientCompanyDTOResponse,
+            ClientCompanyEntity, Long> service;
 
     @Override
-    public ResponseEntity<ClientCompanyDTOResponseImpl> create(@RequestBody @Valid ClientCompanyDTORequestImpl dto) {
+    public ResponseEntity<ClientCompanyDTOResponse> create(@RequestBody @Valid ClientCompanyDTORequest dto) {
         return this.service.create(dto);
     }
 
     @Override
-    public ResponseEntity<ClientCompanyDTOResponseImpl> update(@RequestBody @Valid ClientCompanyDTORequestImpl dto) {
+    public ResponseEntity<ClientCompanyDTOResponse> update(@RequestBody @Valid ClientCompanyDTORequest dto) {
         return this.service.update(dto);
     }
 
     @Override
-    public ResponseEntity<ClientCompanyDTOResponseImpl> searchById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<ClientCompanyDTOResponse> searchById(@PathVariable(value = "id") Long id) {
         return this.service.searchById(id);
     }
 
     @Override
-    public ResponseEntity<Page<ClientCompanyDTOResponseImpl>> searchAll(ClientCompanyFilterImpl filter,
+    public ResponseEntity<Page<ClientCompanyDTOResponse>> searchAll(ClientCompanyFilter filter,
         @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pagination) {
         return this.service.searchAll(filter, pagination);
     }

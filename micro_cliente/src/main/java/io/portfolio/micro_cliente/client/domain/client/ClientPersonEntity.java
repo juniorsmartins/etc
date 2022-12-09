@@ -1,6 +1,7 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequestImpl;
+import io.portfolio.micro_cliente.client.domain.client.address.AddressEntity;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequest;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -16,7 +17,7 @@ import lombok.*;
 @Getter
 @Setter
 @PrimaryKeyJoinColumn(referencedColumnName="id")
-public final class ClientPersonEntityImpl extends Client implements PolicyEntity<Long> {
+public final class ClientPersonEntity extends Client implements PolicyEntity<Long> {
 
     @Column(name = "first_name", length = 30, nullable = false)
     private String firstName;
@@ -43,8 +44,8 @@ public final class ClientPersonEntityImpl extends Client implements PolicyEntity
     @Enumerated(EnumType.STRING)
     private EducationEnum education;
 
-    public ClientPersonEntityImpl(ClientPersonDTORequestImpl dto) {
-        super(dto.id(), dto.birthDate());
+    public ClientPersonEntity(ClientPersonDTORequest dto) {
+        super(dto.id(), dto.birthDate(), new AddressEntity(dto.address()));
         this.firstName = dto.firstName();
         this.lastName = dto.lastName();
         this.cpf = dto.cpf();
