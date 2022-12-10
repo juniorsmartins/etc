@@ -23,4 +23,7 @@ public abstract class Client implements Serializable {
 
     @Column(name = "birth_date")
     protected LocalDate birthDate;
+
+    @OneToOne(mappedBy = "client", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER, targetEntity = AddressEntity.class)
+    private AddressEntity address;
 }

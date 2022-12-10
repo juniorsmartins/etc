@@ -1,29 +1,6 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequestImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponseImpl;
-import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
-import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
-import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
-import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
-import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilterImpl;
-import io.portfolio.micro_cliente.client.infrastructure.repositories.ClientPersonRepositoryJpa;
-import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
-import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
-import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.TestPropertySource;
-
-import java.time.LocalDate;
-
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.catchThrowable;
 //
 //@SpringBootTest
 //@TestPropertySource(properties = {"spring.profiles.active=tests"})

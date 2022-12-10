@@ -1,9 +1,8 @@
 package io.portfolio.micro_cliente.client.domain.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntityImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -13,7 +12,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public record ClientPersonDTOResponseImpl
+public record ClientPersonDTOResponse
     (
         @JsonProperty("Identifier")
         Long id,
@@ -27,7 +26,7 @@ public record ClientPersonDTOResponseImpl
         @JsonProperty("Individual Registration") // Renomeia o nome do campo para a apresentação
         String cpf,
 
-        @JsonIgnore
+        @JsonProperty("Birth Date")
         LocalDate birthDate,
 
         @JsonProperty("Sex")
@@ -40,10 +39,13 @@ public record ClientPersonDTOResponseImpl
         MaritalStatusEnum maritalStatus,
 
         @JsonProperty("Education")
-        EducationEnum education
+        EducationEnum education,
+
+        @JsonProperty("Address")
+        AddressDTOResponse address
     ) implements Serializable, PolicyDTO<Long>
 {
-    public ClientPersonDTOResponseImpl(ClientPersonEntityImpl clientEntity) {
+    public ClientPersonDTOResponse(ClientPersonEntity clientEntity) {
         this(clientEntity.getId(),
             clientEntity.getFirstName(),
             clientEntity.getLastName(),
@@ -52,6 +54,7 @@ public record ClientPersonDTOResponseImpl
             clientEntity.getSex(),
             clientEntity.getGenre(),
             clientEntity.getMaritalStatus(),
-            clientEntity.getEducation());
+            clientEntity.getEducation(),
+            new AddressDTOResponse(clientEntity.getAddress()));
     }
 }

@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface PolicyRepository<P extends PolicyEntity<ID>, ID> {
 
-    P create(P entity);
+    P saveEntity(P entity);
     Optional<P> searchById(ID id);
     Optional<P> searchByDocument(String document);
     Page<P> searchAll(Example filter, Pageable pagination);
