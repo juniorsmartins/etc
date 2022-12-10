@@ -15,12 +15,13 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] README detalhado;
 > - [x] Metodologia Ágil (Scrum Board no Jira);
 > - [x] Repositório Monorepo com estrutura Gitflow;
-> - [ ] UML - Unified Modeling Language (Use Case);
+> - [ ] UML - Unified Modeling Language (Use Case).
 
 2. POO - Programação Orientada a Objeto:
 > - [x] Polimorfismo; 
 > - [x] Herança; 
-> - [x] Encapsulamento; 
+> - [ ] Encapsulamento; 
+> - [ ] Abstração.
 
 3. Patterns:
 > - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
@@ -28,7 +29,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Clean Architecture;
 > - [ ] Clean Code;
 > - [ ] Design Pattern;
-> - [ ] Refactor;
+> - [ ] Refactor.
 
 4. Spring:
 > - [x] Data JPA; 
@@ -42,10 +43,10 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Shell; 
 
 5. API Restful:
-> - [ ] Nível 0;
-> - [ ] Nível 1;
-> - [ ] Nível 2;
-> - [ ] Nível 3;
+> - [ ] Nível de maturidade 0;
+> - [ ] Nível de maturidade 1;
+> - [ ] Nível de maturidade 2;
+> - [ ] Nível de maturidade 3.
 
 6. Microservices: 
 > - [x] micro_client; 
@@ -55,16 +56,19 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 7. Java: 
 > - [ ] Tratamento de Exceções (Global e Local);
 > - [ ] Generics;
-> - [ ] Lambda;
-> - [ ] Threads;
-> - [ ] Funcional;
 > - [ ] Stream;
-> - [ ] Collections (List, Map e etc);
+> - [ ] Lambda;
+> - [ ] Method Reference;
+> - [ ] Funcional;
+> - [ ] Threads;
+> - [ ] Collections Framework;
+> - [ ] Comparable e Comparator;
 > - [x] Enums;
 > - [ ] Cache;
 > - [ ] Swagger;
 > - [ ] Logback;
 > - [ ] Content Negotiation;
+> - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
 > - [x] Lombok; 
 > - [x] DevTools;
 > - [x] Bean Validation;
@@ -73,10 +77,10 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Mensageria (RabbitMQ ou Kafka);
 > - [ ] Cors;
 > - [ ] Padrão Repository com EntityManager;
-> - [ ] Usar Records para DTOs (Data Transfer Object);
+> - [ ] DTOs - Data Transfer Object (Class Record);
 > - [ ] GraalVM;
 > - [ ] Eventos;
-> - [ ] Jasper Reports;
+> - [ ] Jasper Reports.
 
 ### Front-end
 
@@ -87,14 +91,16 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 - [ ] Requisições à API com tratamento da resposta com Promises ou Observables;
 - [ ] Uso da API JSON Server;
 - [ ] Uso de diretivas;
-- [ ] Formatar apresentação de dados com Pipes;
+- [ ] Formatar apresentação de dados com Pipes.
 
-### Database
+### Banco de Dados Relacional e Não Relacional (NoSQL)
 
-- [x] Banco de dados de teste: PostgreSQL;
-- [ ] Banco de dados de desenvolvimento: MySQL;
-- [ ] Banco de dados de produção: MariaDB;
-- [x] DER - Diagrama Entidade Relacionamento;
+- [x] Banco de dados PostgreSQL;
+- [ ] Banco de dados MySQL;
+- [ ] Banco de dados MariaDB;
+- [ ] Banco de dados MongoDB (NoSQL);
+- [x] DER - Diagrama Entidade Relacionamento.
+
 
 # DATABASE
 
