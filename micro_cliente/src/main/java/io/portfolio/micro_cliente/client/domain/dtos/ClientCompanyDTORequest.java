@@ -12,7 +12,6 @@ import jakarta.validation.constraints.Past;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CNPJ;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 public record ClientCompanyDTORequest
@@ -38,7 +37,12 @@ public record ClientCompanyDTORequest
         @JsonSerialize(using = LocalDateSerializer.class)
         LocalDate birthDate,
 
+        @NotNull
         @Valid
-        AddressDTORequest address
-    ) implements Serializable, PolicyDTO<Long>
+        AddressDTORequest address,
+
+        @NotNull
+        @Valid
+        ContactDTORequest contact
+    ) implements PolicyDTO<Long>
 { }

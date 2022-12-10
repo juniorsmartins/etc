@@ -33,5 +33,5 @@ public record AddressDTORequest
 
         @Length(max = 250)
         String complement
-    ) implements Serializable, PolicyDTO<Long>
+    )
 { }
