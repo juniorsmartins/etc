@@ -1,6 +1,5 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
-import io.portfolio.micro_cliente.client.domain.client.address.AddressEntity;
 import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequest;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;

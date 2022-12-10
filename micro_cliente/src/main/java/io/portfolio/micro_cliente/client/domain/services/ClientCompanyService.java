@@ -16,7 +16,6 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.net.URI;
 import java.util.Optional;
 
 @Service
@@ -31,17 +30,14 @@ public non-sealed class ClientCompanyService implements PolicyService<ClientComp
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ResponseEntity<ClientCompanyDTOResponse> create(ClientCompanyDTORequest dto) {
+    public ClientCompanyDTOResponse create(ClientCompanyDTORequest dto) {
         return Optional.of(dto)
                 .map(ClientCompanyEntity::new)
                 .map(client -> {
                     validateUniqueCNPJRule(client.getCnpj());
-                    return this.repository.create(client);
+                    return this.repository.saveEntity(client);
                 })
                 .map(ClientCompanyDTOResponse::new)
-                .map(dtoResponse -> ResponseEntity
-                        .created(URI.create("/" + dtoResponse.id()))
-                        .body(dtoResponse))
                 .orElseThrow();
     }
 

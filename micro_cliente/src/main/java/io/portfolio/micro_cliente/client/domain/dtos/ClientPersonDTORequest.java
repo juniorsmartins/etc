@@ -5,7 +5,6 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
-import io.portfolio.micro_cliente.client.domain.dtos.address.AddressDTORequest;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
@@ -56,6 +55,7 @@ public record ClientPersonDTORequest
         @NotNull
         EducationEnum education,
 
+        @NotNull
         @Valid
         AddressDTORequest address
     ) implements Serializable, PolicyDTO<Long>

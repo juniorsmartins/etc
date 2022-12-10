@@ -1,6 +1,5 @@
 package io.portfolio.micro_cliente.client.domain.dtos;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
@@ -27,7 +26,7 @@ public record ClientPersonDTOResponse
         @JsonProperty("Individual Registration") // Renomeia o nome do campo para a apresentação
         String cpf,
 
-        @JsonIgnore
+        @JsonProperty("Birth Date")
         LocalDate birthDate,
 
         @JsonProperty("Sex")
@@ -40,7 +39,10 @@ public record ClientPersonDTOResponse
         MaritalStatusEnum maritalStatus,
 
         @JsonProperty("Education")
-        EducationEnum education
+        EducationEnum education,
+
+        @JsonProperty("Address")
+        AddressDTOResponse address
     ) implements Serializable, PolicyDTO<Long>
 {
     public ClientPersonDTOResponse(ClientPersonEntity clientEntity) {
@@ -52,6 +54,7 @@ public record ClientPersonDTOResponse
             clientEntity.getSex(),
             clientEntity.getGenre(),
             clientEntity.getMaritalStatus(),
-            clientEntity.getEducation());
+            clientEntity.getEducation(),
+            new AddressDTOResponse(clientEntity.getAddress()));
     }
 }

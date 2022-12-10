@@ -17,7 +17,7 @@ public class ClientPersonRepositoryImpl implements PolicyRepository<ClientPerson
     private ClientPersonRepositoryJpa repositoryJpa;
 
     @Override
-    public ClientPersonEntity create(ClientPersonEntity entity) {
+    public ClientPersonEntity saveEntity(ClientPersonEntity entity) {
         return repositoryJpa.saveAndFlush(entity);
     }
 

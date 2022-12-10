@@ -17,7 +17,7 @@ public class ClientCompanyRepositoryImpl implements PolicyRepository<ClientCompa
     private ClientCompanyRepositoryJpa repositoryJpa;
 
     @Override
-    public ClientCompanyEntity create(ClientCompanyEntity entity) {
+    public ClientCompanyEntity saveEntity(ClientCompanyEntity entity) {
         return this.repositoryJpa.saveAndFlush(entity);
     }
 

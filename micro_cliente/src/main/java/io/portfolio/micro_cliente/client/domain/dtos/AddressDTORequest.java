@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.dtos.address;
+package io.portfolio.micro_cliente.client.domain.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
@@ -7,14 +7,14 @@ import java.io.Serializable;
 
 public record AddressDTORequest
     (
-        Long idClient,
+        Long id,
 
         @NotBlank
         @Length(max = 15)
         String cep,
 
         @NotBlank
-        @Length(max = 100)
+        @Length(max = 2)
         String state,
 
         @NotBlank
@@ -33,5 +33,5 @@ public record AddressDTORequest
 
         @Length(max = 250)
         String complement
-    ) implements Serializable
+    ) implements Serializable, PolicyDTO<Long>
 { }

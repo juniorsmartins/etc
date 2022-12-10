@@ -1,7 +1,6 @@
-package io.portfolio.micro_cliente.client.domain.client.address;
+package io.portfolio.micro_cliente.client.domain.client;
 
-import io.portfolio.micro_cliente.client.domain.client.Client;
-import io.portfolio.micro_cliente.client.domain.dtos.address.AddressDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos.AddressDTORequest;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,17 +13,18 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-public final class AddressEntity implements Serializable {
+public final class AddressEntity implements Serializable, PolicyEntity<Long> {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name = "id_client")
-    private Long idClient;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
 
     @Column(name = "cep", length = 15, nullable = false)
     private String cep;
 
-    @Column(name = "state", length = 100, nullable = false)
+    @Column(name = "state", length = 2, nullable = false)
     private String state;
 
     @Column(name = "city", length = 100, nullable = false)
@@ -42,12 +42,13 @@ public final class AddressEntity implements Serializable {
     @Column(name = "complement", length = 250, nullable = true)
     private String complement;
 
-    @MapsId("id_client")
-    @OneToOne(targetEntity = Client.class, cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+//    @MapsId("id_client")
+    @OneToOne
     @JoinColumn(name = "id_client", referencedColumnName = "id")
     private Client client;
 
     public AddressEntity(AddressDTORequest dto) {
+        this.id = dto.id();
         this.cep = dto.cep();
         this.state = dto.state();
         this.city = dto.city();

@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
+
 @RestController
 @RequestMapping(value = "${app.api.base}/clients/companys", produces = {"application/json"})
 public final class ClientCompanyController extends PolicyControllers<ClientCompanyDTORequest, ClientCompanyFilter, ClientCompanyDTOResponse, Long> {
@@ -27,7 +29,10 @@ public final class ClientCompanyController extends PolicyControllers<ClientCompa
 
     @Override
     public ResponseEntity<ClientCompanyDTOResponse> create(@RequestBody @Valid ClientCompanyDTORequest dto) {
-        return this.service.create(dto);
+        var response = this.service.create(dto);
+        return ResponseEntity
+                .created(URI.create("/" + response.id()))
+                .body(response);
     }
 
     @Override
