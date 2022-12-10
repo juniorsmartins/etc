@@ -45,16 +45,16 @@
     <column id="COL10" populated="true" UUID="577d5328-4bdd-49a7-9b9c-933de40ad699" autoIncrement="false" autoIncrementSequenceName="Tb_ADDRESS_city_seq" defaultValue="" name="city" nullable="0" physicalName="city" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL11" populated="true" UUID="3bbdb5b8-2a78-4393-aec7-e5af29472395" autoIncrement="false" autoIncrementSequenceName="Tb_ADDRESS_district_seq" defaultValue="" name="district" nullable="0" physicalName="district" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL11" populated="true" UUID="3bbdb5b8-2a78-4393-aec7-e5af29472395" autoIncrement="false" autoIncrementSequenceName="Tb_ADDRESS_district_seq" defaultValue="" name="district" nullable="0" physicalName="district" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     <column id="COL12" populated="true" UUID="a530e764-7284-427e-8095-c97c1f1b50c7" autoIncrement="false" autoIncrementSequenceName="Tb_ADDRESS_public_place_seq" defaultValue="" name="public_place" nullable="0" physicalName="public_place" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL13" populated="true" UUID="c8e5529f-1d2b-4eff-b574-50cc295170db" autoIncrement="false" autoIncrementSequenceName="Tb_ADDRESS_house_number_seq" defaultValue="" name="house_number" nullable="0" physicalName="house_number" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
+    <column id="COL13" populated="true" UUID="c8e5529f-1d2b-4eff-b574-50cc295170db" autoIncrement="false" autoIncrementSequenceName="Tb_ADDRESS_house_number_seq" defaultValue="" name="house_number" nullable="1" physicalName="house_number" precision="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="4" userDefinedTypeUUID="63b011c7-c81f-4c75-8271-632b3c87f727" >
      <remarks></remarks>
     </column>
-    <column id="COL14" populated="true" UUID="99293022-9f54-40ee-ba27-77d4e2a1fbf7" autoIncrement="false" autoIncrementSequenceName="Tb_ADDRESS_complement_seq" defaultValue="" name="complement" nullable="0" physicalName="complement" precision="250" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL14" populated="true" UUID="99293022-9f54-40ee-ba27-77d4e2a1fbf7" autoIncrement="false" autoIncrementSequenceName="Tb_ADDRESS_complement_seq" defaultValue="" name="complement" nullable="1" physicalName="complement" precision="250" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     </folder>
@@ -74,10 +74,10 @@
     <column id="COL18" populated="true" UUID="75a78be4-7392-498e-8b5d-2931002d05fa" autoIncrement="false" autoIncrementSequenceName="Tb_CLIENT_id_seq" defaultValue="" name="id" nullable="0" physicalName="id" precision="0" primaryKeySeq="0" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="-5" userDefinedTypeUUID="433cc8af-284d-4abb-8ef7-08ebcb34dbf1" >
      <remarks></remarks>
     </column>
-    <column id="COL19" populated="true" UUID="bef7fe64-c213-4312-be01-59c6b44512dd" autoIncrement="false" autoIncrementSequenceName="Tb_CONTACT_cell_seq" defaultValue="" name="cell" nullable="0" physicalName="cell" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL19" populated="true" UUID="bef7fe64-c213-4312-be01-59c6b44512dd" autoIncrement="false" autoIncrementSequenceName="Tb_CONTACT_cell_seq" defaultValue="" name="cell" nullable="1" physicalName="cell" precision="20" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
-    <column id="COL20" populated="true" UUID="075d03de-78b6-4017-938a-e95abff97fdf" autoIncrement="false" autoIncrementSequenceName="Tb_CONTACT_email_seq" defaultValue="" name="email" nullable="0" physicalName="email" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
+    <column id="COL20" populated="true" UUID="075d03de-78b6-4017-938a-e95abff97fdf" autoIncrement="false" autoIncrementSequenceName="Tb_CONTACT_email_seq" defaultValue="" name="email" nullable="1" physicalName="email" precision="100" referenceCount="1" scale="0" sourceDataTypeName="UserDefinedSQLType" type="12" userDefinedTypeUUID="831ac2d4-0e65-47ec-a0b7-62b7f6b8760a" >
      <remarks></remarks>
     </column>
     </folder>
