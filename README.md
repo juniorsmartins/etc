@@ -56,11 +56,13 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 7. Java: 
 > - [ ] Tratamento de Exceções (Global e Local);
 > - [ ] Generics;
-> - [ ] Lambda;
-> - [ ] Threads;
-> - [ ] Funcional;
 > - [ ] Stream;
+> - [ ] Lambda;
+> - [ ] Method Reference;
+> - [ ] Funcional;
+> - [ ] Threads;
 > - [ ] Collections Framework;
+> - [ ] Comparable e Comparator;
 > - [x] Enums;
 > - [ ] Cache;
 > - [ ] Swagger;
