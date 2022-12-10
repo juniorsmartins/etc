@@ -9,6 +9,7 @@ import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Past;
@@ -18,7 +19,7 @@ import org.hibernate.validator.constraints.br.CPF;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public record ClientPersonDTORequestImpl
+public record ClientPersonDTORequest
     (
         Long id,
 
@@ -52,6 +53,10 @@ public record ClientPersonDTORequestImpl
         MaritalStatusEnum maritalStatus,
 
         @NotNull
-        EducationEnum education
+        EducationEnum education,
+
+        @NotNull
+        @Valid
+        AddressDTORequest address
     ) implements Serializable, PolicyDTO<Long>
 { }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 
 public sealed abstract class PolicyControllers<R extends PolicyDTO<ID>, F extends PolicyFilter<ID>,
-        S extends PolicyDTO<ID>, ID> permits ClientPersonControllerImpl, ClientCompanyControllerImpl {
+        S extends PolicyDTO<ID>, ID> permits ClientPersonController, ClientCompanyController {
 
     @PostMapping
     public abstract ResponseEntity<S> create(R dto);

@@ -1,13 +1,13 @@
 package io.portfolio.micro_cliente.client.infrastructure.repositories;
 
-import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntityImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface ClientPersonRepositoryJpa extends JpaRepository<ClientPersonEntityImpl, Long> {
+public interface ClientPersonRepositoryJpa extends JpaRepository<ClientPersonEntity, Long> {
 
-    Optional<ClientPersonEntityImpl> findByCpf(String cpf);
+    Optional<ClientPersonEntity> findByCpf(String cpf);
 }

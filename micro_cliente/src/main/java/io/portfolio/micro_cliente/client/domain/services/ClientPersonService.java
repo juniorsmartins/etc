@@ -1,9 +1,9 @@
 package io.portfolio.micro_cliente.client.domain.services;
 
-import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntityImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequestImpl;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponseImpl;
-import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilterImpl;
+import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponse;
+import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilter;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
@@ -19,32 +19,29 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.net.URI;
 import java.util.Optional;
 
 @Service
-public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientPersonDTORequestImpl, ClientPersonFilterImpl,
-        ClientPersonDTOResponseImpl, ClientPersonEntityImpl, Long> {
+public non-sealed class ClientPersonService implements PolicyService<ClientPersonDTORequest, ClientPersonFilter,
+        ClientPersonDTOResponse, ClientPersonEntity, Long> {
 
     @Autowired
-    private PolicyRepository<ClientPersonEntityImpl, Long> repository;
+    private PolicyRepository<ClientPersonEntity, Long> repository;
 
     @Autowired
     private MessagesProperties messages;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ResponseEntity<ClientPersonDTOResponseImpl> create(ClientPersonDTORequestImpl dto) {
+    public ClientPersonDTOResponse create(ClientPersonDTORequest dto) {
         return Optional.of(dto)
-                .map(ClientPersonEntityImpl::new)
-                .map(client -> {
-                    validateUniqueCPFRule(client.getCpf());
-                    return this.repository.create(client);
+                .map(ClientPersonEntity::new)
+                .map(clientNew -> {
+                    validateUniqueCPFRule(clientNew.getCpf());
+                    clientNew.getAddress().setClient(clientNew);
+                    return this.repository.saveEntity(clientNew);
                 })
-                .map(ClientPersonDTOResponseImpl::new)
-                .map(dtoResponse -> ResponseEntity
-                        .created(URI.create("/" + dtoResponse.id()))
-                        .body(dtoResponse))
+                .map(ClientPersonDTOResponse::new)
                 .orElseThrow();
     }
 
@@ -55,7 +52,7 @@ public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientP
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ResponseEntity<ClientPersonDTOResponseImpl> update(ClientPersonDTORequestImpl dto) {
+    public ResponseEntity<ClientPersonDTOResponse> update(ClientPersonDTORequest dto) {
         validateUniqueCPFRuleByUpdate(dto);
 
         return this.repository.searchById(dto.id())
@@ -72,12 +69,12 @@ public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientP
                 })
                 .map(client -> ResponseEntity
                         .ok()
-                        .body(new ClientPersonDTOResponseImpl(client))
+                        .body(new ClientPersonDTOResponse(client))
                 )
                 .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
-        private void validateUniqueCPFRuleByUpdate(ClientPersonDTORequestImpl dto) {
+        private void validateUniqueCPFRuleByUpdate(ClientPersonDTORequest dto) {
             var clientByCPF = this.repository.searchByDocument(dto.cpf());
             if(!clientByCPF.isEmpty() && clientByCPF.get().getId() != dto.id()) {
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
@@ -85,24 +82,24 @@ public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientP
         }
 
     @Override
-    public ResponseEntity<ClientPersonDTOResponseImpl> searchById(Long id) {
+    public ResponseEntity<ClientPersonDTOResponse> searchById(Long id) {
         return this.repository.searchById(id)
                 .map(client -> ResponseEntity
                         .ok()
-                        .body(new ClientPersonDTOResponseImpl(client))
+                        .body(new ClientPersonDTOResponse(client))
                 )
                 .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
     @Override
-    public ResponseEntity<Page<ClientPersonDTOResponseImpl>> searchAll(ClientPersonFilterImpl filter, Pageable pagination) {
+    public ResponseEntity<Page<ClientPersonDTOResponse>> searchAll(ClientPersonFilter filter, Pageable pagination) {
         return ResponseEntity
                 .ok()
                 .body(this.repository.searchAll(configureFilter(filter), pagination)
-                        .map(ClientPersonDTOResponseImpl::new));
+                        .map(ClientPersonDTOResponse::new));
     }
 
-        private Example<ClientPersonEntityImpl> configureFilter(ClientPersonFilterImpl filter) {
+        private Example<ClientPersonEntity> configureFilter(ClientPersonFilter filter) {
             // ExampleMatcher - permite configurar condições para serem aplicadas nos filtros
             ExampleMatcher exampleMatcher = ExampleMatcher
                     .matchingAll()
@@ -111,7 +108,7 @@ public non-sealed class ClientPersonServiceImpl implements PolicyService<ClientP
                     .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // permite encontrar palavras parecidas - tipo Like do SQL
 
             // Example - pega campos populados para criar filtros
-            return Example.of(ClientPersonEntityImpl.builder()
+            return Example.of(ClientPersonEntity.builder()
                         .firstName(filter.firstName())
                         .lastName(filter.lastName())
                         .cpf(filter.cpf())

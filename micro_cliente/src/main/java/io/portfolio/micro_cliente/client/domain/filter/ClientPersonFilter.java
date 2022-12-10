@@ -7,7 +7,7 @@ import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 
 import java.io.Serializable;
 
-public record ClientPersonFilterImpl
+public record ClientPersonFilter
     (
         String firstName,
         String lastName,

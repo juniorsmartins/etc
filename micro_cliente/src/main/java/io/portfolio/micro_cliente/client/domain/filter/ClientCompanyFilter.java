@@ -2,7 +2,7 @@ package io.portfolio.micro_cliente.client.domain.filter;
 
 import java.io.Serializable;
 
-public record ClientCompanyFilterImpl
+public record ClientCompanyFilter
     (
         String businessName,
         String fantasyName,
