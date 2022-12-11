@@ -15,4 +15,5 @@ public class MessagesProperties {
     private String resourceDeletedSuccessfully;
     private String singleCpfRuleViolation;
     private String singleCnpjRuleViolation;
+    private String unavailableServer;
 }

@@ -6,6 +6,7 @@ import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilter;
 import io.portfolio.micro_cliente.client.domain.services.PolicyService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URI;
 
+@Slf4j
 @RestController
 @RequestMapping(value = "${app.api.base}/clients/persons", produces = {"application/json"})
 public final class ClientPersonController extends PolicyControllers<ClientPersonDTORequest, ClientPersonFilter, ClientPersonDTOResponse, Long> {
@@ -29,7 +31,11 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
 
     @Override
     public ResponseEntity<ClientPersonDTOResponse> create(@RequestBody @Valid ClientPersonDTORequest dto) {
+        log.info("Create - started resource record control.");
+
         var response = this.service.create(dto);
+
+        log.info("Return - completed resource registration.");
         return ResponseEntity
                 .created(URI.create("/"+ response.id()))
                 .body(response);

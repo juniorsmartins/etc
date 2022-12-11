@@ -6,8 +6,10 @@ import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilter;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
+import io.portfolio.micro_cliente.shared.exceptions.InternalErrorCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -20,6 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
+@Slf4j
 @Service
 public non-sealed class ClientPersonService implements PolicyService<ClientPersonDTORequest, ClientPersonFilter,
         ClientPersonDTOResponse, ClientPersonEntity, Long> {
@@ -33,6 +36,8 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ClientPersonDTOResponse create(ClientPersonDTORequest dto) {
+        log.info("Create - started resource record service.");
+
         return Optional.of(dto)
                 .map(ClientPersonEntity::new)
                 .map(clientNew -> {
@@ -41,7 +46,10 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
                     clientNew.getContact().setClient(clientNew);
                     return this.repository.saveEntity(clientNew);})
                 .map(ClientPersonDTOResponse::new)
-                .orElseThrow();
+                .orElseThrow(() -> {
+                    log.error("Exception - internal server error.");
+                    throw new InternalErrorCustomException(messages.getUnavailableServer());
+                });
     }
 
         private void validateUniqueCPFRule(String cpf) {

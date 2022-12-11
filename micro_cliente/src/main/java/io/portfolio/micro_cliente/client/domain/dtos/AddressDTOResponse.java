@@ -3,7 +3,9 @@ package io.portfolio.micro_cliente.client.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.portfolio.micro_cliente.client.domain.client.AddressEntity;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record AddressDTOResponse
     (
@@ -41,5 +43,6 @@ public record AddressDTOResponse
                 address.getPublicPlace(),
                 address.getHouseNumber(),
                 address.getComplement());
+        log.info("DTOResponse - address entity conversion to return DTO.");
     }
 }

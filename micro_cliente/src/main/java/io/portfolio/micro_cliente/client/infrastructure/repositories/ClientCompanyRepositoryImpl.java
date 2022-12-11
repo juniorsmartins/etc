@@ -2,6 +2,7 @@ package io.portfolio.micro_cliente.client.infrastructure.repositories;
 
 import io.portfolio.micro_cliente.client.domain.client.ClientCompanyEntity;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+@Slf4j
 @Repository
 public class ClientCompanyRepositoryImpl implements PolicyRepository<ClientCompanyEntity, Long> {
 
@@ -18,6 +20,8 @@ public class ClientCompanyRepositoryImpl implements PolicyRepository<ClientCompa
 
     @Override
     public ClientCompanyEntity saveEntity(ClientCompanyEntity entity) {
+        log.info("Save - started resource record repository.");
+
         return this.repositoryJpa.saveAndFlush(entity);
     }
 

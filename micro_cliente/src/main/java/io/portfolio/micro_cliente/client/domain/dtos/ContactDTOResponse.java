@@ -3,7 +3,9 @@ package io.portfolio.micro_cliente.client.domain.dtos;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.portfolio.micro_cliente.client.domain.client.ContactEntity;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record ContactDTOResponse
     (
@@ -21,5 +23,6 @@ public record ContactDTOResponse
         this(contact.getId(),
                 contact.getEmail(),
                 contact.getCell());
+        log.info("DTOResponse - contact entity conversion to return DTO.");
     }
 }

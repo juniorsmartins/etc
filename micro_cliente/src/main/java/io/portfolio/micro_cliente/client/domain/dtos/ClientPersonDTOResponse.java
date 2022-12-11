@@ -7,10 +7,11 @@ import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
+import lombok.extern.slf4j.Slf4j;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
+@Slf4j
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record ClientPersonDTOResponse
     (
@@ -60,5 +61,6 @@ public record ClientPersonDTOResponse
             clientEntity.getEducation(),
             new AddressDTOResponse(clientEntity.getAddress()),
             new ContactDTOResponse(clientEntity.getContact()));
+        log.info("DTOResponse - person entity conversion to return DTO.");
     }
 }
