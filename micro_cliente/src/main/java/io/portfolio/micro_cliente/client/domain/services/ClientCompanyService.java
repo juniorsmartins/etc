@@ -33,9 +33,11 @@ public non-sealed class ClientCompanyService implements PolicyService<ClientComp
     public ClientCompanyDTOResponse create(ClientCompanyDTORequest dto) {
         return Optional.of(dto)
                 .map(ClientCompanyEntity::new)
-                .map(client -> {
-                    validateUniqueCNPJRule(client.getCnpj());
-                    return this.repository.saveEntity(client);
+                .map(clientNew -> {
+                    validateUniqueCNPJRule(clientNew.getCnpj());
+                    clientNew.getAddress().setClient(clientNew);
+                    clientNew.getContact().setClient(clientNew);
+                    return this.repository.saveEntity(clientNew);
                 })
                 .map(ClientCompanyDTOResponse::new)
                 .orElseThrow();
