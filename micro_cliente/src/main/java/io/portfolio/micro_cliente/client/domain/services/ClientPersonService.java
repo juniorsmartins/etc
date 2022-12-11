@@ -13,7 +13,6 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
@@ -40,8 +39,7 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
                     validateUniqueCPFRule(clientNew.getCpf());
                     clientNew.getAddress().setClient(clientNew);
                     clientNew.getContact().setClient(clientNew);
-                    return this.repository.saveEntity(clientNew);
-                })
+                    return this.repository.saveEntity(clientNew);})
                 .map(ClientPersonDTOResponse::new)
                 .orElseThrow();
     }
@@ -53,11 +51,12 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ResponseEntity<ClientPersonDTOResponse> update(ClientPersonDTORequest dto) {
-        validateUniqueCPFRuleByUpdate(dto);
+    public ClientPersonDTOResponse update(ClientPersonDTORequest dto) {
 
         return this.repository.searchById(dto.id())
                 .map(client -> {
+                    validateUniqueCPFRuleByUpdate(dto);
+
                     client.setFirstName(dto.firstName());
                     client.setLastName(dto.lastName());
                     client.setCpf(dto.cpf());
@@ -66,12 +65,20 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
                     client.setBirthDate(dto.birthDate());
                     client.setMaritalStatus(dto.maritalStatus());
                     client.setEducation(dto.education());
-                    return client;
-                })
-                .map(client -> ResponseEntity
-                        .ok()
-                        .body(new ClientPersonDTOResponse(client))
-                )
+
+                    client.getAddress().setCep(dto.address().cep());
+                    client.getAddress().setState(dto.address().state());
+                    client.getAddress().setCity(dto.address().city());
+                    client.getAddress().setDistrict(dto.address().district());
+                    client.getAddress().setPublicPlace(dto.address().publicPlace());
+                    client.getAddress().setHouseNumber(dto.address().houseNumber());
+                    client.getAddress().setComplement(dto.address().complement());
+
+                    client.getContact().setEmail(dto.contact().email());
+                    client.getContact().setCell(dto.contact().cell());
+
+                    return client;})
+                .map(client -> new ClientPersonDTOResponse(client))
                 .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
@@ -83,21 +90,16 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
         }
 
     @Override
-    public ResponseEntity<ClientPersonDTOResponse> searchById(Long id) {
+    public ClientPersonDTOResponse searchById(Long id) {
         return this.repository.searchById(id)
-                .map(client -> ResponseEntity
-                        .ok()
-                        .body(new ClientPersonDTOResponse(client))
-                )
+                .map(client -> new ClientPersonDTOResponse(client))
                 .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 
     @Override
-    public ResponseEntity<Page<ClientPersonDTOResponse>> searchAll(ClientPersonFilter filter, Pageable pagination) {
-        return ResponseEntity
-                .ok()
-                .body(this.repository.searchAll(configureFilter(filter), pagination)
-                        .map(ClientPersonDTOResponse::new));
+    public Page<ClientPersonDTOResponse> searchAll(ClientPersonFilter filter, Pageable pagination) {
+        return this.repository.searchAll(configureFilter(filter), pagination)
+                .map(ClientPersonDTOResponse::new);
     }
 
         private Example<ClientPersonEntity> configureFilter(ClientPersonFilter filter) {
@@ -122,14 +124,11 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ResponseEntity<?> deleteById(Long id) {
+    public String deleteById(Long id) {
         return this.repository.searchById(id)
                 .map(client -> {
                     this.repository.deleteById(client.getId());
-                    return ResponseEntity
-                            .ok()
-                            .body(messages.getResourceDeletedSuccessfully());
-                })
+                    return messages.getResourceDeletedSuccessfully();})
                 .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
     }
 }

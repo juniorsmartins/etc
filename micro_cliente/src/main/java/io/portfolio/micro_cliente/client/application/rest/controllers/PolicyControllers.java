@@ -26,6 +26,6 @@ public sealed abstract class PolicyControllers<R extends PolicyDTO<ID>, F extend
     public abstract ResponseEntity<Page<S>> searchAll(F filter, Pageable pagination);
 
     @DeleteMapping(path = "/{id}")
-    public abstract ResponseEntity<?> deleteById(ID id);
+    public abstract ResponseEntity<String> deleteById(ID id);
 }
 

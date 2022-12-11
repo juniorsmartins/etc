@@ -37,22 +37,30 @@ public final class ClientCompanyController extends PolicyControllers<ClientCompa
 
     @Override
     public ResponseEntity<ClientCompanyDTOResponse> update(@RequestBody @Valid ClientCompanyDTORequest dto) {
-        return this.service.update(dto);
+        return ResponseEntity
+                .ok()
+                .body(this.service.update(dto));
     }
 
     @Override
     public ResponseEntity<ClientCompanyDTOResponse> searchById(@PathVariable(value = "id") Long id) {
-        return this.service.searchById(id);
+        return ResponseEntity
+                .ok()
+                .body(this.service.searchById(id));
     }
 
     @Override
     public ResponseEntity<Page<ClientCompanyDTOResponse>> searchAll(ClientCompanyFilter filter,
         @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pagination) {
-        return this.service.searchAll(filter, pagination);
+        return ResponseEntity
+                .ok()
+                .body(this.service.searchAll(filter, pagination));
     }
 
     @Override
-    public ResponseEntity<?> deleteById(@PathVariable(value = "id") Long id) {
-        return this.service.deleteById(id);
+    public ResponseEntity<String> deleteById(@PathVariable(value = "id") Long id) {
+        return ResponseEntity
+                .ok()
+                .body(this.service.deleteById(id));
     }
 }
