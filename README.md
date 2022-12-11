@@ -9,13 +9,14 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 # CHECKLIST
 
-### Back-end Java
+### Back-end
 
 1. Geral:
 > - [ ] README detalhado;
 > - [x] Metodologia Ágil (Scrum Board no Jira);
 > - [x] Repositório Monorepo com estrutura Gitflow;
-> - [ ] UML - Unified Modeling Language (Use Case).
+> - [ ] UML - Unified Modeling Language (Use Case);
+> - [ ] Docker.
 
 2. POO - Programação Orientada a Objeto:
 > - [x] Polimorfismo; 
@@ -40,7 +41,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] GraphQL; 
 > - [ ] AMQP; 
 > - [ ] Flo; 
-> - [ ] Shell; 
+> - [ ] Shell;
+> - [ ] Admin.
 
 5. API Restful:
 > - [ ] Nível de maturidade 0;
@@ -66,11 +68,12 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] Enums;
 > - [ ] Cache;
 > - [ ] Swagger;
-> - [ ] Logback;
+> - [ ] Logback (Escolhido nível Info - existem cinco níveis: trace, debug, info, warn e error);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
 > - [x] Lombok; 
 > - [x] DevTools;
+> - [ ] BeanUtils;
 > - [x] Bean Validation;
 > - [ ] Flyway Migration;
 > - [ ] Java Mail Sender;
@@ -117,6 +120,16 @@ __Modelo Lógico__
 __Modelo Físico__
 
 ![PhysicalModel_client_5](https://user-images.githubusercontent.com/64662590/206908491-bfffbad3-af8c-4263-b308-1de165fa6a27.png)
+
+# FERRAMENTAS
+
+> BRModelo;
+> SQL Power Architect;
+> StarUML;
+> IntelliJ IDEA;
+> Maven;
+> Git e GitHub;
+> Postman e Insomnia;
 
 # BIBLIOGRAFIA (base de conhecimento)
 
