@@ -42,8 +42,11 @@ public record ClientPersonDTOResponse
         EducationEnum education,
 
         @JsonProperty("Address")
-        AddressDTOResponse address
-    ) implements Serializable, PolicyDTO<Long>
+        AddressDTOResponse address,
+
+        @JsonProperty("Contact")
+        ContactDTOResponse contact
+    ) implements PolicyDTO<Long>
 {
     public ClientPersonDTOResponse(ClientPersonEntity clientEntity) {
         this(clientEntity.getId(),
@@ -55,6 +58,7 @@ public record ClientPersonDTOResponse
             clientEntity.getGenre(),
             clientEntity.getMaritalStatus(),
             clientEntity.getEducation(),
-            new AddressDTOResponse(clientEntity.getAddress()));
+            new AddressDTOResponse(clientEntity.getAddress()),
+            new ContactDTOResponse(clientEntity.getContact()));
     }
 }

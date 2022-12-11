@@ -27,7 +27,7 @@ public final class ClientCompanyEntity extends Client implements PolicyEntity<Lo
     private String cnpj;
 
     public ClientCompanyEntity(ClientCompanyDTORequest dto) {
-        super(dto.id(), dto.birthDate(), new AddressEntity(dto.address()));
+        super(dto.id(), dto.birthDate(), new AddressEntity(dto.address()), new ContactEntity((dto.contact())));
         this.setBusinessName(dto.businessName());
         this.setFantasyName(dto.fantasyName());
         this.setCnpj(dto.cnpj());

@@ -37,22 +37,30 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
 
     @Override
     public ResponseEntity<ClientPersonDTOResponse> update(@RequestBody @Valid ClientPersonDTORequest dto) {
-        return this.service.update(dto);
+        return ResponseEntity
+                .ok()
+                .body(this.service.update(dto));
     }
 
     @Override
     public ResponseEntity<ClientPersonDTOResponse> searchById(@PathVariable(value = "id") Long id) {
-        return this.service.searchById(id);
+        return ResponseEntity
+                .ok()
+                .body(this.service.searchById(id));
     }
 
     @Override
     public ResponseEntity<Page<ClientPersonDTOResponse>> searchAll(ClientPersonFilter filter,
        @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pagination) {
-        return this.service.searchAll(filter, pagination);
+        return ResponseEntity
+                .ok()
+                .body(this.service.searchAll(filter, pagination));
     }
 
     @Override
-    public ResponseEntity<?> deleteById(@PathVariable(value = "id") Long id) {
-        return this.service.deleteById(id);
+    public ResponseEntity<String> deleteById(@PathVariable(value = "id") Long id) {
+        return ResponseEntity
+                .ok()
+                .body(this.service.deleteById(id));
     }
 }
