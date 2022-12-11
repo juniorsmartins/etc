@@ -108,15 +108,15 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 __Modelo Conceitual__
 
-![ConceptualModel_client_4](https://user-images.githubusercontent.com/64662590/205642135-fb61485d-d0e7-40b1-aa66-3502515fbe58.png)
+![ConceptualModel_client_5](https://user-images.githubusercontent.com/64662590/206908468-922ca5fd-3b2f-4abf-8c4c-0fa1c13ffab7.png)
 
 __Modelo Lógico__
 
-![LogicModel_client_4](https://user-images.githubusercontent.com/64662590/205642082-bcdefccb-837a-439c-b53d-91b34d3f29b2.png)
+![LogicModel_client_5](https://user-images.githubusercontent.com/64662590/206908482-91caf7a1-cb18-4b47-96bb-e4870abad26a.png)
 
 __Modelo Físico__
 
-![PhysicalModel_client_4](https://user-images.githubusercontent.com/64662590/205642040-1a1d8a1d-a610-45fb-82a4-b11aa37b7dae.png)
+![PhysicalModel_client_5](https://user-images.githubusercontent.com/64662590/206908491-bfffbad3-af8c-4263-b308-1de165fa6a27.png)
 
 # BIBLIOGRAFIA (base de conhecimento)
 
