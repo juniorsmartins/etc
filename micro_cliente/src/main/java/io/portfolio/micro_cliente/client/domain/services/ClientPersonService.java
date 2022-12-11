@@ -39,6 +39,7 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
                 .map(clientNew -> {
                     validateUniqueCPFRule(clientNew.getCpf());
                     clientNew.getAddress().setClient(clientNew);
+                    clientNew.getContact().setClient(clientNew);
                     return this.repository.saveEntity(clientNew);
                 })
                 .map(ClientPersonDTOResponse::new)
