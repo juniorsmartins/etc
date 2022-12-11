@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.portfolio.micro_cliente.client.domain.client.ClientCompanyEntity;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -24,14 +23,22 @@ public record ClientCompanyDTOResponse
         String cnpj,
 
         @JsonIgnore
-        LocalDate birthDate
-    ) implements Serializable, PolicyDTO<Long>
+        LocalDate birthDate,
+
+        @JsonProperty("Address")
+        AddressDTOResponse address,
+
+        @JsonProperty("Contact")
+        ContactDTOResponse contact
+    ) implements PolicyDTO<Long>
 {
     public ClientCompanyDTOResponse(ClientCompanyEntity companyEntity) {
         this(companyEntity.getId(),
             companyEntity.getBusinessName(),
             companyEntity.getFantasyName(),
             companyEntity.getCnpj(),
-            companyEntity.getBirthDate());
+            companyEntity.getBirthDate(),
+            new AddressDTOResponse(companyEntity.getAddress()),
+            new ContactDTOResponse(companyEntity.getContact()));
     }
 }

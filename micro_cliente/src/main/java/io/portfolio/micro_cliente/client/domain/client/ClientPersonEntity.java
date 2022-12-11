@@ -44,7 +44,7 @@ public final class ClientPersonEntity extends Client implements PolicyEntity<Lon
     private EducationEnum education;
 
     public ClientPersonEntity(ClientPersonDTORequest dto) {
-        super(dto.id(), dto.birthDate(), new AddressEntity(dto.address()));
+        super(dto.id(), dto.birthDate(), new AddressEntity(dto.address()), new ContactEntity(dto.contact()));
         this.firstName = dto.firstName();
         this.lastName = dto.lastName();
         this.cpf = dto.cpf();

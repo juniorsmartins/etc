@@ -26,4 +26,7 @@ public abstract class Client implements Serializable {
 
     @OneToOne(mappedBy = "client", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER, targetEntity = AddressEntity.class)
     private AddressEntity address;
+
+    @OneToOne(mappedBy = "client", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER, targetEntity = ContactEntity.class)
+    private ContactEntity contact;
 }

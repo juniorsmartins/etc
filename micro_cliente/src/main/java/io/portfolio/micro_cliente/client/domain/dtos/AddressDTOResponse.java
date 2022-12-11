@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.portfolio.micro_cliente.client.domain.client.AddressEntity;
 
-import java.io.Serializable;
-
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record AddressDTOResponse
     (
@@ -32,7 +30,7 @@ public record AddressDTOResponse
 
         @JsonProperty("Complement")
         String complement
-    ) implements Serializable, PolicyDTO<Long>
+    )
 {
     public AddressDTOResponse(AddressEntity address) {
         this(address.getId(),

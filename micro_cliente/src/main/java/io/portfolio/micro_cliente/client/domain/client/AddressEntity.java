@@ -13,7 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Getter
 @Setter
-public final class AddressEntity implements Serializable, PolicyEntity<Long> {
+public final class AddressEntity implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -42,7 +42,6 @@ public final class AddressEntity implements Serializable, PolicyEntity<Long> {
     @Column(name = "complement", length = 250, nullable = true)
     private String complement;
 
-//    @MapsId("id_client")
     @OneToOne
     @JoinColumn(name = "id_client", referencedColumnName = "id")
     private Client client;

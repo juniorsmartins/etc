@@ -14,12 +14,12 @@ public sealed interface PolicyService<R extends PolicyDTO<ID>, F extends PolicyF
 {
     S create(R dto);
 
-    ResponseEntity<S> update(R dto);
+    S update(R dto);
 
-    ResponseEntity<S> searchById(ID id);
+    S searchById(ID id);
 
-    ResponseEntity<Page<S>> searchAll(F filter, Pageable pagination);
+    Page<S> searchAll(F filter, Pageable pagination);
 
-    ResponseEntity<?> deleteById(ID id);
+    String deleteById(ID id);
 }
 

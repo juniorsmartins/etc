@@ -16,7 +16,6 @@ import jakarta.validation.constraints.Past;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.br.CPF;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 public record ClientPersonDTORequest
@@ -57,6 +56,10 @@ public record ClientPersonDTORequest
 
         @NotNull
         @Valid
-        AddressDTORequest address
-    ) implements Serializable, PolicyDTO<Long>
+        AddressDTORequest address,
+
+        @NotNull
+        @Valid
+        ContactDTORequest contact
+    ) implements PolicyDTO<Long>
 { }
