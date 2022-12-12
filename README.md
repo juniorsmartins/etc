@@ -68,7 +68,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] Enums;
 > - [ ] Cache;
 > - [ ] Swagger;
-> - [ ] Logback (Escolhido nível Info - existem cinco níveis: trace, debug, info, warn e error);
+> - [x] Logback (Escolhido nível Info - existem cinco níveis: trace, debug, info, warn e error);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
 > - [x] Lombok; 
