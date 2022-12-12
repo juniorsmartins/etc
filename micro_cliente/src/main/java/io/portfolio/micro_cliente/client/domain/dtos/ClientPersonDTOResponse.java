@@ -7,11 +7,11 @@ import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 
-@Slf4j
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record ClientPersonDTOResponse
     (
@@ -49,6 +49,8 @@ public record ClientPersonDTOResponse
         ContactDTOResponse contact
     ) implements PolicyDTO<Long>
 {
+    private static Logger log = LoggerFactory.getLogger(ClientPersonDTOResponse.class);
+
     public ClientPersonDTOResponse(ClientPersonEntity clientEntity) {
         this(clientEntity.getId(),
             clientEntity.getFirstName(),

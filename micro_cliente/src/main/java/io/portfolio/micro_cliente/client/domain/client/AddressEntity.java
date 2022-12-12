@@ -3,9 +3,11 @@ package io.portfolio.micro_cliente.client.domain.client;
 import io.portfolio.micro_cliente.client.domain.dtos.AddressDTORequest;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
+@Slf4j
 @Entity
 @Table(name = "addresses")
 @Builder
@@ -55,6 +57,7 @@ public final class AddressEntity implements Serializable {
         this.publicPlace = dto.publicPlace();
         this.houseNumber = dto.houseNumber();
         this.complement = dto.complement();
+        log.info("Entity - address DTO converted entity.");
     }
 }
 

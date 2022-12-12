@@ -9,14 +9,14 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class MicroClienteApplication {
 
-	private static Logger logger = LoggerFactory.getLogger(MicroClienteApplication.class);
+	private static Logger log = LoggerFactory.getLogger(MicroClienteApplication.class);
 
 	@Value("${application.name}")
 	private String applicationName;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MicroClienteApplication.class, args);
-		logger.info("Início da aplicação");
+		log.info("Start Application");
 	}
 
 }
