@@ -3,9 +3,11 @@ package io.portfolio.micro_cliente.client.domain.client;
 import io.portfolio.micro_cliente.client.domain.dtos.ContactDTORequest;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.Serializable;
 
+@Slf4j
 @Entity
 @Table(name = "contacts")
 @Builder
@@ -34,5 +36,6 @@ public final class ContactEntity implements Serializable {
         this.id = dto.id();
         this.email = dto.email();
         this.cell = dto.cell();
+        log.info("Entity - contact DTO converted entity.");
     }
 }

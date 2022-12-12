@@ -6,7 +6,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Entity
 @Table(name = "client_companys")
 @Builder
@@ -31,5 +33,7 @@ public final class ClientCompanyEntity extends Client implements PolicyEntity<Lo
         this.setBusinessName(dto.businessName());
         this.setFantasyName(dto.fantasyName());
         this.setCnpj(dto.cnpj());
+        log.info("Entity - company DTO converted entity.");
     }
 }
+

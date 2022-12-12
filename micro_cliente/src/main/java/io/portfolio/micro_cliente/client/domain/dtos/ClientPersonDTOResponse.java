@@ -7,8 +7,9 @@ import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
@@ -48,6 +49,8 @@ public record ClientPersonDTOResponse
         ContactDTOResponse contact
     ) implements PolicyDTO<Long>
 {
+    private static Logger log = LoggerFactory.getLogger(ClientPersonDTOResponse.class);
+
     public ClientPersonDTOResponse(ClientPersonEntity clientEntity) {
         this(clientEntity.getId(),
             clientEntity.getFirstName(),
@@ -60,5 +63,6 @@ public record ClientPersonDTOResponse
             clientEntity.getEducation(),
             new AddressDTOResponse(clientEntity.getAddress()),
             new ContactDTOResponse(clientEntity.getContact()));
+        log.info("DTOResponse - person entity conversion to return DTO.");
     }
 }
