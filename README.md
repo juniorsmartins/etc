@@ -42,6 +42,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] AMQP; 
 > - [ ] Flo; 
 > - [ ] Shell;
+> - [ ] Doc (Swagger);
 > - [ ] Admin.
 
 5. API Restful:
@@ -67,7 +68,6 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Comparable e Comparator;
 > - [x] Enums;
 > - [ ] Cache;
-> - [ ] Swagger;
 > - [x] Logback (Escolhido nível Info - existem cinco níveis: trace, debug, info, warn e error);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
