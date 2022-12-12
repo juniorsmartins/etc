@@ -6,8 +6,11 @@ import io.portfolio.micro_cliente.client.domain.dtos.ClientPersonDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilter;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
+import io.portfolio.micro_cliente.shared.exceptions.InternalErrorCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
 import io.portfolio.micro_cliente.shared.messages.MessagesProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -24,6 +27,8 @@ import java.util.Optional;
 public non-sealed class ClientPersonService implements PolicyService<ClientPersonDTORequest, ClientPersonFilter,
         ClientPersonDTOResponse, ClientPersonEntity, Long> {
 
+    private static Logger log = LoggerFactory.getLogger(ClientPersonService.class);
+
     @Autowired
     private PolicyRepository<ClientPersonEntity, Long> repository;
 
@@ -33,25 +38,37 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ClientPersonDTOResponse create(ClientPersonDTORequest dto) {
+        log.info("Started resource record service.");
+
         return Optional.of(dto)
                 .map(ClientPersonEntity::new)
                 .map(clientNew -> {
                     validateUniqueCPFRule(clientNew.getCpf());
+
                     clientNew.getAddress().setClient(clientNew);
                     clientNew.getContact().setClient(clientNew);
+
                     return this.repository.saveEntity(clientNew);})
                 .map(ClientPersonDTOResponse::new)
-                .orElseThrow();
+                .orElseThrow(() -> {
+                    log.error("Exception - internal server error.");
+                    throw new InternalErrorCustomException(messages.getUnavailableServer());
+                });
     }
 
         private void validateUniqueCPFRule(String cpf) {
-            if(!this.repository.searchByDocument(cpf).isEmpty())
+            log.info("Single CPF rule validation.");
+
+            if(this.repository.searchByDocument(cpf).isPresent()) {
+                log.error("Exception - business rule violation.");
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
+            }
         }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public ClientPersonDTOResponse update(ClientPersonDTORequest dto) {
+        log.info("Started resource update service.");
 
         return this.repository.searchById(dto.id())
                 .map(client -> {
@@ -65,6 +82,7 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
                     client.setBirthDate(dto.birthDate());
                     client.setMaritalStatus(dto.maritalStatus());
                     client.setEducation(dto.education());
+                    log.info("Updated person.");
 
                     client.getAddress().setCep(dto.address().cep());
                     client.getAddress().setState(dto.address().state());
@@ -73,31 +91,46 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
                     client.getAddress().setPublicPlace(dto.address().publicPlace());
                     client.getAddress().setHouseNumber(dto.address().houseNumber());
                     client.getAddress().setComplement(dto.address().complement());
+                    log.info("Updated address.");
 
                     client.getContact().setEmail(dto.contact().email());
                     client.getContact().setCell(dto.contact().cell());
+                    log.info("Updated contact.");
 
                     return client;})
-                .map(client -> new ClientPersonDTOResponse(client))
-                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
+                .map(ClientPersonDTOResponse::new)
+                .orElseThrow(() -> {
+                    log.error("Exception - resource not found.");
+                    throw new ResourceNotFoundCustomException(messages.getResourceNotFound());
+                });
     }
 
         private void validateUniqueCPFRuleByUpdate(ClientPersonDTORequest dto) {
+            log.info("Single CPF rule validation.");
+
             var clientByCPF = this.repository.searchByDocument(dto.cpf());
-            if(!clientByCPF.isEmpty() && clientByCPF.get().getId() != dto.id()) {
+            if(clientByCPF.isPresent() && clientByCPF.get().getId() != dto.id()) {
+                log.error("Exception - business rule violation.");
                 throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
             }
         }
 
     @Override
     public ClientPersonDTOResponse searchById(Long id) {
+        log.info("Started resource fetch service by identifier.");
+
         return this.repository.searchById(id)
-                .map(client -> new ClientPersonDTOResponse(client))
-                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
+                .map(ClientPersonDTOResponse::new)
+                .orElseThrow(() -> {
+                    log.error("Exception - resource not found.");
+                    throw new ResourceNotFoundCustomException(messages.getResourceNotFound());
+                });
     }
 
     @Override
     public Page<ClientPersonDTOResponse> searchAll(ClientPersonFilter filter, Pageable pagination) {
+        log.info("Started search service all resources.");
+
         return this.repository.searchAll(configureFilter(filter), pagination)
                 .map(ClientPersonDTOResponse::new);
     }
@@ -125,10 +158,17 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
     public String deleteById(Long id) {
+        log.info("Started resource deletion service by identifier.");
+
         return this.repository.searchById(id)
                 .map(client -> {
                     this.repository.deleteById(client.getId());
+                    log.info("Resource deleted successfully.");
+
                     return messages.getResourceDeletedSuccessfully();})
-                .orElseThrow(() -> new ResourceNotFoundCustomException(messages.getResourceNotFound()));
+                .orElseThrow(() -> {
+                    log.error("Exception - resource not found.");
+                    throw new ResourceNotFoundCustomException(messages.getResourceNotFound());
+                });
     }
 }

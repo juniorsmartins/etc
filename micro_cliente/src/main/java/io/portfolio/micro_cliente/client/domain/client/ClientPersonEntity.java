@@ -7,7 +7,9 @@ import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Entity
 @Table(name = "client_persons")
 @Builder
@@ -52,5 +54,6 @@ public final class ClientPersonEntity extends Client implements PolicyEntity<Lon
         this.genre = dto.genre();
         this.maritalStatus = dto.maritalStatus();
         this.education = dto.education();
+        log.info("Entity - person DTO converted entity.");
     }
 }

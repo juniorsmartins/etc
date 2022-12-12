@@ -1,11 +1,10 @@
 package io.portfolio.micro_cliente.client.domain.services;
 
-import io.portfolio.micro_cliente.client.domain.dtos.PolicyDTO;
 import io.portfolio.micro_cliente.client.domain.client.PolicyEntity;
+import io.portfolio.micro_cliente.client.domain.dtos.PolicyDTO;
 import io.portfolio.micro_cliente.client.domain.filter.PolicyFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 @Service

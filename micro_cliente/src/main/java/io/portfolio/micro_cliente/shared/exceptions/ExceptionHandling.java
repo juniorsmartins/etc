@@ -23,6 +23,7 @@ public final class ExceptionHandling {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<StandardExceptionHandledReturn> methodArgumentNotValidException(MethodArgumentNotValidException method) {
+
         List<StandardExceptionHandledReturn> listOfHandledErrors = new ArrayList<>();
         List<FieldError> listOfFieldErrors = method.getBindingResult().getFieldErrors();
         listOfFieldErrors.forEach(theError -> {
@@ -31,6 +32,7 @@ public final class ExceptionHandling {
                     HttpStatus.BAD_REQUEST.toString(), message, theError.getCode(), theError.getField());
             listOfHandledErrors.add(exceptionHandledReturn);
         });
+
         return ResponseEntity
                 .badRequest()
                 .body(listOfHandledErrors.get(0));
@@ -39,6 +41,7 @@ public final class ExceptionHandling {
     @ExceptionHandler(ResourceNotFoundCustomException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<StandardExceptionHandledReturn> methodStandardExceptionHandledReturn(ResourceNotFoundCustomException resource) {
+
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
                 .body(new StandardExceptionHandledReturn(HttpStatus.NOT_FOUND.toString(), resource.getMessage()));
@@ -47,10 +50,20 @@ public final class ExceptionHandling {
     @ExceptionHandler(BusinessRuleViolationCustomException.class)
     @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<StandardExceptionHandledReturn> methodBusinessRuleViolationCustomException(BusinessRuleViolationCustomException businessViolation) {
+
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
                 .body(new StandardExceptionHandledReturn(HttpStatus.CONFLICT.toString(), businessViolation.getMessage()));
     }
 
+    @ExceptionHandler(InternalErrorCustomException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ResponseEntity<StandardExceptionHandledReturn> methodInternalErrorCustomException(InternalErrorCustomException internal) {
+
+        return ResponseEntity
+                .status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(new StandardExceptionHandledReturn(HttpStatus.INTERNAL_SERVER_ERROR.toString(), internal.getMessage(),
+                        internal.getCause()));
+    }
 }
 
