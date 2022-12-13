@@ -43,7 +43,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] AMQP; 
 > - [ ] Flo; 
 > - [ ] Shell;
-> - [ ] SpringDoc v2 (Swagger);
+> - [x] SpringDoc v2 (Swagger);
 > - [ ] Admin.
 
 5. API Restful:
