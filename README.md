@@ -33,6 +33,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Refactor.
 
 4. Spring:
+> - [x] Spring Boot 3.0.0;
 > - [x] Data JPA; 
 > - [ ] Security; 
 > - [ ] Hateoas; 
@@ -42,7 +43,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] AMQP; 
 > - [ ] Flo; 
 > - [ ] Shell;
-> - [ ] Doc (Swagger);
+> - [ ] SpringDoc v2 (Swagger);
 > - [ ] Admin.
 
 5. API Restful:
@@ -57,6 +58,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] micro_etc;
 
 7. Java: 
+> - [x] Java versão 17 LTS;
 > - [ ] Tratamento de Exceções (Global e Local);
 > - [ ] Generics;
 > - [ ] Stream;
