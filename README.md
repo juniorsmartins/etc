@@ -68,6 +68,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Threads;
 > - [ ] Collections Framework;
 > - [ ] Comparable e Comparator;
+> - [ ] JDBC;
 > - [x] Enums;
 > - [ ] Cache;
 > - [x] Logback (Escolhido nível Info com saída para console - Há cinco níveis: trace, debug, info, warn e error);
