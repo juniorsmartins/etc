@@ -70,7 +70,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Comparable e Comparator;
 > - [x] Enums;
 > - [ ] Cache;
-> - [x] Logback (Escolhido nível Info - existem cinco níveis: trace, debug, info, warn e error);
+> - [x] Logback (Escolhido nível Info com saída para console - Há cinco níveis: trace, debug, info, warn e error);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
 > - [x] Lombok; 
@@ -85,6 +85,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] DTOs - Data Transfer Object (Class Record);
 > - [ ] GraalVM;
 > - [ ] Eventos;
+> - [ ] Entrada e saída I/O;
 > - [ ] Jasper Reports.
 
 ### Front-end
