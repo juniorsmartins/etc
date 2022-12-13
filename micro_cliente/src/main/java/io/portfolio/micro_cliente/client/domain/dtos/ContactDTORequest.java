@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import org.hibernate.validator.constraints.Length;
 
-@Schema(name = "ContactDTORequest", description = "structure for transporting data.")
+@Schema(name = "Contact DTORequest", description = "structure for transporting data.")
 public record ContactDTORequest
     (
         @Schema(name = "Id", description = "identification key", type = "Long", example = "22", nullable = true)

@@ -19,7 +19,7 @@ import org.hibernate.validator.constraints.br.CPF;
 
 import java.time.LocalDate;
 
-@Schema(name = "ClientPersonDTORequest", description = "structure for transporting data.")
+@Schema(name = "ClientPerson DTORequest", description = "structure for transporting data.")
 public record ClientPersonDTORequest
     (
         @Schema(name = "Id", description = "identification key", type = "Long", example = "22", nullable = true)
