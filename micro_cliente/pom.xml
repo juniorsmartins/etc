@@ -76,20 +76,6 @@
 		</dependency>
 
 
-		<!-- Testes (JUnit e Mockito e JavaFaker) -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>com.github.javafaker</groupId>
-			<artifactId>javafaker</artifactId>
-			<version>1.0.2</version>
-		</dependency>
-
-
 		<!-- Logback - registro de Logs -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -98,7 +84,7 @@
 		</dependency>
 
 
-		<!-- Documentação com SpringDoc versão 2 (Swagger) -->
+		<!-- Documentação com OpenAPI 3 (SpringDoc v2 - Swagger) -->
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
@@ -112,6 +98,21 @@
 			<artifactId>spring-boot-configuration-processor</artifactId>
 			<optional>true</optional>
 		</dependency>
+
+
+		<!-- Testes (JUnit e Mockito e JavaFaker) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
 
 	</dependencies>
 

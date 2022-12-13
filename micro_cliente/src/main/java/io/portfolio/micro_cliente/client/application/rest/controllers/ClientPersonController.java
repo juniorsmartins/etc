@@ -24,8 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URI;
 
 @RestController
-// @RequestMapping(value = "${app.api.base}/persons", produces = {"application/json"})
-@RequestMapping("/persons")
+@RequestMapping(value = "${app.api.base}/clients/persons", produces = {"application/json"})
 @Tag(name = "Controller ClientPerson")
 public final class ClientPersonController extends PolicyControllers<ClientPersonDTORequest, ClientPersonFilter, ClientPersonDTOResponse, Long> {
 
@@ -42,7 +41,6 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
             @ApiResponse(responseCode = "500", description = "Internal Server Error - server in unforeseen situation.")
     })
     @Override
-    @PostMapping
     public ResponseEntity<ClientPersonDTOResponse> create(
             @Parameter(name = "ClientPersonDTORequest", description = "structure for transporting data.", required = true)
             @RequestBody @Valid ClientPersonDTORequest dto) {
@@ -104,8 +102,8 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
     })
     @Override
     public ResponseEntity<Page<ClientPersonDTOResponse>> searchAll(
-            @Parameter(name = "ClientPersonFilter", description = "dynamic search by parameters", required = false) ClientPersonFilter filter,
-            @Parameter(name = "Pageable", description = "search with custom pagination", required = false)
+            @Parameter(name = "ClientPersonFilter", description = "dynamic search by parameters.", required = false) ClientPersonFilter filter,
+            @Parameter(name = "Pageable", description = "search with custom pagination.", required = false)
        @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pagination) {
 
         log.info("Started search control all resources.");
