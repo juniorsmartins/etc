@@ -22,7 +22,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "${app.api.base}/clients/companys", produces = {"application/json"})
+// @RequestMapping(value = "${app.api.base}/clients/companys", produces = {"application/json"})
+@RequestMapping(value = "/companys", produces = {"application/json"})
 public final class ClientCompanyController extends PolicyControllers<ClientCompanyDTORequest, ClientCompanyFilter, ClientCompanyDTOResponse, Long> {
 
     private static Logger log = LoggerFactory.getLogger(ClientCompanyController.class);
@@ -55,7 +56,7 @@ public final class ClientCompanyController extends PolicyControllers<ClientCompa
     }
 
     @Override
-    public ResponseEntity<ClientCompanyDTOResponse> searchById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<ClientCompanyDTOResponse> searchById(@PathVariable(value = "id") final Long id) {
         log.info("Started resource fetch control by identifier.");
 
         var response = this.service.searchById(id);
@@ -80,7 +81,7 @@ public final class ClientCompanyController extends PolicyControllers<ClientCompa
     }
 
     @Override
-    public ResponseEntity<String> deleteById(@PathVariable(value = "id") Long id) {
+    public ResponseEntity<String> deleteById(@PathVariable(value = "id") final Long id) {
         log.info("Started resource deletion control by identifier.");
 
         var response = this.service.deleteById(id);

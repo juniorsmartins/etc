@@ -19,15 +19,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 
 @RestController
-@RequestMapping(value = "${app.api.base}/clients/persons", produces = {"application/json"})
+// @RequestMapping(value = "${app.api.base}/persons", produces = {"application/json"})
+@RequestMapping("/persons")
 @Tag(name = "Controller ClientPerson")
 public final class ClientPersonController extends PolicyControllers<ClientPersonDTORequest, ClientPersonFilter, ClientPersonDTOResponse, Long> {
 
@@ -44,14 +42,15 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
             @ApiResponse(responseCode = "500", description = "Internal Server Error - server in unforeseen situation.")
     })
     @Override
+    @PostMapping
     public ResponseEntity<ClientPersonDTOResponse> create(
             @Parameter(name = "ClientPersonDTORequest", description = "structure for transporting data.", required = true)
             @RequestBody @Valid ClientPersonDTORequest dto) {
+
         log.info("Started resource record control.");
-
         var response = this.service.create(dto);
-
         log.info("Return - completed resource registration.");
+
         return ResponseEntity
                 .created(URI.create("/"+ response.id()))
                 .body(response);
@@ -68,11 +67,11 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
     public ResponseEntity<ClientPersonDTOResponse> update(
             @Parameter(name = "ClientPersonDTORequest", description = "structure for transporting data.", required = true)
             @RequestBody @Valid ClientPersonDTORequest dto) {
+
         log.info("Started resource update control.");
-
         var response = this.service.update(dto);
-
         log.info("Return - completed resource update");
+
         return ResponseEntity
                 .ok()
                 .body(response);
@@ -87,12 +86,12 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
     @Override
     public ResponseEntity<ClientPersonDTOResponse> searchById(
             @Parameter(name = "id", description = "identifying key", example = "22", required = true)
-            @PathVariable(value = "id") Long id) {
+            @PathVariable(value = "id") final Long id) {
+
         log.info("Started resource fetch control by identifier.");
-
         var response = this.service.searchById(id);
-
         log.info("Return - completed resource lookup by identifier.");
+
         return ResponseEntity
                 .ok()
                 .body(response);
@@ -108,11 +107,11 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
             @Parameter(name = "ClientPersonFilter", description = "dynamic search by parameters", required = false) ClientPersonFilter filter,
             @Parameter(name = "Pageable", description = "search with custom pagination", required = false)
        @PageableDefault(sort = "id", direction = Sort.Direction.DESC, page = 0, size = 10) Pageable pagination) {
+
         log.info("Started search control all resources.");
-
         var response = this.service.searchAll(filter, pagination);
-
         log.info("Return - completed search control all resources.");
+
         return ResponseEntity
                 .ok()
                 .body(response);
@@ -127,12 +126,12 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
     @Override
     public ResponseEntity<String> deleteById(
             @Parameter(name = "id", description = "identifying key", example = "22", required = true)
-            @PathVariable(value = "id") Long id) {
+            @PathVariable(value = "id") final Long id) {
+
         log.info("Started resource deletion control by identifier.");
-
         var response = this.service.deleteById(id);
-
         log.info("Return - completed delete resource by identifier.");
+
         return ResponseEntity
                 .ok()
                 .body(response);
