@@ -70,6 +70,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Method Reference;
 > - [ ] Funcional;
 > - [ ] Threads;
+> - [ ] Estrutura de Dados (lista, pilha, fila e coleção);
 > - [ ] Collections Framework;
 > - [ ] Math;
 > - [ ] Text Blocks;
@@ -89,6 +90,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Cors;
 > - [ ] Padrão Repository com EntityManager;
 > - [x] DTOs - Data Transfer Object (Class Record);
+> - [ ] Regular Expressions (Class Pattern);
 > - [ ] GraalVM;
 > - [ ] Eventos;
 > - [ ] Entrada e saída I/O;
