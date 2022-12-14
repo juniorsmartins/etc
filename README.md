@@ -44,6 +44,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Flo; 
 > - [ ] Shell;
 > - [x] OpenAPI 3 (SpringDoc v2 - Swagger);
+> - [ ] Actuator;
 > - [ ] Admin.
 
 5. API Restful:
@@ -78,12 +79,12 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] DevTools;
 > - [ ] BeanUtils;
 > - [x] Bean Validation;
-> - [ ] Flyway Migration;
+> - [ ] Migration (Flyway);
 > - [ ] Java Mail Sender;
 > - [ ] Mensageria (RabbitMQ ou Kafka);
 > - [ ] Cors;
 > - [ ] Padrão Repository com EntityManager;
-> - [ ] DTOs - Data Transfer Object (Class Record);
+> - [x] DTOs - Data Transfer Object (Class Record);
 > - [ ] GraalVM;
 > - [ ] Eventos;
 > - [ ] Entrada e saída I/O;
