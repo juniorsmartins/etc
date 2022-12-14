@@ -34,7 +34,9 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
-> - [x] Data JPA; 
+> - [x] ORM (Object Relational Mapping);
+> - [x] Data JPA;
+> - [ ] Data MongoDB;
 > - [ ] Security; 
 > - [ ] Hateoas; 
 > - [ ] Batch; 
@@ -44,6 +46,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Flo; 
 > - [ ] Shell;
 > - [x] OpenAPI 3 (SpringDoc v2 - Swagger);
+> - [ ] Cache;
 > - [ ] Actuator;
 > - [ ] Admin.
 
@@ -68,10 +71,11 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Funcional;
 > - [ ] Threads;
 > - [ ] Collections Framework;
+> - [ ] Math;
+> - [ ] Text Blocks;
 > - [ ] Comparable e Comparator;
 > - [ ] JDBC;
 > - [x] Enums;
-> - [ ] Cache;
 > - [x] Logback (Escolhido nível Info com saída para console - Há cinco níveis: trace, debug, info, warn e error);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
@@ -88,6 +92,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] GraalVM;
 > - [ ] Eventos;
 > - [ ] Entrada e saída I/O;
+> - [ ] XStream XML;
+> - [ ] Javadoc (somente no service);
 > - [ ] Jasper Reports.
 
 ### Front-end
