@@ -77,7 +77,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Comparable e Comparator;
 > - [ ] JDBC;
 > - [x] Enums;
-> - [x] Logback (Escolhido nível Info com saída para console - Há cinco níveis: trace, debug, info, warn e error);
+> - [x] Logback (Escolhido nível Info com saída para console - Há seis níveis: trace, debug, info, warn, error e fatal);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
 > - [x] Lombok; 
