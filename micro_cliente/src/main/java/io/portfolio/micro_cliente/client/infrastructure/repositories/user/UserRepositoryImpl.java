@@ -5,6 +5,7 @@ import io.portfolio.micro_cliente.client.domain.entities.user.UserEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -20,6 +21,11 @@ public class UserRepositoryImpl implements PolicyUserRepository<UserEntity, Long
     @Override
     public UserEntity saveEntity(UserEntity entity) {
         return null;
+    }
+
+    @Override
+    public UserDetails findByLogin(String username) {
+        return this.userRepositoryJpa.findByLogin(username);
     }
 
     @Override
