@@ -23,12 +23,9 @@ public final class ExceptionHandling {
     public ResponseEntity<List<StandardExceptionHandledReturn>> methodArgumentNotValidException(MethodArgumentNotValidException method) {
 
         List<StandardExceptionHandledReturn> errors = new ArrayList<>();
-        List<FieldError> listOfFieldErrors = method.getBindingResult().getFieldErrors();
-        listOfFieldErrors.forEach(theError -> {
-            String message = internationalMessage.getMessage(theError, LocaleContextHolder.getLocale());
-            StandardExceptionHandledReturn exceptionHandledReturn = new StandardExceptionHandledReturn(
-                    HttpStatus.BAD_REQUEST.toString(), message, theError.getCode(), theError.getField());
-            errors.add(exceptionHandledReturn);
+        method.getBindingResult().getFieldErrors().forEach(err -> {
+            String message = internationalMessage.getMessage(err, LocaleContextHolder.getLocale());
+            errors.add(new StandardExceptionHandledReturn(HttpStatus.BAD_REQUEST.toString(), err.getCode(), err.getField(), message));
         });
 
         return ResponseEntity
