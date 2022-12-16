@@ -19,12 +19,14 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import java.net.URI;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping(value = "${app.api.base}/clients/persons", produces = {"application/json"})
+@RequestMapping(value = "v1/clients/persons", produces = {"application/json"})
 @Tag(name = "Controller ClientPerson")
 public final class ClientPersonController extends PolicyControllers<ClientPersonDTORequest, ClientPersonFilter, ClientPersonDTOResponse, Long> {
 
@@ -43,14 +45,14 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
     @Override
     public ResponseEntity<ClientPersonDTOResponse> create(
             @Parameter(name = "ClientPersonDTORequest", description = "structure for transporting data.", required = true)
-            @RequestBody @Valid ClientPersonDTORequest dto) {
+            @RequestBody @Valid ClientPersonDTORequest dto, UriComponentsBuilder uriBuilder) {
 
         log.info("Started resource record control.");
         var response = this.service.create(dto);
         log.info("Return - completed resource registration.");
 
         return ResponseEntity
-                .created(URI.create("/"+ response.id()))
+                .created(uriBuilder.path("v1/clients/persons/{id}").buildAndExpand(response.id()).toUri())
                 .body(response);
     }
 
@@ -117,7 +119,7 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
 
     @Operation(summary = "DeleteById", description = "delete resource from database by identifier.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK - successful request."),
+            @ApiResponse(responseCode = "204", description = "No Content - successful request and no return content."),
             @ApiResponse(responseCode = "400", description = "Bad Request - request with invalid syntax."),
             @ApiResponse(responseCode = "404", description = "Not Found - resource not found in database.")
     })
