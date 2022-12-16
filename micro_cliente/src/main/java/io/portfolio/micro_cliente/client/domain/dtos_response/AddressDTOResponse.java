@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.dtos;
+package io.portfolio.micro_cliente.client.domain.dtos_response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
