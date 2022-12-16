@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.ports;
 
-import io.portfolio.micro_cliente.client.domain.client.PolicyClientEntity;
+import io.portfolio.micro_cliente.client.domain.entities.client.PolicyClientEntity;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

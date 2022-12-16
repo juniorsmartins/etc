@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.user;
+package io.portfolio.micro_cliente.client.domain.entities.user;
 
 import jakarta.persistence.*;
 import lombok.*;

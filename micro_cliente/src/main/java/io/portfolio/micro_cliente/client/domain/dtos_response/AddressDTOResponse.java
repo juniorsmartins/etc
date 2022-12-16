@@ -2,7 +2,7 @@ package io.portfolio.micro_cliente.client.domain.dtos_response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import io.portfolio.micro_cliente.client.domain.client.AddressEntity;
+import io.portfolio.micro_cliente.client.domain.entities.client.AddressEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

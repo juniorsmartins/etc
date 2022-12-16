@@ -1,9 +1,9 @@
-package io.portfolio.micro_cliente.client.domain.services;
+package io.portfolio.micro_cliente.client.domain.services.client;
 
-import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
-import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientPersonDTORequest;
-import io.portfolio.micro_cliente.client.domain.dtos_response.ClientPersonDTOResponse;
-import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilter;
+import io.portfolio.micro_cliente.client.domain.entities.client.ClientCompanyEntity;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientCompanyDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos_response.ClientCompanyDTOResponse;
+import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilter;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyClientRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.InternalErrorCustomException;
@@ -24,65 +24,61 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public non-sealed class ClientPersonService implements PolicyService<ClientPersonDTORequest, ClientPersonFilter,
-        ClientPersonDTOResponse, ClientPersonEntity, Long> {
+public non-sealed class ClientCompanyService implements PolicyService<ClientCompanyDTORequest,
+        ClientCompanyFilter, ClientCompanyDTOResponse, ClientCompanyEntity, Long> {
 
-    private static Logger log = LoggerFactory.getLogger(ClientPersonService.class);
+    private static Logger log = LoggerFactory.getLogger(ClientCompanyService.class);
 
     @Autowired
-    private PolicyClientRepository<ClientPersonEntity, Long> repository;
+    private PolicyClientRepository<ClientCompanyEntity, Long> repository;
 
     @Autowired
     private MessagesProperties messages;
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ClientPersonDTOResponse create(ClientPersonDTORequest dto) {
+    public ClientCompanyDTOResponse create(ClientCompanyDTORequest dto) {
         log.info("Started resource record service.");
 
         return Optional.of(dto)
-                .map(ClientPersonEntity::new)
+                .map(ClientCompanyEntity::new)
                 .map(clientNew -> {
-                    validateUniqueCPFRule(clientNew.getCpf());
+                    validateUniqueCNPJRule(clientNew.getCnpj());
 
                     clientNew.getAddress().setClient(clientNew);
                     clientNew.getContact().setClient(clientNew);
 
                     return this.repository.saveEntity(clientNew);})
-                .map(ClientPersonDTOResponse::new)
+                .map(ClientCompanyDTOResponse::new)
                 .orElseThrow(() -> {
                     log.error("Exception - internal server error.");
                     throw new InternalErrorCustomException(messages.getUnavailableServer());
                 });
     }
 
-        private void validateUniqueCPFRule(String cpf) {
-            log.info("Single CPF rule validation.");
+        private void validateUniqueCNPJRule(String cnpj) {
+            log.info("Single CNPJ rule validation.");
 
-            if(this.repository.searchByDocument(cpf).isPresent()) {
+            if(this.repository.searchByDocument(cnpj).isPresent()) {
                 log.error("Exception - business rule violation.");
-                throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
+                throw new BusinessRuleViolationCustomException(messages.getSingleCnpjRuleViolation());
             }
         }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ClientPersonDTOResponse update(ClientPersonDTORequest dto) {
+    public ClientCompanyDTOResponse update(ClientCompanyDTORequest dto) {
         log.info("Started resource update service.");
 
         return this.repository.searchById(dto.id())
                 .map(client -> {
-                    validateUniqueCPFRuleByUpdate(dto);
+                    validateUniqueCNPJRuleByUpdate(dto);
 
-                    client.setFirstName(dto.firstName());
-                    client.setLastName(dto.lastName());
-                    client.setCpf(dto.cpf());
-                    client.setSex(dto.sex());
-                    client.setGenre(dto.genre());
+                    client.setBusinessName(dto.businessName());
+                    client.setFantasyName(dto.fantasyName());
+                    client.setCnpj(dto.cnpj());
                     client.setBirthDate(dto.birthDate());
-                    client.setMaritalStatus(dto.maritalStatus());
-                    client.setEducation(dto.education());
-                    log.info("Updated person.");
+                    log.info("Updated company.");
 
                     client.getAddress().setCep(dto.address().cep());
                     client.getAddress().setState(dto.address().state());
@@ -98,29 +94,29 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
                     log.info("Updated contact.");
 
                     return client;})
-                .map(ClientPersonDTOResponse::new)
+                .map(ClientCompanyDTOResponse::new)
                 .orElseThrow(() -> {
                     log.error("Exception - resource not found.");
                     throw new ResourceNotFoundCustomException(messages.getResourceNotFound());
                 });
     }
 
-        private void validateUniqueCPFRuleByUpdate(ClientPersonDTORequest dto) {
-            log.info("Single CPF rule validation.");
+        private void validateUniqueCNPJRuleByUpdate(ClientCompanyDTORequest dto) {
+            log.info("Single CNPJ rule validation.");
 
-            var clientByCPF = this.repository.searchByDocument(dto.cpf());
-            if(clientByCPF.isPresent() && clientByCPF.get().getId() != dto.id()) {
+            var clientByCNPJ = this.repository.searchByDocument(dto.cnpj());
+            if(clientByCNPJ.isPresent() && clientByCNPJ.get().getId() != dto.id()) {
                 log.error("Exception - business rule violation.");
-                throw new BusinessRuleViolationCustomException(messages.getSingleCpfRuleViolation());
+                throw new BusinessRuleViolationCustomException(messages.getSingleCnpjRuleViolation());
             }
         }
 
     @Override
-    public ClientPersonDTOResponse searchById(Long id) {
+    public ClientCompanyDTOResponse searchById(Long id) {
         log.info("Started resource fetch service by identifier.");
 
         return this.repository.searchById(id)
-                .map(ClientPersonDTOResponse::new)
+                .map(ClientCompanyDTOResponse::new)
                 .orElseThrow(() -> {
                     log.error("Exception - resource not found.");
                     throw new ResourceNotFoundCustomException(messages.getResourceNotFound());
@@ -128,14 +124,14 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
     }
 
     @Override
-    public Page<ClientPersonDTOResponse> searchAll(ClientPersonFilter filter, Pageable pagination) {
+    public Page<ClientCompanyDTOResponse> searchAll(ClientCompanyFilter filter, Pageable pagination) {
         log.info("Started search service all resources.");
 
         return this.repository.searchAll(configureFilter(filter), pagination)
-                .map(ClientPersonDTOResponse::new);
+                .map(ClientCompanyDTOResponse::new);
     }
 
-        private Example<ClientPersonEntity> configureFilter(ClientPersonFilter filter) {
+        private Example<ClientCompanyEntity> configureFilter(ClientCompanyFilter filter) {
             // ExampleMatcher - permite configurar condições para serem aplicadas nos filtros
             ExampleMatcher exampleMatcher = ExampleMatcher
                     .matchingAll()
@@ -144,14 +140,10 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
                     .withStringMatcher(ExampleMatcher.StringMatcher.CONTAINING); // permite encontrar palavras parecidas - tipo Like do SQL
 
             // Example - pega campos populados para criar filtros
-            return Example.of(ClientPersonEntity.builder()
-                        .firstName(filter.firstName())
-                        .lastName(filter.lastName())
-                        .cpf(filter.cpf())
-                        .sex(filter.sex())
-                        .genre(filter.genre())
-                        .maritalStatus(filter.maritalStatus())
-                        .education(filter.education())
+            return Example.of(ClientCompanyEntity.builder()
+                        .businessName(filter.businessName())
+                        .fantasyName(filter.fantasyName())
+                        .cnpj(filter.cnpj())
                         .build(), exampleMatcher);
         }
 

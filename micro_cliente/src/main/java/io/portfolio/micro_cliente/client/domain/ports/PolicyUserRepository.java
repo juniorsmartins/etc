@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.ports;
 
-import io.portfolio.micro_cliente.client.domain.user.PolicyUserEntity;
+import io.portfolio.micro_cliente.client.domain.entities.user.PolicyUserEntity;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;

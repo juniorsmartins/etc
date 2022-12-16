@@ -1,7 +1,7 @@
-package io.portfolio.micro_cliente.client.domain.services;
+package io.portfolio.micro_cliente.client.domain.services.client;
 
 import io.portfolio.micro_cliente.client.application.rest.dtos_request.PolicyDTORequest;
-import io.portfolio.micro_cliente.client.domain.client.PolicyClientEntity;
+import io.portfolio.micro_cliente.client.domain.entities.client.PolicyClientEntity;
 import io.portfolio.micro_cliente.client.domain.dtos_response.PolicyDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.PolicyFilter;
 import org.springframework.data.domain.Page;

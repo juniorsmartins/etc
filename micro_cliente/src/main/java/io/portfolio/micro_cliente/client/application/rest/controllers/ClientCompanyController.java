@@ -1,10 +1,10 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
-import io.portfolio.micro_cliente.client.domain.client.ClientCompanyEntity;
+import io.portfolio.micro_cliente.client.domain.entities.client.ClientCompanyEntity;
 import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientCompanyDTORequest;
 import io.portfolio.micro_cliente.client.domain.dtos_response.ClientCompanyDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilter;
-import io.portfolio.micro_cliente.client.domain.services.PolicyService;
+import io.portfolio.micro_cliente.client.domain.services.client.PolicyService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
