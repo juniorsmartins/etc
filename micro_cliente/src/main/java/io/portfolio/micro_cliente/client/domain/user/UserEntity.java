@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Getter
 @Setter
 @EqualsAndHashCode(of = "id")
-public final class UserEntity implements Serializable {
+public final class UserEntity implements Serializable, PolicyUserEntity<Long> {
     private static final long serialVersionUID = 1L;
 
     @Id

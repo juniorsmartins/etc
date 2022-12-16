@@ -1,7 +1,7 @@
-package io.portfolio.micro_cliente.client.infrastructure.repositories;
+package io.portfolio.micro_cliente.client.infrastructure.repositories.client;
 
 import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
-import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
+import io.portfolio.micro_cliente.client.domain.ports.PolicyClientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public class ClientPersonRepositoryImpl implements PolicyRepository<ClientPersonEntity, Long> {
+public class ClientPersonRepositoryImpl implements PolicyClientRepository<ClientPersonEntity, Long> {
 
     private static Logger log = LoggerFactory.getLogger(ClientPersonRepositoryImpl.class);
 

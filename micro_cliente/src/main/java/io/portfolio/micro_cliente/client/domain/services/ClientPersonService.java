@@ -4,7 +4,7 @@ import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
 import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientPersonDTORequest;
 import io.portfolio.micro_cliente.client.domain.dtos_response.ClientPersonDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilter;
-import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
+import io.portfolio.micro_cliente.client.domain.ports.PolicyClientRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.InternalErrorCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;
@@ -30,7 +30,7 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
     private static Logger log = LoggerFactory.getLogger(ClientPersonService.class);
 
     @Autowired
-    private PolicyRepository<ClientPersonEntity, Long> repository;
+    private PolicyClientRepository<ClientPersonEntity, Long> repository;
 
     @Autowired
     private MessagesProperties messages;

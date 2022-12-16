@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 @Setter
 @PrimaryKeyJoinColumn(referencedColumnName="id")
-public final class ClientCompanyEntity extends Client implements PolicyEntity<Long>  {
+public final class ClientCompanyEntity extends Client implements PolicyClientEntity<Long> {
 
     @Column(name = "business_name", length = 100, nullable = false)
     private String businessName;
