@@ -19,4 +19,8 @@ public record StandardExceptionHandledReturn
         @Schema(name = "Message", description = "explanation of the error situation", type = "String", example = "Resource not found in database")
         String message
     )
-{ }
+{
+    public StandardExceptionHandledReturn(String status, String message) {
+        this(status, null, null, message);
+    }
+}
