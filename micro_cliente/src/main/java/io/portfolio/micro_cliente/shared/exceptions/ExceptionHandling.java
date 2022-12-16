@@ -41,7 +41,8 @@ public final class ExceptionHandling {
 
         return ResponseEntity
                 .status(HttpStatus.NOT_FOUND)
-                .body(new StandardExceptionHandledReturn(HttpStatus.NOT_FOUND.toString(), resource.getMessage()));
+                .body(new StandardExceptionHandledReturn(HttpStatus.NOT_FOUND.toString(), resource.getMessage(),
+                        null, null));
     }
 
     @ExceptionHandler(BusinessRuleViolationCustomException.class)
@@ -49,7 +50,8 @@ public final class ExceptionHandling {
 
         return ResponseEntity
                 .status(HttpStatus.CONFLICT)
-                .body(new StandardExceptionHandledReturn(HttpStatus.CONFLICT.toString(), businessViolation.getMessage()));
+                .body(new StandardExceptionHandledReturn(HttpStatus.CONFLICT.toString(), businessViolation.getMessage(),
+                        null, null));
     }
 
     @ExceptionHandler(InternalErrorCustomException.class)
@@ -58,7 +60,7 @@ public final class ExceptionHandling {
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new StandardExceptionHandledReturn(HttpStatus.INTERNAL_SERVER_ERROR.toString(), internal.getMessage(),
-                        internal.getCause()));
+                        null, null));
     }
 }
 
