@@ -13,7 +13,6 @@ public class MessagesProperties {
 
     private String resourceNotFound;
     private String businessRuleViolated;
-    private String resourceDeletedSuccessfully;
     private String singleCpfRuleViolation;
     private String singleCnpjRuleViolation;
     private String unavailableServer;

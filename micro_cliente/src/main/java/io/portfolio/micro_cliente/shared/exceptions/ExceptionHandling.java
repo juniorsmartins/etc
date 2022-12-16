@@ -21,7 +21,6 @@ public final class ExceptionHandling {
     private MessageSource internationalMessage;
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ResponseEntity<StandardExceptionHandledReturn> methodArgumentNotValidException(MethodArgumentNotValidException method) {
 
         List<StandardExceptionHandledReturn> listOfHandledErrors = new ArrayList<>();
@@ -39,7 +38,6 @@ public final class ExceptionHandling {
     }
 
     @ExceptionHandler(ResourceNotFoundCustomException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<StandardExceptionHandledReturn> methodStandardExceptionHandledReturn(ResourceNotFoundCustomException resource) {
 
         return ResponseEntity
@@ -48,7 +46,6 @@ public final class ExceptionHandling {
     }
 
     @ExceptionHandler(BusinessRuleViolationCustomException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<StandardExceptionHandledReturn> methodBusinessRuleViolationCustomException(BusinessRuleViolationCustomException businessViolation) {
 
         return ResponseEntity
@@ -57,7 +54,6 @@ public final class ExceptionHandling {
     }
 
     @ExceptionHandler(InternalErrorCustomException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<StandardExceptionHandledReturn> methodInternalErrorCustomException(InternalErrorCustomException internal) {
 
         return ResponseEntity
