@@ -122,16 +122,16 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
             @ApiResponse(responseCode = "404", description = "Not Found - resource not found in database.")
     })
     @Override
-    public ResponseEntity<String> deleteById(
+    public ResponseEntity deleteById(
             @Parameter(name = "id", description = "identifying key", example = "22", required = true)
             @PathVariable(value = "id") final Long id) {
 
         log.info("Started resource deletion control by identifier.");
-        var response = this.service.deleteById(id);
+        this.service.deleteById(id);
         log.info("Return - completed delete resource by identifier.");
 
         return ResponseEntity
-                .ok()
-                .body(response);
+                .noContent()
+                .build();
     }
 }

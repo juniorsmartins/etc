@@ -157,15 +157,14 @@ public non-sealed class ClientPersonService implements PolicyService<ClientPerso
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public String deleteById(Long id) {
+    public void deleteById(Long id) {
         log.info("Started resource deletion service by identifier.");
 
-        return this.repository.searchById(id)
+        this.repository.searchById(id)
                 .map(client -> {
                     this.repository.deleteById(client.getId());
                     log.info("Resource deleted successfully.");
-
-                    return messages.getResourceDeletedSuccessfully();})
+                    return true;})
                 .orElseThrow(() -> {
                     log.error("Exception - resource not found.");
                     throw new ResourceNotFoundCustomException(messages.getResourceNotFound());
