@@ -39,4 +39,9 @@ public final class StandardExceptionHandledReturn {
         this.annotations = annotations;
         this.fieldName = fieldName;
     }
+
+    public StandardExceptionHandledReturn(String status, String message, String annotations, String fieldName, Throwable cause) {
+        this(status, message, annotations, fieldName);
+        this.cause = cause.toString();
+    }
 }

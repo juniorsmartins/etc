@@ -1,8 +1,8 @@
 package io.portfolio.micro_cliente.client.domain.services;
 
 import io.portfolio.micro_cliente.client.domain.client.ClientCompanyEntity;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequest;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTOResponse;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientCompanyDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos_response.ClientCompanyDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilter;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
@@ -21,7 +21,6 @@ import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

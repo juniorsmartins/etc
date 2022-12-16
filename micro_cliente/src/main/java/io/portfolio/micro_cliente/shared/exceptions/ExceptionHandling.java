@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.ArrayList;
@@ -21,20 +20,20 @@ public final class ExceptionHandling {
     private MessageSource internationalMessage;
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<StandardExceptionHandledReturn> methodArgumentNotValidException(MethodArgumentNotValidException method) {
+    public ResponseEntity<List<StandardExceptionHandledReturn>> methodArgumentNotValidException(MethodArgumentNotValidException method) {
 
-        List<StandardExceptionHandledReturn> listOfHandledErrors = new ArrayList<>();
+        List<StandardExceptionHandledReturn> errors = new ArrayList<>();
         List<FieldError> listOfFieldErrors = method.getBindingResult().getFieldErrors();
         listOfFieldErrors.forEach(theError -> {
             String message = internationalMessage.getMessage(theError, LocaleContextHolder.getLocale());
             StandardExceptionHandledReturn exceptionHandledReturn = new StandardExceptionHandledReturn(
                     HttpStatus.BAD_REQUEST.toString(), message, theError.getCode(), theError.getField());
-            listOfHandledErrors.add(exceptionHandledReturn);
+            errors.add(exceptionHandledReturn);
         });
 
         return ResponseEntity
                 .badRequest()
-                .body(listOfHandledErrors.get(0));
+                .body(errors);
     }
 
     @ExceptionHandler(ResourceNotFoundCustomException.class)

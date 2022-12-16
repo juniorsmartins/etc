@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
-import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequest;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientCompanyDTORequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.PrimaryKeyJoinColumn;

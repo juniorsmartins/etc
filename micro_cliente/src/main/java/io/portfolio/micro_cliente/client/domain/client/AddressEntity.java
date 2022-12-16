@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.client;
 
-import io.portfolio.micro_cliente.client.domain.dtos.AddressDTORequest;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.AddressDTORequest;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
