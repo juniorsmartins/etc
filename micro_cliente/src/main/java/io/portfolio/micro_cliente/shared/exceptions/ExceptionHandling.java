@@ -8,7 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.ArrayList;
@@ -21,25 +20,20 @@ public final class ExceptionHandling {
     private MessageSource internationalMessage;
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ResponseEntity<StandardExceptionHandledReturn> methodArgumentNotValidException(MethodArgumentNotValidException method) {
+    public ResponseEntity<List<StandardExceptionHandledReturn>> methodArgumentNotValidException(MethodArgumentNotValidException method) {
 
-        List<StandardExceptionHandledReturn> listOfHandledErrors = new ArrayList<>();
-        List<FieldError> listOfFieldErrors = method.getBindingResult().getFieldErrors();
-        listOfFieldErrors.forEach(theError -> {
-            String message = internationalMessage.getMessage(theError, LocaleContextHolder.getLocale());
-            StandardExceptionHandledReturn exceptionHandledReturn = new StandardExceptionHandledReturn(
-                    HttpStatus.BAD_REQUEST.toString(), message, theError.getCode(), theError.getField());
-            listOfHandledErrors.add(exceptionHandledReturn);
+        List<StandardExceptionHandledReturn> errors = new ArrayList<>();
+        method.getBindingResult().getFieldErrors().forEach(err -> {
+            String message = internationalMessage.getMessage(err, LocaleContextHolder.getLocale());
+            errors.add(new StandardExceptionHandledReturn(HttpStatus.BAD_REQUEST.toString(), err.getCode(), err.getField(), message));
         });
 
         return ResponseEntity
                 .badRequest()
-                .body(listOfHandledErrors.get(0));
+                .body(errors);
     }
 
     @ExceptionHandler(ResourceNotFoundCustomException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<StandardExceptionHandledReturn> methodStandardExceptionHandledReturn(ResourceNotFoundCustomException resource) {
 
         return ResponseEntity
@@ -48,7 +42,6 @@ public final class ExceptionHandling {
     }
 
     @ExceptionHandler(BusinessRuleViolationCustomException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
     public ResponseEntity<StandardExceptionHandledReturn> methodBusinessRuleViolationCustomException(BusinessRuleViolationCustomException businessViolation) {
 
         return ResponseEntity
@@ -57,13 +50,11 @@ public final class ExceptionHandling {
     }
 
     @ExceptionHandler(InternalErrorCustomException.class)
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<StandardExceptionHandledReturn> methodInternalErrorCustomException(InternalErrorCustomException internal) {
 
         return ResponseEntity
                 .status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(new StandardExceptionHandledReturn(HttpStatus.INTERNAL_SERVER_ERROR.toString(), internal.getMessage(),
-                        internal.getCause()));
+                .body(new StandardExceptionHandledReturn(HttpStatus.INTERNAL_SERVER_ERROR.toString(), internal.getMessage()));
     }
 }
 

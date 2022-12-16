@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.dtos;
+package io.portfolio.micro_cliente.client.application.rest.dtos_request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;

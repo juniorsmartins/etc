@@ -1,8 +1,8 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
 import io.portfolio.micro_cliente.client.domain.client.ClientCompanyEntity;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTORequest;
-import io.portfolio.micro_cliente.client.domain.dtos.ClientCompanyDTOResponse;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientCompanyDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos_response.ClientCompanyDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilter;
 import io.portfolio.micro_cliente.client.domain.services.PolicyService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,11 +23,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.net.URI;
+import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
-@RequestMapping(value = "${app.api.base}/clients/companys", produces = {"application/json"})
+@RequestMapping(value = "v1/clients/companys", produces = {"application/json"})
 @Tag(name = "Controller ClientCompany")
 public final class ClientCompanyController extends PolicyControllers<ClientCompanyDTORequest, ClientCompanyFilter, ClientCompanyDTOResponse, Long> {
 
@@ -46,14 +45,14 @@ public final class ClientCompanyController extends PolicyControllers<ClientCompa
     @Override
     public ResponseEntity<ClientCompanyDTOResponse> create(
             @Parameter(name = "ClientCompanyDTOResponse", description = "structure for transporting data.", required = true)
-            @RequestBody @Valid ClientCompanyDTORequest dto) {
+            @RequestBody @Valid ClientCompanyDTORequest dto, UriComponentsBuilder uriBuilder) {
 
         log.info("Started resource record control.");
         var response = this.service.create(dto);
         log.info("Return - completed resource registration.");
 
         return ResponseEntity
-                .created(URI.create("/" + response.id()))
+                .created(uriBuilder.path("v1/clients/companys/{id}").buildAndExpand(response.id()).toUri())
                 .body(response);
     }
 
@@ -120,7 +119,7 @@ public final class ClientCompanyController extends PolicyControllers<ClientCompa
 
     @Operation(summary = "DeleteById", description = "delete resource from database by identifier.")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "OK - successful request."),
+            @ApiResponse(responseCode = "204", description = "No Content - successful request and no return content."),
             @ApiResponse(responseCode = "400", description = "Bad Request - request with invalid syntax."),
             @ApiResponse(responseCode = "404", description = "Not Found - resource not found in database.")
     })

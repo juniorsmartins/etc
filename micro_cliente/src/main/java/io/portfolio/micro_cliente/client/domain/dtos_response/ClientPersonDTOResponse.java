@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.dtos;
+package io.portfolio.micro_cliente.client.domain.dtos_response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -60,7 +60,7 @@ public record ClientPersonDTOResponse
         @Schema(name = "Contact", description = "personal communication channels", type = "ContactDTOResponse")
         @JsonProperty("Contact")
         ContactDTOResponse contact
-    ) implements PolicyDTO<Long>
+    ) implements PolicyDTOResponse<Long>
 {
     private static Logger log = LoggerFactory.getLogger(ClientPersonDTOResponse.class);
 
