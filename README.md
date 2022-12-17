@@ -37,6 +37,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] ORM (Object Relational Mapping);
 > - [x] Data JPA;
 > - [ ] Data MongoDB;
+> - [x] Bean Validation;
+> - [ ] Migration (Flyway);
 > - [ ] Security; 
 > - [ ] Hateoas; 
 > - [ ] Batch; 
@@ -48,7 +50,10 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] OpenAPI 3 (SpringDoc v2 - Swagger);
 > - [ ] Cache;
 > - [ ] Actuator;
-> - [ ] Admin.
+> - [ ] Admin;
+> - [ ] GraalVM;
+> - [x] Lombok; 
+> - [x] DevTools.
 
 5. API Restful:
 > - [ ] Nível de maturidade 0;
@@ -80,18 +85,14 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] Logback (Escolhido nível Info com saída para console - Há seis níveis: trace, debug, info, warn, error e fatal);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
-> - [x] Lombok; 
-> - [x] DevTools;
-> - [ ] BeanUtils;
-> - [x] Bean Validation;
-> - [ ] Migration (Flyway);
+> - [ ] Métodos de Objects;
+> - [ ] Métodos de BeanUtils;
 > - [ ] Java Mail Sender;
 > - [ ] Mensageria (RabbitMQ ou Kafka);
 > - [ ] Cors;
 > - [ ] Padrão Repository com EntityManager;
 > - [x] DTOs - Data Transfer Object (Class Record);
 > - [ ] Regular Expressions (Class Pattern);
-> - [ ] GraalVM;
 > - [ ] Eventos;
 > - [ ] Entrada e saída I/O;
 > - [ ] XStream XML;
