@@ -1,7 +1,7 @@
-package io.portfolio.micro_cliente.client.domain.services.user;
+package io.portfolio.micro_cliente.client.domain.services.security.user;
 
 import io.portfolio.micro_cliente.client.domain.entities.user.UserEntity;
-import io.portfolio.micro_cliente.client.domain.ports.PolicyUserRepository;
+import io.portfolio.micro_cliente.client.domain.ports.user.PolicyUserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

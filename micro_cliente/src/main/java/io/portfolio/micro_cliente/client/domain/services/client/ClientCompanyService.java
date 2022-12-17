@@ -4,7 +4,7 @@ import io.portfolio.micro_cliente.client.domain.entities.client.ClientCompanyEnt
 import io.portfolio.micro_cliente.client.application.rest.dtos_request.client.ClientCompanyDTORequest;
 import io.portfolio.micro_cliente.client.domain.dtos_response.client.ClientCompanyDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilter;
-import io.portfolio.micro_cliente.client.domain.ports.PolicyClientRepository;
+import io.portfolio.micro_cliente.client.domain.ports.client.PolicyClientRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.InternalErrorCustomException;
 import io.portfolio.micro_cliente.shared.exceptions.ResourceNotFoundCustomException;

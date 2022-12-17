@@ -1,7 +1,7 @@
 package io.portfolio.micro_cliente.client.infrastructure.repositories.client;
 
 import io.portfolio.micro_cliente.client.domain.entities.client.ClientPersonEntity;
-import io.portfolio.micro_cliente.client.domain.ports.PolicyClientRepository;
+import io.portfolio.micro_cliente.client.domain.ports.client.PolicyClientRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

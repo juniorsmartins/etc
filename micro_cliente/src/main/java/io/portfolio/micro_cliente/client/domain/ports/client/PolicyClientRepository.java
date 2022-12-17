@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.ports;
+package io.portfolio.micro_cliente.client.domain.ports.client;
 
 import io.portfolio.micro_cliente.client.domain.entities.client.PolicyClientEntity;
 import org.springframework.data.domain.Example;

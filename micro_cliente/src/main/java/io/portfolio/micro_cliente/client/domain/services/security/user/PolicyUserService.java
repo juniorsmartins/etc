@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.services.user;
+package io.portfolio.micro_cliente.client.domain.services.security.user;
 
 import io.portfolio.micro_cliente.client.application.rest.dtos_request.user.PolicyUserDTORequest;
 import org.springframework.stereotype.Service;

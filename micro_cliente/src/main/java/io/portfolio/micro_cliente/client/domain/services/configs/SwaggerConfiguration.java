@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.shared.configs;
+package io.portfolio.micro_cliente.client.domain.services.configs;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;

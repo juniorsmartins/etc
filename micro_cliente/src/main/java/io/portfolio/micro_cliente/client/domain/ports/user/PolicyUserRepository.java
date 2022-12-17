@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.ports;
+package io.portfolio.micro_cliente.client.domain.ports.user;
 
 import io.portfolio.micro_cliente.client.domain.entities.user.PolicyUserEntity;
 import org.springframework.security.core.userdetails.UserDetails;
