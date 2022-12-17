@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.domain.dtos_response;
+package io.portfolio.micro_cliente.client.domain.dtos_response.client;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;

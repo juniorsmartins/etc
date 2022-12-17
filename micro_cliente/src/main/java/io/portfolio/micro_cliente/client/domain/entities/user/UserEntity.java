@@ -23,6 +23,6 @@ public final class UserEntity implements Serializable, PolicyUserEntity<Long> {
     @Column(name = "login", length = 100, nullable = false)
     private String login;
 
-    @Column(name = "password", length = 250, nullable = false)
+    @Column(name = "password", length = 255, nullable = false)
     private String password;
 }

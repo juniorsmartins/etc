@@ -1,8 +1,8 @@
 package io.portfolio.micro_cliente.client.domain.services.client;
 
 import io.portfolio.micro_cliente.client.domain.entities.client.ClientCompanyEntity;
-import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientCompanyDTORequest;
-import io.portfolio.micro_cliente.client.domain.dtos_response.ClientCompanyDTOResponse;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.client.ClientCompanyDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos_response.client.ClientCompanyDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientCompanyFilter;
 import io.portfolio.micro_cliente.client.domain.ports.PolicyClientRepository;
 import io.portfolio.micro_cliente.shared.exceptions.BusinessRuleViolationCustomException;
@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Service
-public non-sealed class ClientCompanyService implements PolicyService<ClientCompanyDTORequest,
+public non-sealed class ClientCompanyService implements PolicyClientService<ClientCompanyDTORequest,
         ClientCompanyFilter, ClientCompanyDTOResponse, ClientCompanyEntity, Long> {
 
     private static Logger log = LoggerFactory.getLogger(ClientCompanyService.class);

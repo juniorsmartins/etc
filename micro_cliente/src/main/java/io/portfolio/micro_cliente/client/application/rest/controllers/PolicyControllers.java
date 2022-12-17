@@ -1,7 +1,7 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
-import io.portfolio.micro_cliente.client.application.rest.dtos_request.PolicyDTORequest;
-import io.portfolio.micro_cliente.client.domain.dtos_response.PolicyDTOResponse;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.client.PolicyClientDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos_response.client.PolicyDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.PolicyFilter;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public sealed abstract class PolicyControllers<R extends PolicyDTORequest<ID>, F extends PolicyFilter<ID>,
+public sealed abstract class PolicyControllers<R extends PolicyClientDTORequest<ID>, F extends PolicyFilter<ID>,
         S extends PolicyDTOResponse<ID>, ID> permits ClientPersonController, ClientCompanyController {
 
     @PostMapping

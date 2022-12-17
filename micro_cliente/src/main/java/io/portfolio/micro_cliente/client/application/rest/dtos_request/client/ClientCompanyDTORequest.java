@@ -1,4 +1,4 @@
-package io.portfolio.micro_cliente.client.application.rest.dtos_request;
+package io.portfolio.micro_cliente.client.application.rest.dtos_request.client;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -53,5 +53,5 @@ public record ClientCompanyDTORequest
         @NotNull
         @Valid
         ContactDTORequest contact
-    ) implements PolicyDTORequest<Long>
+    ) implements PolicyClientDTORequest<Long>
 { }
