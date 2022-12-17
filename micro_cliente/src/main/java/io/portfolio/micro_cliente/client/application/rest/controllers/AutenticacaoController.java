@@ -1,6 +1,9 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
 import io.portfolio.micro_cliente.client.application.rest.dtos_request.user.UserDTORequest;
+import io.portfolio.micro_cliente.client.domain.entities.user.UserEntity;
+import io.portfolio.micro_cliente.client.domain.services.security.TokenJWTDTO;
+import io.portfolio.micro_cliente.client.domain.services.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +22,17 @@ public class AutenticacaoController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid UserDTORequest userDTORequest) {
-        var token = new UsernamePasswordAuthenticationToken(userDTORequest.login(), userDTORequest.password());
-        var authenticate = authenticationManager.authenticate(token);
+        var authenticationToken = new UsernamePasswordAuthenticationToken(userDTORequest.login(), userDTORequest.password());
+        var authenticate = authenticationManager.authenticate(authenticationToken);
+        String tokenJWT = tokenService.createToken((UserEntity) authenticate.getPrincipal());
 
         return ResponseEntity
-                .ok()
-                .build();
+                .ok(new TokenJWTDTO(tokenJWT));
     }
 }
 
