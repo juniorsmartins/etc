@@ -137,13 +137,13 @@ __Modelo Físico__
 
 # FERRAMENTAS
 
-> BRModelo;
-> SQL Power Architect;
-> StarUML;
-> IntelliJ IDEA;
-> Maven;
-> Git e GitHub;
-> Postman e Insomnia;
+- BRModelo;
+- SQL Power Architect;
+- StarUML;
+- IntelliJ IDEA;
+- Maven;
+- Git e GitHub;
+- Postman e Insomnia;
 
 # BIBLIOGRAFIA (base de conhecimento)
 
