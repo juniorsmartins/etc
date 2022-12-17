@@ -75,6 +75,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Method Reference;
 > - [ ] Funcional;
 > - [ ] Threads;
+> - [ ] Interface Funcional;
 > - [ ] Estrutura de Dados (lista, pilha, fila e coleção);
 > - [ ] Collections Framework;
 > - [ ] Math;
