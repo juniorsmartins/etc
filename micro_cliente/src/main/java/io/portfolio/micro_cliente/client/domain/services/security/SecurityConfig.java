@@ -22,8 +22,8 @@ public class SecurityConfig {
         return httpSecurity.csrf().disable()
                 // Define política de gerenciamento de sessão (não exibe tela padrão de login e nem bloqueia URLs automático)
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and().authorizeRequests()
-                .antMatchers(HttpMethod.POST, "/login").permitAll()
+                .and().authorizeHttpRequests()
+                .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated()
                 .and().build();
     }

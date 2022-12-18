@@ -1,10 +1,13 @@
 package io.portfolio.micro_cliente.client.domain.services.security;
 
+import io.portfolio.micro_cliente.client.domain.ports.user.PolicyUserRepository;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -16,13 +19,20 @@ public class SecurityFilter extends OncePerRequestFilter {
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private PolicyUserRepository userRepository;
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
         var tokenJWT = recoverToken(request);
 
-        var subject = tokenService.getSubject(tokenJWT);
-        System.out.println(subject);
+        if(tokenJWT != null) {
+            var subject = this.tokenService.getSubject(tokenJWT);
+            var user = this.userRepository.findByLogin(subject);
+            var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        }
 
         filterChain.doFilter(request, response); // chama o próximo filtro
     }
@@ -31,7 +41,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         var authorizationHeader = request.getHeader("Authorization");
 
         if(authorizationHeader == null)
-            throw new RuntimeException("JWT Token not sent in authorization header.");
+            return null;
 
         return authorizationHeader.replace("Bearer", "");
     }
