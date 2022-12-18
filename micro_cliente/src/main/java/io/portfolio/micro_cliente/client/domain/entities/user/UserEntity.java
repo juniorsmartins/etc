@@ -41,6 +41,10 @@ public final class UserEntity implements Serializable, PolicyUserEntity<Long>, U
         return this.getLogin();
     }
 
+    public String getPassword() {
+        return this.getPassword();
+    }
+
     @Override
     public boolean isAccountNonExpired() {
         return true;

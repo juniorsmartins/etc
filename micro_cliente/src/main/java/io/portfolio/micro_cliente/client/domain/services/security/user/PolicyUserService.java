@@ -4,5 +4,4 @@ import io.portfolio.micro_cliente.client.application.rest.dtos_request.user.Poli
 import org.springframework.stereotype.Service;
 
 @Service
-public sealed interface PolicyUserService<U extends PolicyUserDTORequest<ID>, ID> permits AuthenticationService {
-}
+public sealed interface PolicyUserService<U extends PolicyUserDTORequest<ID>, ID> permits AuthenticationService { }
