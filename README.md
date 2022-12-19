@@ -14,7 +14,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 1. Geral:
 > - [ ] README detalhado;
 > - [x] Metodologia Ágil (Scrum Board no Jira);
-> - [x] Repositório Monorepo com estrutura Gitflow;
+> - [x] Versionamento de código (Git, GitHub e Gitflow);
+> - [x] Repositório Monorepo;
 > - [ ] UML - Unified Modeling Language (Use Case);
 > - [ ] Docker.
 
@@ -47,7 +48,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] AMQP; 
 > - [ ] Flo; 
 > - [ ] Shell;
-> - [x] OpenAPI 3 (SpringDoc v2 - Swagger);
+> - [x] OpenAPI 3 (SpringDoc - Swagger);
 > - [ ] Cache;
 > - [ ] Actuator;
 > - [ ] Admin;
@@ -138,13 +139,14 @@ __Modelo Físico__
 
 # FERRAMENTAS
 
-- BRModelo;
-- SQL Power Architect;
-- StarUML;
 - IntelliJ IDEA;
 - Maven;
+- Jira;
 - Git e GitHub;
 - Postman e Insomnia;
+- BRModelo;
+- SQL Power Architect;
+- StarUML.
 
 # BIBLIOGRAFIA (base de conhecimento)
 
