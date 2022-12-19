@@ -37,7 +37,7 @@ public non-sealed class ClientPersonService implements PolicyClientService<Clien
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ClientPersonDTOResponse create(ClientPersonDTORequest dto) {
+    public final ClientPersonDTOResponse create(ClientPersonDTORequest dto) {
         log.info("Started resource record service.");
 
         return Optional.of(dto)
@@ -56,7 +56,7 @@ public non-sealed class ClientPersonService implements PolicyClientService<Clien
                 });
     }
 
-        private void validateUniqueCPFRule(String cpf) {
+        private final void validateUniqueCPFRule(String cpf) {
             log.info("Single CPF rule validation.");
 
             if(this.repository.searchByDocument(cpf).isPresent()) {
@@ -67,7 +67,7 @@ public non-sealed class ClientPersonService implements PolicyClientService<Clien
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public ClientPersonDTOResponse update(ClientPersonDTORequest dto) {
+    public final ClientPersonDTOResponse update(ClientPersonDTORequest dto) {
         log.info("Started resource update service.");
 
         return this.repository.searchById(dto.id())
@@ -105,7 +105,7 @@ public non-sealed class ClientPersonService implements PolicyClientService<Clien
                 });
     }
 
-        private void validateUniqueCPFRuleByUpdate(ClientPersonDTORequest dto) {
+        private final void validateUniqueCPFRuleByUpdate(ClientPersonDTORequest dto) {
             log.info("Single CPF rule validation.");
 
             var clientByCPF = this.repository.searchByDocument(dto.cpf());
@@ -116,7 +116,7 @@ public non-sealed class ClientPersonService implements PolicyClientService<Clien
         }
 
     @Override
-    public ClientPersonDTOResponse searchById(Long id) {
+    public final ClientPersonDTOResponse searchById(Long id) {
         log.info("Started resource fetch service by identifier.");
 
         return this.repository.searchById(id)
@@ -128,14 +128,14 @@ public non-sealed class ClientPersonService implements PolicyClientService<Clien
     }
 
     @Override
-    public Page<ClientPersonDTOResponse> searchAll(ClientPersonFilter filter, Pageable pagination) {
+    public final Page<ClientPersonDTOResponse> searchAll(ClientPersonFilter filter, Pageable pagination) {
         log.info("Started search service all resources.");
 
         return this.repository.searchAll(configureFilter(filter), pagination)
                 .map(ClientPersonDTOResponse::new);
     }
 
-        private Example<ClientPersonEntity> configureFilter(ClientPersonFilter filter) {
+        private final Example<ClientPersonEntity> configureFilter(ClientPersonFilter filter) {
             // ExampleMatcher - permite configurar condições para serem aplicadas nos filtros
             ExampleMatcher exampleMatcher = ExampleMatcher
                     .matchingAll()
@@ -157,7 +157,7 @@ public non-sealed class ClientPersonService implements PolicyClientService<Clien
 
     @Transactional(propagation = Propagation.REQUIRES_NEW, isolation = Isolation.SERIALIZABLE)
     @Override
-    public void deleteById(Long id) {
+    public final void deleteById(Long id) {
         log.info("Started resource deletion service by identifier.");
 
         this.repository.searchById(id)
