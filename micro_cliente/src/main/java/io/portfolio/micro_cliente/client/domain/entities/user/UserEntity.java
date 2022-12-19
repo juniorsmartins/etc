@@ -25,7 +25,7 @@ public final class UserEntity implements Serializable, PolicyUserEntity<Long>, U
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "login", length = 100, nullable = false)
+    @Column(name = "login", length = 100, unique = true, nullable = false)
     private String login;
 
     @Column(name = "password", length = 255, nullable = false)
@@ -38,11 +38,12 @@ public final class UserEntity implements Serializable, PolicyUserEntity<Long>, U
 
     @Override
     public String getUsername() {
-        return this.getLogin();
+        return this.login;
     }
 
+    @Override
     public String getPassword() {
-        return this.getPassword();
+        return this.password;
     }
 
     @Override

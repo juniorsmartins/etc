@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/login")
-public class AutenticacaoController {
+public class AuthenticationController {
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -25,10 +25,10 @@ public class AutenticacaoController {
     private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity efetuarLogin(@RequestBody @Valid UserDTORequest userDTORequest) {
+    public ResponseEntity<TokenJWTDTO> efetuarLogin(@RequestBody @Valid UserDTORequest userDTORequest) {
         var authenticationToken = new UsernamePasswordAuthenticationToken(userDTORequest.login(), userDTORequest.password());
-        var authenticate = authenticationManager.authenticate(authenticationToken);
-        String tokenJWT = tokenService.createToken((UserEntity) authenticate.getPrincipal());
+        var authentication = this.authenticationManager.authenticate(authenticationToken);
+        var tokenJWT = this.tokenService.createToken((UserEntity) authentication.getPrincipal());
 
         return ResponseEntity
                 .ok(new TokenJWTDTO(tokenJWT));

@@ -23,10 +23,10 @@ public class TokenService {
             var algorithm = Algorithm.HMAC256(this.secret);
 
             return JWT.create()
-                    .withIssuer("micro_cliente")
+                    .withIssuer("micro_cliente") // identificação da aplicação
                     .withSubject(userEntity.getLogin())
                     .withClaim("id", userEntity.getId())
-                    .withExpiresAt(expirationDate())
+                    .withExpiresAt(expirationDate()) // definição de tempo de expiração do token
                     .sign(algorithm);
         } catch (JWTCreationException exception){
             throw new RuntimeException("Error generating JWT token", exception);
@@ -49,6 +49,6 @@ public class TokenService {
     }
 
     private Instant expirationDate() {
-        return LocalDateTime.now().plusHours(24).toInstant(ZoneOffset.UTC);
+        return LocalDateTime.now().plusHours(22).toInstant(ZoneOffset.of("-03:00"));
     }
 }

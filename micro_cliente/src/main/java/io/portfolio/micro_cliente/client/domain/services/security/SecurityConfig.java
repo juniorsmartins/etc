@@ -23,6 +23,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
+
                 // Desabilita contra ataques CSRF - Cross-Site Request Forgery (o JWT já faz. Deixar habilitado seria redundante)
         return httpSecurity.csrf().disable()
                 // Define política de gerenciamento de sessão (não exibe tela padrão de login e nem bloqueia URLs automático)

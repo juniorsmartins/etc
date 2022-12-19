@@ -1,6 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.services.security;
 
-import io.portfolio.micro_cliente.client.domain.ports.user.PolicyUserRepository;
+import io.portfolio.micro_cliente.client.infrastructure.repositories.user.UserRepositoryJpa;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +20,7 @@ public class SecurityFilter extends OncePerRequestFilter {
     private TokenService tokenService;
 
     @Autowired
-    private PolicyUserRepository userRepository;
+    private UserRepositoryJpa userRepository;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
