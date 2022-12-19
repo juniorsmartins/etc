@@ -1,10 +1,10 @@
 package io.portfolio.micro_cliente.client.application.rest.controllers;
 
-import io.portfolio.micro_cliente.client.domain.client.ClientPersonEntity;
-import io.portfolio.micro_cliente.client.application.rest.dtos_request.ClientPersonDTORequest;
-import io.portfolio.micro_cliente.client.domain.dtos_response.ClientPersonDTOResponse;
+import io.portfolio.micro_cliente.client.domain.entities.client.ClientPersonEntity;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.client.ClientPersonDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos_response.client.ClientPersonDTOResponse;
 import io.portfolio.micro_cliente.client.domain.filter.ClientPersonFilter;
-import io.portfolio.micro_cliente.client.domain.services.PolicyService;
+import io.portfolio.micro_cliente.client.domain.services.client.PolicyClientService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -33,7 +33,7 @@ public final class ClientPersonController extends PolicyControllers<ClientPerson
     private static Logger log = LoggerFactory.getLogger(ClientPersonController.class);
 
     @Autowired
-    private PolicyService<ClientPersonDTORequest, ClientPersonFilter, ClientPersonDTOResponse, ClientPersonEntity, Long> service;
+    private PolicyClientService<ClientPersonDTORequest, ClientPersonFilter, ClientPersonDTOResponse, ClientPersonEntity, Long> service;
 
     @Operation(summary = "Create", description = "register resource in database.")
     @ApiResponses(value = {
