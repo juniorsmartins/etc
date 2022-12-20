@@ -29,7 +29,7 @@ public class AuthenticationController {
     private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity<TokenJWTDTO> makeLogin(@RequestBody @Valid UserDTORequest userDTORequest) {
+    public ResponseEntity makeLogin(@RequestBody @Valid UserDTORequest userDTORequest) {
 
         log.info("Start - recepção de login");
         var authenticationToken = new UsernamePasswordAuthenticationToken(userDTORequest.login(), userDTORequest.password());

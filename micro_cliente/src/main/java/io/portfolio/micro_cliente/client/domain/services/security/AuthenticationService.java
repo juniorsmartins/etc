@@ -21,9 +21,9 @@ public class AuthenticationService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         log.info("Start - busca por login no database");
-        var response = this.userRepository.findByLogin(username);
+        var userDetails = this.userRepository.findByLogin(username);
         log.info("Return - retorno de busca por login no database");
 
-        return response;
+        return userDetails;
     }
 }

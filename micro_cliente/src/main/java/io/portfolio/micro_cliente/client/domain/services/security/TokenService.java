@@ -26,7 +26,7 @@ public class TokenService {
 
         log.info("Start - construção de token");
         try {
-            var algorithm = Algorithm.HMAC256(this.secret);
+            var algorithm = createHash();
 
             var response = JWT.create()
                     .withIssuer("micro_cliente") // identificação da aplicação
@@ -43,21 +43,39 @@ public class TokenService {
     }
 
     public String getSubject(String tokenJWT) {
-        try {
-            var algorithm = Algorithm.HMAC256(this.secret);
+        log.info("Start - validar token");
 
-            return JWT.require(algorithm)
+        try {
+            var algorithm = createHash();
+
+            var subject = JWT.require(algorithm)
                     .withIssuer("micro_cliente")
                     .build()
                     .verify(tokenJWT)
                     .getSubject();
 
+            log.info("Return - token validado");
+            return subject;
         } catch (JWTVerificationException exception){
             throw new RuntimeException("Invalid or expired JWT Token", exception);
         }
     }
 
+    private Algorithm createHash() {
+
+        log.info("Start - criar hash");
+        var algorithm = Algorithm.HMAC256(this.secret);
+        log.info("Return - hash criado");
+
+        return algorithm;
+    }
+
     private Instant expirationDate() {
-        return LocalDateTime.now().plusHours(22).toInstant(ZoneOffset.of("-03:00"));
+
+        log.info("Start - criar data de expiração");
+        var expirationDate = LocalDateTime.now().plusHours(22).toInstant(ZoneOffset.of("-03:00"));
+        log.info("Return - data criada");
+
+        return expirationDate;
     }
 }

@@ -48,18 +48,17 @@ public class SecurityFilter extends OncePerRequestFilter {
 
     private String recoverToken(HttpServletRequest request) {
 
-        log.info("Start - procurar no header da requisição");
+        log.info("Start - procurar token no header da requisição");
         var authorizationHeader = request.getHeader("Authorization");
 
-        if(authorizationHeader == null) {
-            log.info("Return - token não encontrado - header vazio");
-            return null; // colocou um throw ????? token jtw não enviado no cabeçalho da requisição
+        if(authorizationHeader != null) {
+            var retrievedTokenWithoutPrefix = authorizationHeader.replace("Bearer ", "");
+            log.info("Return - token encontrado e retornado sem prefixo");
+            return retrievedTokenWithoutPrefix;
         }
 
-        var retrievedTokenWithoutPrefix = authorizationHeader.replace("Bearer ", "");
-        log.info("Return - token encontrado e retornado sem prefixo");
-
-        return retrievedTokenWithoutPrefix;
+        log.info("Return - token não encontrado - header vazio");
+        return null;
     }
 }
 

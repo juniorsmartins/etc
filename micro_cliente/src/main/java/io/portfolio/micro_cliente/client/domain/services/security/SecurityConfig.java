@@ -28,39 +28,43 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
-        log.info("Start - configuração de security");
-                // Desabilita contra ataques CSRF - Cross-Site Request Forgery (o JWT já faz. Deixar habilitado seria redundante)
-        var response = httpSecurity.csrf().disable()
-                // Define política de gerenciamento de sessão (não exibe tela padrão de login e nem bloqueia URLs automático)
+        log.info("Start - configurar padrão de security");
+        var defaultSecurityFilterChain = httpSecurity.csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authorizeHttpRequests()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .anyRequest().authenticated()
                 .and().addFilterBefore(this.securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
-        log.info("Return - security configurado");
+        log.info("Return - configuração de security padronizada");
 
-        return response;
+        return defaultSecurityFilterChain;
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) {
+        AuthenticationManager authenticationManager = null;
 
-        log.info("Start - construção de AuthenticationManager");
-        var response = authenticationConfiguration.getAuthenticationManager();
-        log.info("Return - disponibilização de AuthenticationManager");
+        try {
+            log.info("Start - criar authenticationManager");
+            authenticationManager = authenticationConfiguration.getAuthenticationManager();
 
-        return response;
+        } catch(Exception e) {
+            throw new RuntimeException("Error creating AuthenticationManager");
+        }
+
+        log.info("Return - authenticationManager criado");
+        return authenticationManager;
     }
 
     @Bean
     public PasswordEncoder passwordEncoder() {
 
-        log.info("Start - codificação de senha");
-        var response = new BCryptPasswordEncoder();
-        log.info("Return - senha codificada");
+        log.info("Start - criar codificador de senha");
+        var passwordEncoder = new BCryptPasswordEncoder();
+        log.info("Return - codificador criado");
 
-        return response;
+        return passwordEncoder;
     }
 }
 
