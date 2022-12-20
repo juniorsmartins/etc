@@ -1,13 +1,15 @@
 package io.portfolio.micro_cliente.client.domain.entities.client;
 
 import io.portfolio.micro_cliente.client.application.rest.dtos_request.client.ContactDTORequest;
+import io.portfolio.micro_cliente.client.domain.services.security.AuthenticationService;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.Serializable;
 
-@Slf4j
 @Entity
 @Table(name = "contacts")
 @Builder
@@ -17,6 +19,7 @@ import java.io.Serializable;
 @Setter
 public final class ContactEntity implements Serializable {
     private static final long serialVersionUID = 1L;
+    private static Logger log = LoggerFactory.getLogger(ContactEntity.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,6 +39,6 @@ public final class ContactEntity implements Serializable {
         this.id = dto.id();
         this.email = dto.email();
         this.cell = dto.cell();
-        log.info("Entity - contact DTO converted entity.");
+        log.info("contact DTO converted entity.");
     }
 }

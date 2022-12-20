@@ -1,5 +1,6 @@
 package io.portfolio.micro_cliente.client.domain.entities.client;
 
+import io.portfolio.micro_cliente.client.domain.entities.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -29,4 +30,7 @@ public abstract class Client implements Serializable {
 
     @OneToOne(mappedBy = "client", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER, targetEntity = ContactEntity.class)
     private ContactEntity contact;
+
+    @OneToOne(mappedBy = "client", cascade = {CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.LAZY, targetEntity = UserEntity.class)
+    private UserEntity user;
 }

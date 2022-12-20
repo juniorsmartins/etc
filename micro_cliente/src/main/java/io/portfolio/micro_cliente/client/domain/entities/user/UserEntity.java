@@ -1,7 +1,11 @@
 package io.portfolio.micro_cliente.client.domain.entities.user;
 
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.user.UserDTORequest;
+import io.portfolio.micro_cliente.client.domain.entities.client.Client;
 import jakarta.persistence.*;
 import lombok.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,16 +24,27 @@ import java.util.List;
 @EqualsAndHashCode(of = "id")
 public final class UserEntity implements Serializable, PolicyUserEntity<Long>, UserDetails {
     private static final long serialVersionUID = 1L;
+    private static Logger log = LoggerFactory.getLogger(UserEntity.class);
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "login", length = 100, unique = true, nullable = false)
-    private String login;
+    @Column(name = "email_login", length = 150, unique = true, nullable = false)
+    private String emailLogin;
 
     @Column(name = "password", length = 255, nullable = false)
     private String password;
+
+    @OneToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id")
+    private Client client;
+
+    public UserEntity(UserDTORequest dto) {
+        this.emailLogin = dto.emailLogin();
+        this.password = dto.password();
+        log.info("user DTO converted entity.");
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -38,7 +53,7 @@ public final class UserEntity implements Serializable, PolicyUserEntity<Long>, U
 
     @Override
     public String getUsername() {
-        return this.login;
+        return this.emailLogin;
     }
 
     @Override

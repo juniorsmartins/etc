@@ -2,12 +2,17 @@ package io.portfolio.micro_cliente.client.domain.dtos_response.client;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.user.UserDTORequest;
+import io.portfolio.micro_cliente.client.domain.dtos_response.user.UserDTOResponse;
 import io.portfolio.micro_cliente.client.domain.entities.client.ClientPersonEntity;
+import io.portfolio.micro_cliente.client.domain.entities.user.UserEntity;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -59,7 +64,11 @@ public record ClientPersonDTOResponse
 
         @Schema(name = "Contact", description = "personal communication channels", type = "ContactDTOResponse")
         @JsonProperty("Contact")
-        ContactDTOResponse contact
+        ContactDTOResponse contact,
+
+        @Schema(name = "User", description = "access control information", type = "UserDTORequest")
+        @JsonProperty("User")
+        UserDTOResponse user
     ) implements PolicyDTOResponse<Long>
 {
     private static Logger log = LoggerFactory.getLogger(ClientPersonDTOResponse.class);
@@ -75,7 +84,8 @@ public record ClientPersonDTOResponse
             clientEntity.getMaritalStatus(),
             clientEntity.getEducation(),
             new AddressDTOResponse(clientEntity.getAddress()),
-            new ContactDTOResponse(clientEntity.getContact()));
-        log.info("DTOResponse - person entity conversion to return DTO.");
+            new ContactDTOResponse(clientEntity.getContact()),
+            new UserDTOResponse(clientEntity.getUser()));
+        log.info("person entity conversion to return DTO.");
     }
 }

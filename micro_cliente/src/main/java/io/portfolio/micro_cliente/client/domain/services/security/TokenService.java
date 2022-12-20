@@ -30,7 +30,7 @@ public class TokenService {
 
             var response = JWT.create()
                     .withIssuer("micro_cliente") // identificação da aplicação
-                    .withSubject(userEntity.getLogin())
+                    .withSubject(userEntity.getEmailLogin())
                     .withClaim("id", userEntity.getId())
                     .withExpiresAt(expirationDate()) // definição de tempo de expiração do token
                     .sign(algorithm);

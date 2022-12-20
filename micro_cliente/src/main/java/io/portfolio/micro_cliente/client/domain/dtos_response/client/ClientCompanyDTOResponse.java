@@ -53,6 +53,6 @@ public record ClientCompanyDTOResponse
             companyEntity.getBirthDate(),
             new AddressDTOResponse(companyEntity.getAddress()),
             new ContactDTOResponse(companyEntity.getContact()));
-        log.info("DTOResponse - company entity conversion to return DTO.");
+        log.info("company entity conversion to return DTO.");
     }
 }

@@ -7,10 +7,10 @@ import org.hibernate.validator.constraints.Length;
 @Schema(name = "User DTORequest", description = "structure for transporting data.")
 public record UserDTORequest
     (
-        @Schema(name = "Login", description = "user credential", type = "String", example = "olga.weiss")
+        @Schema(name = "Email de Login", description = "user credential", type = "String", example = "olga.weiss")
         @NotBlank
-        @Length(max = 100)
-        String login,
+        @Length(max = 150)
+        String emailLogin,
 
         @Schema(name = "Password", description = "secret code", type = "String", example = "abrA!.Cadabra12")
         @NotBlank

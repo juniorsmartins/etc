@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+import io.portfolio.micro_cliente.client.application.rest.dtos_request.user.UserDTORequest;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
@@ -52,6 +53,11 @@ public record ClientCompanyDTORequest
         @Schema(name = "Contact", description = "personal communication channels", type = "ContactDTORequest")
         @NotNull
         @Valid
-        ContactDTORequest contact
+        ContactDTORequest contact,
+
+        @Schema(name = "User", description = "access control information", type = "UserDTORequest")
+        @NotNull
+        @Valid
+        UserDTORequest user
     ) implements PolicyClientDTORequest<Long>
 { }

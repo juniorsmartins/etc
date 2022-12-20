@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/login")
+@RequestMapping("/emailLogin")
 public class AuthenticationController {
 
     private static Logger log = LoggerFactory.getLogger(AuthenticationController.class);
@@ -31,11 +31,11 @@ public class AuthenticationController {
     @PostMapping
     public ResponseEntity makeLogin(@RequestBody @Valid UserDTORequest userDTORequest) {
 
-        log.info("Start - recepção de login");
-        var authenticationToken = new UsernamePasswordAuthenticationToken(userDTORequest.login(), userDTORequest.password());
+        log.info("Start - recepção de emailLogin");
+        var authenticationToken = new UsernamePasswordAuthenticationToken(userDTORequest.emailLogin(), userDTORequest.password());
         var authentication = this.authenticationManager.authenticate(authenticationToken);
         var tokenJWT = this.tokenService.createToken((UserEntity) authentication.getPrincipal());
-        log.info("Return - login autenticado e token retornado");
+        log.info("Return - emailLogin autenticado e token retornado");
 
         return ResponseEntity
                 .ok(new TokenJWTDTO(tokenJWT));

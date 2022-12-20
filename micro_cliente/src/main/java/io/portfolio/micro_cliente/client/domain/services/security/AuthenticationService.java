@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticationService implements UserDetailsService {
-
     private static Logger log = LoggerFactory.getLogger(AuthenticationService.class);
 
     @Autowired
@@ -20,9 +19,9 @@ public class AuthenticationService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        log.info("Start - busca por login no database");
+        log.info("Start - busca por emailLogin no database");
         var userDetails = this.userRepository.findByLogin(username);
-        log.info("Return - retorno de busca por login no database");
+        log.info("Return - retorno de busca por emailLogin no database");
 
         return userDetails;
     }

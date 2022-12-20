@@ -1,15 +1,16 @@
 package io.portfolio.micro_cliente.client.domain.entities.client;
 
 import io.portfolio.micro_cliente.client.application.rest.dtos_request.client.ClientPersonDTORequest;
+import io.portfolio.micro_cliente.client.domain.entities.user.UserEntity;
 import io.portfolio.micro_cliente.client.domain.enums.EducationEnum;
 import io.portfolio.micro_cliente.client.domain.enums.GenreEnum;
 import io.portfolio.micro_cliente.client.domain.enums.MaritalStatusEnum;
 import io.portfolio.micro_cliente.client.domain.enums.SexEnum;
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@Slf4j
 @Entity
 @Table(name = "client_persons")
 @Builder
@@ -19,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 @Setter
 @PrimaryKeyJoinColumn(referencedColumnName="id")
 public final class ClientPersonEntity extends Client implements PolicyClientEntity<Long> {
+    private static Logger log = LoggerFactory.getLogger(ClientPersonEntity.class);
 
     @Column(name = "first_name", length = 30, nullable = false)
     private String firstName;
@@ -46,7 +48,7 @@ public final class ClientPersonEntity extends Client implements PolicyClientEnti
     private EducationEnum education;
 
     public ClientPersonEntity(ClientPersonDTORequest dto) {
-        super(dto.id(), dto.birthDate(), new AddressEntity(dto.address()), new ContactEntity(dto.contact()));
+        super(dto.id(), dto.birthDate(), new AddressEntity(dto.address()), new ContactEntity(dto.contact()), new UserEntity(dto.user()));
         this.firstName = dto.firstName();
         this.lastName = dto.lastName();
         this.cpf = dto.cpf();
@@ -54,6 +56,6 @@ public final class ClientPersonEntity extends Client implements PolicyClientEnti
         this.genre = dto.genre();
         this.maritalStatus = dto.maritalStatus();
         this.education = dto.education();
-        log.info("Entity - person DTO converted entity.");
+        log.info("person DTO converted entity.");
     }
 }
