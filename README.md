@@ -39,7 +39,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] Data JPA;
 > - [ ] Data MongoDB;
 > - [x] Bean Validation;
-> - [ ] Migration (Flyway);
+> - [ ] Migration (Flyway e ou Liquibase);
 > - [ ] Security; 
 > - [ ] Hateoas; 
 > - [ ] Batch; 
