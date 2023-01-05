@@ -14,7 +14,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 1. Geral:
 > - [ ] README detalhado;
 > - [x] Metodologia Ágil (Scrum Board no Jira);
-> - [x] Repositório Monorepo com estrutura Gitflow;
+> - [x] Versionamento de código (Git, GitHub e Gitflow);
+> - [x] Repositório Monorepo;
 > - [ ] UML - Unified Modeling Language (Use Case);
 > - [ ] Docker.
 
@@ -37,6 +38,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] ORM (Object Relational Mapping);
 > - [x] Data JPA;
 > - [ ] Data MongoDB;
+> - [x] Bean Validation;
+> - [ ] Migration (Flyway e ou Liquibase);
 > - [ ] Security; 
 > - [ ] Hateoas; 
 > - [ ] Batch; 
@@ -45,10 +48,13 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] AMQP; 
 > - [ ] Flo; 
 > - [ ] Shell;
-> - [x] OpenAPI 3 (SpringDoc v2 - Swagger);
+> - [x] OpenAPI 3 (SpringDoc - Swagger);
 > - [ ] Cache;
 > - [ ] Actuator;
-> - [ ] Admin.
+> - [ ] Admin;
+> - [ ] GraalVM;
+> - [x] Lombok; 
+> - [x] DevTools.
 
 5. API Restful:
 > - [ ] Nível de maturidade 0;
@@ -70,6 +76,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Method Reference;
 > - [ ] Funcional;
 > - [ ] Threads;
+> - [ ] Interface Funcional;
 > - [ ] Estrutura de Dados (lista, pilha, fila e coleção);
 > - [ ] Collections Framework;
 > - [ ] Math;
@@ -80,18 +87,14 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] Logback (Escolhido nível Info com saída para console - Há seis níveis: trace, debug, info, warn, error e fatal);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
-> - [x] Lombok; 
-> - [x] DevTools;
-> - [ ] BeanUtils;
-> - [x] Bean Validation;
-> - [ ] Migration (Flyway);
+> - [ ] Métodos de Objects;
+> - [ ] Métodos de BeanUtils;
 > - [ ] Java Mail Sender;
 > - [ ] Mensageria (RabbitMQ ou Kafka);
 > - [ ] Cors;
 > - [ ] Padrão Repository com EntityManager;
 > - [x] DTOs - Data Transfer Object (Class Record);
 > - [ ] Regular Expressions (Class Pattern);
-> - [ ] GraalVM;
 > - [ ] Eventos;
 > - [ ] Entrada e saída I/O;
 > - [ ] XStream XML;
@@ -136,13 +139,14 @@ __Modelo Físico__
 
 # FERRAMENTAS
 
-> BRModelo;
-> SQL Power Architect;
-> StarUML;
-> IntelliJ IDEA;
-> Maven;
-> Git e GitHub;
-> Postman e Insomnia;
+- IntelliJ IDEA;
+- Maven;
+- Jira;
+- Git e GitHub;
+- Postman e Insomnia;
+- BRModelo;
+- SQL Power Architect;
+- StarUML.
 
 # BIBLIOGRAFIA (base de conhecimento)
 
