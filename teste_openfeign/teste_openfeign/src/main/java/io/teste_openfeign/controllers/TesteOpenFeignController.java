@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/teste")
+@RequestMapping("/registro")
 public class TesteOpenFeignController {
 
     @Autowired
@@ -19,6 +19,7 @@ public class TesteOpenFeignController {
 
     @PutMapping
     public List<String> incluirNaFila(@RequestBody ValorDTO dto) {
+        System.out.println(dto.valor());
         return this.microDashboard.atualizaLista(dto.valor());
     }
 }
