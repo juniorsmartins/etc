@@ -26,26 +26,25 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Abstração.
 
 3. Patterns:
-> - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 > - [ ] DDD - Domain Driven Design;
 > - [ ] Clean Architecture;
+> - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 > - [ ] Clean Code;
 > - [ ] Design Pattern;
 > - [ ] Refactor.
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
-> - [x] ORM (Object Relational Mapping);
-> - [x] Data JPA;
-> - [ ] Data MongoDB;
+> - [ ] Persistência (com Spring Data JPA - Derived Queries, JPQL e JPQL em XML e Native Query);
+> - [ ] Persistência (com Spring Data MongoDB;
 > - [x] Bean Validation;
 > - [ ] Migration (Flyway e ou Liquibase);
 > - [ ] Security; 
 > - [ ] Hateoas; 
 > - [ ] Batch; 
-> - [ ] Cloud; 
+> - [ ] Cloud (Eureka, Gateway, balanceamento de carga, circuit breaker e Open Feign); 
 > - [ ] GraphQL; 
-> - [ ] AMQP; 
+> - [ ] AMQP (RabbitMQ e ou Kafka); 
 > - [ ] Flo; 
 > - [ ] Shell;
 > - [x] OpenAPI 3 (SpringDoc - Swagger);
@@ -57,24 +56,24 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] DevTools.
 
 5. API Restful:
-> - [ ] Nível de maturidade 0;
-> - [ ] Nível de maturidade 1;
-> - [ ] Nível de maturidade 2;
+> - [X] Nível de maturidade 0;
+> - [X] Nível de maturidade 1;
+> - [X] Nível de maturidade 2;
 > - [ ] Nível de maturidade 3.
 
-6. Microservices: 
-> - [x] micro_client; 
+6. Microservices (minimo 3): 
+> - [ ] micro_client; 
 > - [ ] micro_dashboard; 
 > - [ ] micro_etc;
 
 7. Java: 
 > - [x] Java versão 17 LTS;
 > - [ ] Tratamento de Exceções (Global e Local);
-> - [ ] Generics;
+> - [ ] Funcional;
 > - [ ] Stream;
 > - [ ] Lambda;
 > - [ ] Method Reference;
-> - [ ] Funcional;
+> - [ ] Generics;
 > - [ ] Threads;
 > - [ ] Interface Funcional;
 > - [ ] Estrutura de Dados (lista, pilha, fila e coleção);
@@ -87,8 +86,10 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [x] Logback (Escolhido nível Info com saída para console - Há seis níveis: trace, debug, info, warn, error e fatal);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
-> - [ ] Métodos de Objects;
-> - [ ] Métodos de BeanUtils;
+> - [ ] Objects;
+> - [ ] ObjectMapper;
+> - [ ] BeanUtils;
+> - [ ] ReflectionUtils;
 > - [ ] Java Mail Sender;
 > - [ ] Mensageria (RabbitMQ ou Kafka);
 > - [ ] Cors;
