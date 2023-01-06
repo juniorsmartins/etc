@@ -90,6 +90,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] ObjectMapper;
 > - [ ] BeanUtils;
 > - [ ] ReflectionUtils;
+> - [ ] StringUtils;
 > - [ ] Java Mail Sender;
 > - [ ] Mensageria (RabbitMQ ou Kafka);
 > - [ ] Cors;
