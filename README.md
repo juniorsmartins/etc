@@ -35,7 +35,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
-> - [ ] Persistência (com Spring Data JPA - Derived Queries, JPQL e JPQL em XML e Native Query);
+> - [ ] Persistência (com Spring Data JPA - Derived Queries, JPQL, JPQL em XML, JPQL com SDJ, JPQL Dinâmico, Criteria API, Native Query e Specifications DDD);
 > - [ ] Persistência (com Spring Data MongoDB;
 > - [x] Bean Validation;
 > - [ ] Migration (Flyway e ou Liquibase);
