@@ -6,8 +6,8 @@ public class FraudeDetectorService {
 
     public static void main(String[] args) {
         var fraudeService = new FraudeDetectorService();
-        try (var service = new KafkaService(FraudeDetectorService.class.getSimpleName(),
-                "TOPICO_TESTE_KAFKA", fraudeService::parse)) {
+        try (var service = new KafkaService<Order>(FraudeDetectorService.class.getSimpleName(),
+                "TOPICO_TESTE_KAFKA", fraudeService::parse, Order.class)) {
             service.run();
         }
     }
