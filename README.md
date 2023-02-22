@@ -101,6 +101,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Entrada e saída I/O;
 > - [ ] XStream XML;
 > - [ ] Javadoc (somente no service);
+> - [ ] Multi-tenancy;
 > - [ ] Jasper Reports.
 
 ### Front-end
