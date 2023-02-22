@@ -6,13 +6,13 @@ public class FraudeDetectorService {
 
     public static void main(String[] args) {
         var fraudeService = new FraudeDetectorService();
-        try (var service = new KafkaService<Order>(FraudeDetectorService.class.getSimpleName(),
+        try (var service = new KafkaService<>(FraudeDetectorService.class.getSimpleName(),
                 "TOPICO_TESTE_KAFKA", fraudeService::parse, Order.class)) {
             service.run();
         }
     }
 
-    private void parse(ConsumerRecord<String, String> record) {
+    private void parse(ConsumerRecord<String, Order> record) {
         System.out.println("--------------------------------");
         System.out.println("Processando..........:");
         System.out.println(record.key());
