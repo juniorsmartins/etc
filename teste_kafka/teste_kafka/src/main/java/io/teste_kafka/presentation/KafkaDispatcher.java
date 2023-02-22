@@ -10,12 +10,12 @@ import java.io.Closeable;
 import java.util.Properties;
 import java.util.concurrent.ExecutionException;
 
-class KafkaDispatcher implements Closeable {
+class KafkaDispatcher<T> implements Closeable {
 
-    private final KafkaProducer<String, String> producer;
+    private final KafkaProducer<String, T> producer;
 
     KafkaDispatcher() {
-        this.producer = new KafkaProducer<String, String>(properties());
+        this.producer = new KafkaProducer<>(properties());
     }
 
     private static Properties properties() {
@@ -27,7 +27,7 @@ class KafkaDispatcher implements Closeable {
         return propriedades;
     }
 
-    void send(String topic, String chave, String value) throws ExecutionException, InterruptedException {
+    void send(String topic, String chave, T value) throws ExecutionException, InterruptedException {
         var registro = new ProducerRecord<>(topic, chave, value);
         Callback callback = (data, ex) -> {
             if (ex != null) {
