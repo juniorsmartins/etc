@@ -31,7 +31,10 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 > - [ ] Clean Code;
 > - [ ] Design Pattern;
-> - [ ] Refactor.
+> - [ ] Refactor;
+> - [ ] Object Calisthenics;
+> - [ ] Sun Checks;
+> - [ ] Google Checks.
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
