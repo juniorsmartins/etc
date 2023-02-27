@@ -29,12 +29,13 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] DDD - Domain Driven Design;
 > - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 > - [ ] Clean Architecture;
+> - [ ] Design Pattern;
+> - [ ] Refactor;
 > - [ ] Clean Code;
 > - [ ] Object Calisthenics;
+> - [ ] Kiss, Dry, Yagni e Soc;
 > - [ ] Sun Checks;
-> - [ ] Google Checks;
-> - [ ] Refactor;
-> - [ ] Design Pattern.
+> - [ ] Google Checks.
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
