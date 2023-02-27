@@ -22,19 +22,19 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 2. POO - Programação Orientada a Objeto:
 > - [x] Polimorfismo; 
 > - [x] Herança; 
-> - [ ] Encapsulamento; 
-> - [ ] Abstração.
+> - [x] Encapsulamento; 
+> - [x] Abstração.
 
 3. Patterns:
 > - [ ] DDD - Domain Driven Design;
-> - [ ] Clean Architecture;
 > - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
+> - [ ] Clean Architecture;
 > - [ ] Clean Code;
-> - [ ] Design Pattern;
-> - [ ] Refactor;
 > - [ ] Object Calisthenics;
 > - [ ] Sun Checks;
-> - [ ] Google Checks.
+> - [ ] Google Checks;
+> - [ ] Refactor;
+> - [ ] Design Pattern.
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
@@ -47,7 +47,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Batch; 
 > - [ ] Cloud (Eureka, Gateway, balanceamento de carga, circuit breaker e Open Feign); 
 > - [ ] GraphQL; 
-> - [ ] AMQP (RabbitMQ e ou Kafka); 
+> - [ ] Java Mail Sender;
+> - [ ] Mensageria AMQP (RabbitMQ ou Kafka);
 > - [ ] Flo; 
 > - [ ] Shell;
 > - [x] OpenAPI 3 (SpringDoc - Swagger);
@@ -70,7 +71,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] micro_etc;
 
 7. Java: 
-> - [x] Java versão 17 LTS;
+> - [x] Java (17 LTS);
 > - [ ] Tratamento de Exceções (Global e Local);
 > - [ ] Funcional;
 > - [ ] Stream;
@@ -94,8 +95,6 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] BeanUtils;
 > - [ ] ReflectionUtils;
 > - [ ] StringUtils;
-> - [ ] Java Mail Sender;
-> - [ ] Mensageria (RabbitMQ ou Kafka);
 > - [ ] Cors;
 > - [ ] Padrão Repository com EntityManager;
 > - [x] DTOs - Data Transfer Object (Class Record);
@@ -105,9 +104,10 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] XStream XML;
 > - [ ] Javadoc (somente no service);
 > - [ ] Multi-tenancy;
-> - [ ] Jasper Reports.
+> - [ ] Jasper Reports;
+> - [ ] Bibliotecas Desconhecidas.
 
-### Front-end
+### Front-end (opcional)
 
 - [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
 - [ ] Telas com layout responsivo;
