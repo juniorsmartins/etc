@@ -106,7 +106,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Javadoc (somente no service);
 > - [ ] Multi-tenancy;
 > - [ ] Jasper Reports;
-> - [ ] Bibliotecas Desconhecidas.
+> - [ ] Bibliotecas Desconhecidas (WordUtils, JavaFaker e etc).
 
 ### Front-end (opcional)
 
