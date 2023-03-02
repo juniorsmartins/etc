@@ -97,6 +97,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] ReflectionUtils;
 > - [ ] StringUtils;
 > - [ ] Cors;
+> - [ ] GET com Matcher e ExampleMatcher;
 > - [ ] Padrão Repository com EntityManager;
 > - [x] DTOs - Data Transfer Object (Class Record);
 > - [ ] Regular Expressions (Class Pattern);
