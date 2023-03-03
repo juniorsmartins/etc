@@ -73,10 +73,11 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 
 7. Java: 
 > - [x] Java (17 LTS);
-> - [ ] Tratamento de Exceções (Global e Local);
+> - [ ] Tratamento de Exceções (Global e ou Local);
 > - [ ] Funcional;
 > - [ ] Stream;
 > - [ ] Lambda;
+> - [ ] Optional;
 > - [ ] Method Reference;
 > - [ ] Generics;
 > - [ ] Threads;
@@ -97,7 +98,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] ReflectionUtils;
 > - [ ] StringUtils;
 > - [ ] Cors;
-> - [ ] GET com Matcher e ExampleMatcher;
+> - [ ] Matcher e ExampleMatcher (Get - pesquisa);
 > - [ ] Padrão Repository com EntityManager;
 > - [x] DTOs - Data Transfer Object (Class Record);
 > - [ ] Regular Expressions (Class Pattern);
