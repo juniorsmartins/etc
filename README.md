@@ -35,7 +35,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Object Calisthenics;
 > - [ ] Kiss, Dry, Yagni e Soc;
 > - [ ] Sun Checks;
-> - [ ] Google Checks.
+> - [ ] Google Checks;
+> - [ ] Análise Estática de Código (SonarLint).
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
