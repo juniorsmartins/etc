@@ -158,9 +158,4 @@ __Modelo Físico__
 - SQL Power Architect;
 - StarUML.
 
-# BIBLIOGRAFIA (base de conhecimento)
-
-- Pós-graduação Lato Sensu em Tecnologia Java (Universidade Tecnológica Federal do Paraná - UTFPR);
-- Curso Especialista Spring Rest - ESR (Algaworks);
-- Cursos livres (Alura, DIO e etc);
 
