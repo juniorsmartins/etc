@@ -53,7 +53,7 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Mensageria AMQP (RabbitMQ ou Kafka);
 > - [ ] Flo; 
 > - [ ] Shell;
-> - [x] OpenAPI 3 (SpringDoc - Swagger);
+> - [x] OpenAPI 3 (SpringDoc - Swagger - documentação unificada no Gateway);
 > - [ ] Cache;
 > - [ ] Actuator;
 > - [ ] Admin;
