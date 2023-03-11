@@ -36,7 +36,8 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Kiss, Dry, Yagni e Soc;
 > - [ ] Sun Checks;
 > - [ ] Google Checks;
-> - [ ] Análise Estática de Código (SonarLint).
+> - [ ] Análise Estática de Código (SonarLint);
+> - [ ] Inversão de Controle e Injeção de Dependência.
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
