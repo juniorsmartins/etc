@@ -112,17 +112,6 @@ O projeto consiste na criação de uma aplicação web para centralizar e gerenc
 > - [ ] Jasper Reports;
 > - [ ] Bibliotecas Desconhecidas (WordUtils, JavaFaker, Blaze Persistence e etc).
 
-### Front-end (opcional)
-
-- [ ] Front-end Angular (Typescript, JavaScript, HTML e CSS);
-- [ ] Telas com layout responsivo;
-- [ ] Páginas com o conceito de módulos e componentes;
-- [ ] Navegação entre páginas por meio de rotas;
-- [ ] Requisições à API com tratamento da resposta com Promises ou Observables;
-- [ ] Uso da API JSON Server;
-- [ ] Uso de diretivas;
-- [ ] Formatar apresentação de dados com Pipes.
-
 ### Banco de Dados Relacional e Não Relacional (NoSQL)
 
 - [x] Banco de dados PostgreSQL;
