@@ -25,7 +25,7 @@ Descrição em construção...
 > - [x] Encapsulamento; 
 > - [x] Abstração.
 
-3. Patterns:
+3. Boas práticas:
 > - [ ] DDD - Domain Driven Design;
 > - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
 > - [ ] Clean Architecture;
