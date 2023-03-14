@@ -68,8 +68,12 @@ Descrição em construção...
 > - [X] Nível de maturidade 2;
 > - [ ] Nível de maturidade 3.
 
-6. Microservices (minimo 3): 
-> - [ ] micro_client; 
+6. Microservices: 
+> - [ ] micro_api-gateway;
+> - [ ] micro_service-registry;
+> - [ ] micro_config-server;
+> - [ ] micro_usuario;
+> - [ ] micro_cursos;
 > - [ ] micro_dashboard; 
 > - [ ] micro_etc;
 
