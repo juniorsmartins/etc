@@ -72,8 +72,9 @@ Descrição em construção...
 > - [ ] micro_api-gateway;
 > - [ ] micro_service-registry;
 > - [ ] micro_config-server;
-> - [ ] micro_usuario;
+> - [ ] micro_usuarios;
 > - [ ] micro_cursos;
+> - [ ] micro_pagamentos;
 > - [ ] micro_dashboard; 
 > - [ ] micro_etc;
 
