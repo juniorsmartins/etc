@@ -41,6 +41,7 @@ Descrição em construção...
 
 4. Spring:
 > - [x] Spring Boot 3.0.0;
+> - [ ] Web;
 > - [ ] Persistência (com Spring Data JPA - Derived Queries, JPQL, JPQL em XML, JPQL com SDJ, JPQL Dinâmico, Criteria API, Native Query e Specifications DDD);
 > - [ ] Persistência (com Spring Data MongoDB;
 > - [x] Bean Validation;
@@ -48,7 +49,7 @@ Descrição em construção...
 > - [ ] Security; 
 > - [ ] Hateoas; 
 > - [ ] Batch; 
-> - [ ] Cloud (Eureka, Gateway, balanceamento de carga, circuit breaker e Open Feign); 
+> - [ ] Cloud (Eureka, Gateway, balanceamento de carga, circuit breaker, Sleuth, Resilience4J e Open Feign); 
 > - [ ] GraphQL; 
 > - [ ] Java Mail Sender;
 > - [ ] Mensageria AMQP (RabbitMQ ou Kafka);
@@ -75,6 +76,7 @@ Descrição em construção...
 > - [ ] micro_usuarios;
 > - [ ] micro_cursos;
 > - [ ] micro_pagamentos;
+> - [ ] micro_email;
 > - [ ] micro_dashboard; 
 > - [ ] micro_etc;
 
