@@ -11,8 +11,8 @@ Descrição em construção...
 
 ### Back-end
 
-1. Arquitetura:
-> - [ ] Microsserviços;
+1. Arquiteturas:
+> - [ ] Microsserviços na aplicação;
 > - [ ] Camadas nas APIs Rest;
 
 1. Geral:
