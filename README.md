@@ -11,6 +11,10 @@ Descrição em construção...
 
 ### Back-end
 
+1. Arquitetura:
+> - [ ] Microsserviços;
+> - [ ] Camadas nas APIs Rest;
+
 1. Geral:
 > - [ ] README detalhado;
 > - [x] Metodologia Ágil (Scrum Board no Jira);
@@ -31,6 +35,7 @@ Descrição em construção...
 > - [ ] Clean Architecture;
 > - [ ] Design Pattern;
 > - [ ] Refactor;
+> - [ ] Solid (SRP, OCP, LSP, ISP, DIP);
 > - [ ] Clean Code;
 > - [ ] Object Calisthenics;
 > - [ ] Kiss, Dry, Yagni e Soc;
