@@ -4,7 +4,7 @@
 - Data de Início: 18/11/2022;
 - Previsão de Término: 31/12/2023;
 
-Descrição em construção... 
+Descrição: plataforma educacional para oferta de cursos EAD/Online.
 
 
 # CHECKLIST
