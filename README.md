@@ -54,6 +54,7 @@ Descrição em construção...
 > - [ ] Security; 
 > - [ ] Hateoas; 
 > - [ ] Batch; 
+> - [ ] Social (redes sociais);
 > - [ ] Cloud (Eureka, Gateway, balanceamento de carga, circuit breaker, Sleuth, Resilience4J e Open Feign); 
 > - [ ] GraphQL; 
 > - [ ] Java Mail Sender;
@@ -80,6 +81,7 @@ Descrição em construção...
 > - [ ] micro_config-server;
 > - [ ] micro_usuarios;
 > - [ ] micro_cursos;
+> - [ ] micro_notícias;
 > - [ ] micro_pagamentos;
 > - [ ] micro_email;
 > - [ ] micro_dashboard; 
