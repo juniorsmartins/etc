@@ -69,11 +69,24 @@ Descrição: plataforma educacional para oferta de cursos EAD/Online.
 > - [x] Lombok; 
 > - [x] DevTools.
 
-5. API Restful:
+5. API Restful (3 pilares):
+
+Seis Constraints de Roy Fielding:
+> - [ ] A API deve ser Cliente/servidor;
+> - [ ] A aplicação deve ser Stateless (não guardar estado);
+> - [ ] Ter capacidade de realizar cache para reduzir tráfego;
+> - [ ] Interface uniforme (recursos bem definidos, hipermídias e utilizar métodos Http e códigos de retorno);
+> - [ ] O sistema deve ser construído em camadas;
+> - [ ] Deve possuir a capacidade de evoluir sem quebrar.
+
+Modelo de maturidade de Leonard Richardson:
 > - [X] Nível de maturidade 0;
 > - [X] Nível de maturidade 1;
 > - [X] Nível de maturidade 2;
-> - [ ] Nível de maturidade 3.
+> - [ ] Nível de maturidade 3;
+
+Hypertext Transfer Protocol - RFC 2616
+> - [ ] ...
 
 6. Microservices: 
 > - [ ] micro_api-gateway;
