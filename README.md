@@ -13,7 +13,7 @@ Descrição: plataforma educacional para oferta de cursos EAD/Online.
 
 1. Arquiteturas:
 > - [ ] Microsserviços na aplicação;
-> - [ ] Camadas nas APIs Rest;
+> - [ ] Camadas nas APIs Rest (apresentação, aplicação, domínio e infraestrutura);
 
 1. Geral:
 > - [ ] README detalhado;
