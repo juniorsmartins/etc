@@ -31,7 +31,7 @@ Descrição: plataforma educacional para oferta de cursos EAD/Online.
 
 3. Boas práticas:
 > - [ ] DDD - Domain Driven Design;
-> - [ ] TDD - Test Driven Development (JUnit e Mockito e JavaFaker);
+> - [ ] TDD - Test Driven Development (JUnit e Mockito, JMeter e JavaFaker);
 > - [ ] Clean Architecture;
 > - [ ] Design Pattern;
 > - [ ] Refactor;
