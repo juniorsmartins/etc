@@ -87,6 +87,7 @@ Modelo de maturidade de Leonard Richardson:
 
 Hypertext Transfer Protocol - RFC 2616
 > - [ ] ...
+> - [ ] ...
 
 6. Microservices: 
 > - [ ] micro_api-gateway;
