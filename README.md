@@ -30,7 +30,7 @@ Descrição: plataforma educacional para oferta de cursos EAD/Online.
 > - [x] Abstração.
 
 3. Boas práticas:
-> - [ ] DDD - Domain Driven Design (entidades, objetos de valor, agregados, serviços, linguagem ubíqua, contextos delimitados e etc);
+> - [ ] DDD - Domain Driven Design (entidades, objetos de valor, agregados, serviços, fábricas, linguagem ubíqua, contextos delimitados e etc);
 > - [ ] TDD - Test Driven Development (JUnit e Mockito, JMeter e JavaFaker);
 > - [ ] Clean Architecture;
 > - [ ] Design Pattern;
