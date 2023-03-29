@@ -80,9 +80,9 @@ Seis Constraints de Roy Fielding:
 > - [ ] Deve possuir a capacidade de evoluir sem quebrar.
 
 Modelo de maturidade de Leonard Richardson:
-> - [X] Nível de maturidade 0;
-> - [X] Nível de maturidade 1;
-> - [X] Nível de maturidade 2;
+> - [ ] Nível de maturidade 0;
+> - [ ] Nível de maturidade 1;
+> - [ ] Nível de maturidade 2;
 > - [ ] Nível de maturidade 3;
 
 Hypertext Transfer Protocol - RFC 2616
