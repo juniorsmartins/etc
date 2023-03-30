@@ -17,9 +17,9 @@ Descrição: plataforma educacional para oferta de cursos EAD/Online.
 
 1. Geral:
 > - [ ] README detalhado;
-> - [x] Metodologia Ágil (Scrum Board no Jira);
-> - [x] Versionamento de código (Git, GitHub e Gitflow);
-> - [x] Repositório Monorepo;
+> - [ ] Metodologia Ágil (Scrum Board no Jira);
+> - [ ] Versionamento de código (Git, GitHub e Gitflow);
+> - [ ] Repositório Monorepo;
 > - [ ] UML - Unified Modeling Language (Use Case);
 > - [ ] Docker.
 
