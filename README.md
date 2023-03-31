@@ -24,10 +24,10 @@ Descrição: plataforma educacional para oferta de cursos EAD/Online.
 > - [ ] Docker.
 
 2. POO - Programação Orientada a Objeto:
-> - [x] Polimorfismo; 
-> - [x] Herança; 
-> - [x] Encapsulamento; 
-> - [x] Abstração.
+> - [ ] Polimorfismo; 
+> - [ ] Herança; 
+> - [ ] Encapsulamento; 
+> - [ ] Abstração.
 
 3. Boas práticas:
 > - [ ] DDD - Domain Driven Design (entidades, objetos de valor, agregados, serviços, fábricas, linguagem ubíqua, contextos delimitados e etc);
@@ -45,11 +45,11 @@ Descrição: plataforma educacional para oferta de cursos EAD/Online.
 > - [ ] Inversão de Controle e Injeção de Dependência.
 
 4. Spring:
-> - [x] Spring Boot 3.0.0;
+> - [ ] Spring Boot 3.0.0;
 > - [ ] Web;
 > - [ ] Persistência (com Spring Data JPA - Derived Queries, JPQL, JPQL em XML, JPQL com SDJ, JPQL Dinâmico, Criteria API, Native Query e Specifications DDD);
 > - [ ] Persistência (com Spring Data MongoDB;
-> - [x] Bean Validation;
+> - [ ] Bean Validation;
 > - [ ] Migration (Flyway e ou Liquibase);
 > - [ ] Security; 
 > - [ ] Hateoas; 
@@ -61,13 +61,13 @@ Descrição: plataforma educacional para oferta de cursos EAD/Online.
 > - [ ] Mensageria AMQP (RabbitMQ ou Kafka);
 > - [ ] Flo; 
 > - [ ] Shell;
-> - [x] OpenAPI 3 (SpringDoc - Swagger - documentação unificada no Gateway);
+> - [ ] OpenAPI 3 (SpringDoc - Swagger - documentação unificada no Gateway);
 > - [ ] Cache;
 > - [ ] Actuator;
 > - [ ] Admin;
 > - [ ] GraalVM;
-> - [x] Lombok; 
-> - [x] DevTools.
+> - [ ] Lombok; 
+> - [ ] DevTools.
 
 5. API Restful (3 pilares):
 
