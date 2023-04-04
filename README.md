@@ -102,7 +102,7 @@ Hypertext Transfer Protocol - RFC 2616
 > - [ ] micro_etc;
 
 7. Java: 
-> - [x] Java (17 LTS);
+> - [ ] Java (17 LTS);
 > - [ ] Tratamento de Exceções (Global e ou Local);
 > - [ ] Funcional;
 > - [ ] Stream;
@@ -118,8 +118,8 @@ Hypertext Transfer Protocol - RFC 2616
 > - [ ] Text Blocks;
 > - [ ] Comparable e Comparator;
 > - [ ] JDBC;
-> - [x] Enums;
-> - [x] Logback (Escolhido nível Info com saída para console - Há seis níveis: trace, debug, info, warn, error e fatal);
+> - [ ] Enums;
+> - [ ] Logback (Escolhido nível Info com saída para console - Há seis níveis: trace, debug, info, warn, error e fatal);
 > - [ ] Content Negotiation;
 > - [ ] Padrão GMT/UTC de Data e Hora (ISO-8601);
 > - [ ] Objects;
@@ -130,7 +130,7 @@ Hypertext Transfer Protocol - RFC 2616
 > - [ ] Cors;
 > - [ ] Matcher e ExampleMatcher (Get - pesquisa);
 > - [ ] Padrão Repository com EntityManager;
-> - [x] DTOs - Data Transfer Object (Class Record);
+> - [ ] DTOs - Data Transfer Object (Class Record);
 > - [ ] Regular Expressions (Class Pattern);
 > - [ ] Eventos;
 > - [ ] Entrada e saída I/O;
@@ -142,11 +142,11 @@ Hypertext Transfer Protocol - RFC 2616
 
 ### Banco de Dados Relacional e Não Relacional (NoSQL)
 
-- [x] Banco de dados PostgreSQL;
+- [ ] Banco de dados PostgreSQL;
 - [ ] Banco de dados MySQL;
 - [ ] Banco de dados MariaDB;
 - [ ] Banco de dados MongoDB (NoSQL);
-- [x] DER - Diagrama Entidade Relacionamento.
+- [ ] DER - Diagrama Entidade Relacionamento.
 
 
 # DATABASE
