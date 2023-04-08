@@ -13,7 +13,7 @@ Descrição: ....
 
 1. Arquiteturas:
 > - [ ] Microsserviços na aplicação;
-> - [ ] Exploração de outras arquiteturas nas APIs Rest (camadas, hexagonal e etc);
+> - [ ] Explorar outras arquiteturas nas APIs Rest (camadas, hexagonal e etc);
 
 1. Geral:
 > - [ ] README detalhado;
