@@ -4,7 +4,7 @@
 - Data de Início: 01/01/2023;
 - Previsão de Término: 31/12/2023;
 
-Descrição: ....
+Descrição: ...
 
 
 # CHECKLIST
