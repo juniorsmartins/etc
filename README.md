@@ -143,7 +143,6 @@ Hypertext Transfer Protocol - RFC 2616
 > - [ ] Bibliotecas Desconhecidas (WordUtils, JavaFaker, Blaze Persistence e etc).
 
 ### Banco de Dados Relacional e Não Relacional (NoSQL)
-
 - [ ] Banco de dados PostgreSQL;
 - [ ] Banco de dados MySQL;
 - [ ] Banco de dados MariaDB;
