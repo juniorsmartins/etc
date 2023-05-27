@@ -1,10 +1,17 @@
 # INTRODUÇÃO
 
 - Nome: Portfolio;
-- Data de Início: 01/01/2023;
-- Previsão de Término: 31/12/2023;
+- Data de Início: 00/00/0000;
+- Previsão de Término: 00/00/0000;
 
 Descrição: ...
+
+# ÍNDICE
+
+1. Documentação de Utilização do Projeto;
+2. Documentação de Desenvolvimento do Projeto;
+3. Documentação de Infraestrutura do Projeto;
+4. Documentação de Arquitetura do Projeto;
 
 
 # CHECKLIST
