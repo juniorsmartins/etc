@@ -8,10 +8,27 @@ Descrição: ...
 
 # ÍNDICE
 
-1. Documentação de Utilização do Projeto;
+1. Documentação de Arquitetura do Projeto;
 2. Documentação de Desenvolvimento do Projeto;
 3. Documentação de Infraestrutura do Projeto;
-4. Documentação de Arquitetura do Projeto;
+4. Documentação de Utilização do Projeto;
+
+
+## Documentação de Arquitetura do Projeto
+
+1. Domínios;
+2. Linguagem Ubíqua;
+3. Linguagem Pictográfica (Domain Storytelling);
+4. Event Stormming;
+
+## Documentação de Desenvolvimento do Projeto
+
+
+## Documentação de Infraestrutura do Projeto
+
+
+## Documentação de Utilização do Projeto
+
 
 
 # CHECKLIST
