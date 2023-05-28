@@ -20,6 +20,7 @@ Descrição: ...
 2. Linguagem Ubíqua;
 3. Linguagem Pictográfica (Domain Storytelling);
 4. Event Storming;
+5. Diagramas.
 
 ## Documentação de Desenvolvimento do Projeto
 
