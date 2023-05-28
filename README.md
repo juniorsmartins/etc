@@ -19,7 +19,7 @@ Descrição: ...
 1. Domínios;
 2. Linguagem Ubíqua;
 3. Linguagem Pictográfica (Domain Storytelling);
-4. Event Stormming;
+4. Event Storming;
 
 ## Documentação de Desenvolvimento do Projeto
 
