@@ -82,7 +82,7 @@ Descrição: ...
 > - [ ] Social (redes sociais);
 > - [ ] Cloud (Eureka, Gateway, balanceamento de carga, circuit breaker, Sleuth, Resilience4J e Open Feign); 
 > - [ ] GraphQL; 
-> - [ ] Java Mail Sender;
+> - [ ] Java Mail Sender/Spring mail;
 > - [ ] Mensageria AMQP (RabbitMQ ou Kafka);
 > - [ ] Flo; 
 > - [ ] Shell;
@@ -115,6 +115,9 @@ Hypertext Transfer Protocol - RFC 2616
 > - [ ] ...
 > - [ ] ...
 > - [ ] ...
+
+Outros
+> - [ ] Content Negociation (retornar Json e XML);
 
 6. Microservices: 
 > - [ ] micro_api-gateway;
