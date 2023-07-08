@@ -10,8 +10,7 @@ Descrição: ...
 
 1. Documentação de Arquitetura do Projeto;
 2. Documentação de Desenvolvimento do Projeto;
-3. Documentação de Infraestrutura do Projeto;
-4. Documentação de Utilização do Projeto;
+3. Documentação de Utilização do Projeto;
 
 
 ## Documentação de Arquitetura do Projeto
@@ -19,14 +18,10 @@ Descrição: ...
 1. Domínios;
 2. Linguagem Ubíqua;
 3. Linguagem Pictográfica (Domain Storytelling);
-4. Event Storming;
+4. DDD (Event Storming);
 5. Diagramas.
 
 ## Documentação de Desenvolvimento do Projeto
-
-
-## Documentação de Infraestrutura do Projeto
-
 
 ## Documentação de Utilização do Projeto
 
@@ -38,7 +33,7 @@ Descrição: ...
 
 1. Arquiteturas:
 > - [ ] Microsserviços na aplicação;
-> - [ ] Explorar outras arquiteturas nas APIs Rest (camadas, hexagonal e etc);
+> - [ ] Explorar outras arquiteturas nas APIs Rest (camadas, hexagonal, clean architecture e etc);
 
 1. Geral:
 > - [ ] README detalhado;
