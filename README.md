@@ -33,7 +33,7 @@ Descrição: ...
 
 1. Arquiteturas:
 > - [ ] Microsserviços na aplicação;
-> - [ ] Explorar outras arquiteturas nas APIs Rest (camadas, hexagonal, clean architecture e etc);
+> - [ ] Explorar arquiteturas nas APIs Rest (hexagonal com clean architecture);
 
 1. Geral:
 > - [ ] README detalhado;
@@ -41,7 +41,8 @@ Descrição: ...
 > - [ ] Versionamento de código (Git, GitHub e Gitflow);
 > - [ ] Repositório Monorepo;
 > - [ ] UML - Unified Modeling Language (Use Case);
-> - [ ] Docker.
+> - [ ] Docker;
+> - [ ] Kubernets.
 
 2. POO - Programação Orientada a Objeto:
 > - [ ] Polimorfismo; 
@@ -59,6 +60,7 @@ Descrição: ...
 > - [ ] Clean Code;
 > - [ ] Object Calisthenics;
 > - [ ] Kiss, Dry, Yagni e Soc;
+> - [ ] 12 Fatores;
 > - [ ] Sun Checks;
 > - [ ] Google Checks;
 > - [ ] Análise Estática de Código (SonarLint);
