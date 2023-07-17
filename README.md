@@ -167,6 +167,10 @@ Outros
 > - [ ] Jasper Reports;
 > - [ ] Bibliotecas Desconhecidas (WordUtils, JavaFaker, Blaze Persistence e etc).
 
+8. Integrações: 
+> - [ ] Mercado Pago;
+> - [ ] Correios (Cep);
+
 ### Banco de Dados Relacional e Não Relacional (NoSQL)
 - [ ] Banco de dados PostgreSQL;
 - [ ] Banco de dados MySQL;
