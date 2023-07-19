@@ -53,7 +53,7 @@ Descrição: ...
 3. Boas práticas:
 > - [ ] DDD - Domain Driven Design (entidades, objetos de valor, agregados, serviços, fábricas, linguagem ubíqua, contextos delimitados e etc);
 > - [ ] TDD - Test Driven Development (JUnit e Mockito, JMeter e JavaFaker);
-> - [ ] Clean Architecture;
+> - [ ] Clean Architecture (usar presenters);
 > - [ ] Design Pattern;
 > - [ ] Refactor;
 > - [ ] Solid (SRP, OCP, LSP, ISP, DIP);
