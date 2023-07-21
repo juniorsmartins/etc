@@ -54,7 +54,7 @@ Descrição: ...
 > - [ ] DDD - Domain Driven Design (entidades, objetos de valor, agregados, serviços, fábricas, linguagem ubíqua, contextos delimitados e etc);
 > - [ ] TDD - Test Driven Development (JUnit e Mockito, JMeter e JavaFaker);
 > - [ ] Clean Architecture (usar presenters);
-> - [ ] Design Pattern;
+> - [ ] Design Pattern (strategy e outras);
 > - [ ] Refactor;
 > - [ ] Solid (SRP, OCP, LSP, ISP, DIP);
 > - [ ] Clean Code;
