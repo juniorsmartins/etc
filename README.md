@@ -40,7 +40,7 @@ Descrição: ...
 > - [ ] Metodologia Ágil (Scrum Board no Jira);
 > - [ ] Versionamento de código (Git, GitHub, Gitflow e Commit Semântico);
 > - [ ] Repositório Monorepo;
-> - [ ] UML - Unified Modeling Language (Use Case);
+> - [ ] UML - Unified Modeling Language (Use Case, Classes, Sequência);
 > - [ ] Docker;
 > - [ ] Kubernets.
 
