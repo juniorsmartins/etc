@@ -36,7 +36,7 @@ Descrição: ...
 > - [ ] Explorar arquiteturas nas APIs Rest (hexagonal com clean architecture);
 
 1. Geral:
-> - [ ] README detalhado;
+> - [ ] README (mostrar o desenvolvimento da aplicação ao longo do tempo);
 > - [ ] Metodologia Ágil (Scrum Board no Jira);
 > - [ ] Versionamento de código (Git, GitHub, Gitflow e Commit Semântico);
 > - [ ] Repositório Monorepo;
