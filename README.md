@@ -176,6 +176,7 @@ Outros
 - [ ] Banco de dados MySQL;
 - [ ] Banco de dados MariaDB;
 - [ ] Banco de dados MongoDB (NoSQL);
+- [ ] Banco de dados Redis (em memória para testes);
 - [ ] DER - Diagrama Entidade Relacionamento.
 
 
