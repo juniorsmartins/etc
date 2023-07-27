@@ -36,7 +36,7 @@ Descrição: ...
 > - [ ] Explorar arquiteturas nas APIs Rest (hexagonal com clean architecture);
 
 1. Geral:
-> - [ ] README (mostrar o desenvolvimento da aplicação ao longo do tempo);
+> - [ ] README (mostrar o progresso da aplicação ao longo do tempo);
 > - [ ] Metodologia Ágil (Scrum Board no Jira);
 > - [ ] Versionamento de código (Git, GitHub, Gitflow e Commit Semântico);
 > - [ ] Repositório Monorepo;
@@ -67,27 +67,27 @@ Descrição: ...
 > - [ ] Inversão de Controle e Injeção de Dependência.
 
 4. Spring:
-> - [ ] Spring Boot 3.0.0;
-> - [ ] Web;
+> - [ ] Spring Boot 3.0.0; 
+> - [ ] Web; 
 > - [ ] Persistência (com Spring Data JPA - Derived Queries, JPQL, JPQL em XML, JPQL com SDJ, JPQL Dinâmico, Criteria API, Native Query e Specifications DDD);
-> - [ ] Persistência (com Spring Data MongoDB;
-> - [ ] Bean Validation;
-> - [ ] Migration (Flyway e ou Liquibase);
+> - [ ] Persistência (com Spring Data MongoDB; 
+> - [ ] Bean Validation; 
+> - [ ] Migration (Flyway e ou Liquibase); 
 > - [ ] Security; 
 > - [ ] Hateoas; 
 > - [ ] Batch; 
-> - [ ] Social (redes sociais);
+> - [ ] Social (redes sociais); 
 > - [ ] Cloud (Eureka, Gateway, balanceamento de carga, circuit breaker, Sleuth, Resilience4J e Open Feign); 
 > - [ ] GraphQL; 
-> - [ ] Java Mail Sender/Spring mail;
-> - [ ] Mensageria AMQP (RabbitMQ ou Kafka);
+> - [ ] Java Mail Sender/Spring mail; 
+> - [ ] Mensageria AMQP (RabbitMQ ou Kafka); 
 > - [ ] Flo; 
-> - [ ] Shell;
-> - [ ] OpenAPI 3 (SpringDoc - Swagger - documentação unificada no Gateway);
-> - [ ] Cache;
-> - [ ] Actuator;
-> - [ ] Admin;
-> - [ ] GraalVM;
+> - [ ] Shell; 
+> - [ ] OpenAPI 3 (SpringDoc - Swagger - documentação unificada no Gateway); 
+> - [ ] Cache; 
+> - [ ] Actuator; 
+> - [ ] Admin; 
+> - [ ] GraalVM; 
 > - [ ] Lombok; 
 > - [ ] DevTools.
 
