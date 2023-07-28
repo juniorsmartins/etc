@@ -70,7 +70,7 @@ Descrição: ...
 > - [ ] Spring Boot 3.0.0; 
 > - [ ] Web; 
 > - [ ] Persistência (com Spring Data JPA - Derived Queries, JPQL, JPQL em XML, JPQL com SDJ, JPQL Dinâmico, Criteria API, Native Query e Specifications DDD);
-> - [ ] Persistência (com Spring Data MongoDB; 
+> - [ ] Persistência (com Spring Data MongoDB); 
 > - [ ] Bean Validation; 
 > - [ ] Migration (Flyway e ou Liquibase); 
 > - [ ] Security; 
@@ -130,7 +130,7 @@ Outros
 
 7. Java: 
 > - [ ] Java (17 LTS);
-> - [ ] Tratamento de Exceções (Global e ou Local);
+> - [ ] Tratamento de Exceções (Global e ou Local + protocolo RFC 7807);
 > - [ ] Funcional;
 > - [ ] Stream;
 > - [ ] Lambda;
