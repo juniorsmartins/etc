@@ -179,6 +179,9 @@ Outros
 - [ ] Banco de dados Redis (em memória para testes);
 - [ ] DER - Diagrama Entidade Relacionamento.
 
+# MOBILE
+
+- Kotlin
 
 # DATABASE
 
