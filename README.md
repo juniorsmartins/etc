@@ -181,7 +181,7 @@ Outros
 
 # MOBILE
 
-- Kotlin
+- Kotlin (primeiros passos no Kotlin)
 
 # DATABASE
 
