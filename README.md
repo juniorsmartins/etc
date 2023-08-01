@@ -32,8 +32,8 @@ Descrição: ...
 ### Back-end
 
 1. Arquiteturas:
-> - [ ] Microsserviços na aplicação;
-> - [ ] Explorar arquiteturas nas APIs Rest (hexagonal com clean architecture);
+> - [ ] Microsserviços;
+> - [ ] Explorar arquiteturas nas APIs Rest (hexagonal e clean architecture);
 
 1. Geral:
 > - [ ] README (mostrar o progresso da aplicação ao longo do tempo);
