@@ -88,7 +88,8 @@ Descrição: ...
 > - [ ] Actuator; 
 > - [ ] Admin; 
 > - [ ] GraalVM; 
-> - [ ] Lombok; 
+> - [ ] Lombok;
+> - [ ] MinIO (armazenar documentos);
 > - [ ] DevTools.
 
 5. API Restful (3 pilares):
